@@ -9,23 +9,10 @@
 			.text--caption
 				font-size: 1.1rem
 				color: $white
-
-		/* diamond */
-		.figure
-			display: flex
-			height: calc(100vh)
-			width: calc(97.8%)
-			position: absolute
-			z-index: 1
-			justify-content: center
-			align-items: center
-			.diamond
-				height: 40vh
-				width: 40vh
-				background-color: white
-				border: 1px solid white
-				transform: rotate(45deg)
-				-webkit-transform: rotate(45deg)
+				&:hover
+					color: $carmine !important
+					background-color: $white !important
+		
 		.mm-a
 			display: flex
 			height: calc(50vh)
@@ -34,6 +21,16 @@
 			justify-content: center
 			align-items: center
 			padding: 10px
+			z-index: 1
+			&:hover
+				background: asset_url('main/DR-2018b.jpg') center
+				background-size: calc(100%) calc(100%)
+				background-repeat: no-repeat
+				background-color: $dark
+				opacity: 0.7
+				.text--caption
+					color: $white
+					background-color: $carmine
 		.mm-b
 			display: flex
 			height: calc(50vh)
@@ -42,7 +39,15 @@
 			justify-content: center
 			align-items: center
 			padding: 10px
-			// border-bottom-left-radius: 50%
+			&:hover
+				background: url('https://media0.giphy.com/media/v3cob3J9aZv4Q/200w.gif?cid=3640f6095be94537484f6a4b4d1ab2d3') center
+				background-size: calc(100%) calc(100%)
+				background-repeat: no-repeat
+				background-color: $dark
+				opacity: 0.7
+				.text--caption
+					color: $white
+					background-color: $carmine
 		.mm-c
 			display: flex
 			height: calc(50vh)
@@ -51,7 +56,16 @@
 			justify-content: center
 			align-items: center
 			padding: 10px
-			// border-top-right-radius: 50%
+			&:hover
+				background: url('https://media0.giphy.com/media/26DMZZX1WEpho2PYs/200w.gif?cid=3640f6095be936726a476852514b4649') center
+				background-size: calc(100%) calc(100%)
+				background-repeat: no-repeat
+				background-color: $dark
+				opacity: 0.7
+				.text--caption
+					color: $white
+					background-color: $carmine
+
 		.mm-d
 			display: flex
 			height: calc(50vh)
@@ -60,133 +74,153 @@
 			justify-content: center
 			align-items: center
 			padding: 10px
-			// border-top-left-radius: 50%
+			&:hover
+				background: url('https://media2.giphy.com/media/Tfu2OUFOHlsiI/200w.gif?cid=3640f6095be93a7e5948395241c7008a') center
+				background-size: calc(100%) calc(100%)
+				background-repeat: no-repeat
+				background-color: $dark
+				opacity: 0.7
+				.text--caption
+					color: $white
+					background-color: $carmine
+		
+		/* diamond */
+		.diamond
+			display: flex
+			position: absolute
+			justify-content: center
+			align-items: center
+			height: 28vh
+			width: 28vh
+			background-color: $dark
+			background: url('https://media2.giphy.com/media/26DN2sglox9GdAZoc/200w.gif?cid=3640f6095be92ec372416f3645297a81') no-repeat
+			background-size: calc(100%) calc(100%)
+			border: 1px solid white
+			transform: rotate(45deg)
+			-webkit-transform: rotate(45deg)
+			z-index: 1
+			margin: calc(36vh) calc(50%)
+			animation: rotary 4s
+			--webkit-animation: rotary 4s
+			animation-direction: alternate
+			--webkit-animation-direction: alternate
+			animation-iteration-count: 3
+
+		@keyframes rotary
+			0%
+				background: url('https://media3.giphy.com/media/26msDF2awpmKly9KU/200w.gif?cid=3640f6095be94bf1633043744def6953') no-repeat
+				background-size: calc(100%) calc(100%)
+				transform: rotate(135deg)
+				-webkit-transform: rotate(135deg)
+				animation-delay: 3s
+			25%
+				background: url('https://media3.giphy.com/media/26msDF2awpmKly9KU/200w.gif?cid=3640f6095be94bf1633043744def6953') no-repeat
+				background-size: calc(100%) calc(100%)
+				transform: rotate(225deg)
+				-webkit-transform: rotate(225deg)
+				animation-delay: 3s
+			75%
+				background: url('https://media3.giphy.com/media/SH3AYsJUInHRS/200w.gif?cid=3640f6095be94def6c59336863867827') no-repeat
+				background-size: calc(100%) calc(100%)
+				transform: rotate(315deg)
+				-webkit-transform: rotate(315deg)
+				animation-delay: 3s
+			100%
+				background: url('https://media2.giphy.com/media/26DN2sglox9GdAZoc/200w.gif?cid=3640f6095be92ec372416f3645297a81') no-repeat
+				background-size: calc(100%) calc(100%)
+				transform: rotate(45deg)
+				-webkit-transform: rotate(45deg)
+				animation-delay: 3s
+
+		
 		.col-6.col-lg-6.col-md-6.col-sm-6
 			padding-right: 0 !important
 			padding-left: 0 !important
 
-		/* very small */
+		/* very very small */
 		@media only screen and (min-width: 280px)
-			.figure
-				display: flex
-				height: calc(100vh)
-				width: calc(90.2%)
-				position: absolute
-				z-index: 1
-				justify-content: center
-				align-items: center
-				.diamond
-					height: 28vh
-					width: 28vh
-					background-color: white
-					border: 1px solid white
-					transform: rotate(45deg)
-					-webkit-transform: rotate(45deg)
+			/* diamond */
+			.diamond
+				height: 28vh
+				width: 28vh
+				margin: calc(36vh) calc(23%)
 
-		/* Very Small */
-		@media only screen and (min-width: 340px)
-			.figure
-				display: flex
-				height: calc(100vh)
-				width: calc(93%)
-				position: absolute
-				z-index: 1
-				justify-content: center
-				align-items: center
-				.diamond
-					height: 28vh
-					width: 28vh
-					background-color: white
-					border: 1px solid white
-					transform: rotate(45deg)
-					-webkit-transform: rotate(45deg)
+		/* very small */
+		@media only screen and (min-width: 320px)
+			/* diamond */
+			.diamond
+				height: 28vh
+				width: 28vh
+				margin: calc(36vh) calc(25%)
 
 		/* small */
-		@media only screen and (min-width: 460px)
-			.figure
-				display: flex
-				height: calc(100vh)
-				width: calc(95.4%)
-				position: absolute
-				z-index: 1
-				justify-content: center
-				align-items: center
-				.diamond
-					height: 30vh
-					width: 30vh
-					background-color: white
-					border: 1px solid white
-					transform: rotate(45deg)
-					-webkit-transform: rotate(45deg)
+		@media only screen and (min-width: 412px)
+			/* diamond */
+			.diamond
+				height: 28vh
+				width: 28vh
+				margin: calc(36vh) calc(30.6%)
 
-		/* medium small*/
+		/* small medium */
 		@media only screen and (min-width: 560px)
-			.figure
-				display: flex
-				height: calc(100vh)
-				width: calc(95%)
-				position: absolute
-				z-index: 1
-				justify-content: center
-				align-items: center
-				.diamond
-					height: 30vh
-					width: 30vh
-					background-color: white
-					border: 1px solid white
-					transform: rotate(45deg)
-					-webkit-transform: rotate(45deg)
+			/* diamond */
+			.diamond
+				height: 28vh
+				width: 28vh
+				margin: calc(36vh) calc(35.4%)
 
 		/* medium */
-		@media only screen and (min-width: 700px)
-			.figure
-				display: flex
-				height: calc(100vh)
-				width: calc(96.5%)
-				position: absolute
-				z-index: 1
-				justify-content: center
-				align-items: center
-				.diamond
-					height: 38vh
-					width: 38vh
-					background-color: white
-					border: 1px solid white
-					transform: rotate(45deg)
-					-webkit-transform: rotate(45deg)
+		@media only screen and (min-width: 660px)
+			/* diamond */
+			.diamond
+				height: 28vh
+				width: 28vh
+				margin: calc(36vh) calc(37.7%)
 
-		/* medium big */
+		/* medium */
+		@media only screen and (min-width: 760px)
+			/* diamond */
+			.diamond
+				height: 28vh
+				width: 28vh
+				margin: calc(36vh) calc(39%)
+
+		/* medium large */
 		@media only screen and (min-width: 900px)
-			.figure
-				display: flex
-				height: calc(100vh)
-				width: calc(97.1%)
-				position: absolute
-				z-index: 1
-				justify-content: center
-				align-items: center
-				.diamond
-					height: 40vh
-					width: 40vh
-					background-color: white
-					border: 1px solid white
-					transform: rotate(45deg)
-					-webkit-transform: rotate(45deg)
+			/* diamond */
+			.diamond
+				height: 28vh
+				width: 28vh
+				margin: calc(36vh) calc(40%)
 
-		/* big */
-		@media only screen and (min-width: 1200px)
-			.figure
-				display: flex
-				height: calc(100vh)
-				width: calc(97.8%)
-				position: absolute
-				z-index: 1
-				justify-content: center
-				align-items: center
-				.diamond
-					height: 45vh
-					width: 45vh
-					background-color: white
-					border: 1px solid white
-					transform: rotate(45deg)
-					-webkit-transform: rotate(45deg)
+		/* large */
+		@media only screen and (min-width: 1024px)
+			/* diamond */
+			.diamond
+				height: 28vh
+				width: 28vh
+				margin: calc(36vh) calc(41.3%)
+
+		/* large II */
+		@media only screen and (min-width: 1110px)
+			/* diamond */
+			.diamond
+				height: 28vh
+				width: 28vh
+				margin: calc(36vh) calc(41.8%)
+
+		/* large III */
+		@media only screen and (min-width: 1220px)
+			/* diamond */
+			.diamond
+				height: 40vh
+				width: 40vh
+				margin: calc(30vh) calc(39.9%)
+
+		/* large IV */
+		@media only screen and (min-width: 1340px)
+			/* diamond */
+			.diamond
+				height: 40vh
+				width: 40vh
+				margin: calc(30vh) calc(39.5%)

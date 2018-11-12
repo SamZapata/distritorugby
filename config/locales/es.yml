@@ -2,6 +2,8 @@
 es:
   home:
     stories: 'Historias de Vida'
+    tournaments: 'Competencias'
+    
   context:
     district: 'Distrito de Aguablanca'
-    
+
