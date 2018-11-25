@@ -1,3 +1,9 @@
+// Projec: Distrito Rugby
+// Author: Johnny Zapata
+// User: @jsamzapata
+
+@import "home/**/*"
+
 .home-index
 	.main-menu
 		height: calc(100vh)
@@ -99,7 +105,9 @@
 			transform: rotate(45deg)
 			-webkit-transform: rotate(45deg)
 			z-index: 1
-			margin: calc(36vh) calc(50%)
+			//margin: calc(36vh) calc(50%)
+			left: calc(43vw)
+			top: calc(36vh)
 			animation: rotary 4s
 			--webkit-animation: rotary 4s
 			animation-direction: alternate
@@ -138,89 +146,102 @@
 			padding-left: 0 !important
 
 		/* very very small */
-		@media only screen and (min-width: 280px)
-			/* diamond */
+		@media only screen and (min-width: 280px) and (max-width: 320px)
 			.diamond
-				height: 28vh
-				width: 28vh
-				margin: calc(36vh) calc(23%)
-
-		/* very small */
-		@media only screen and (min-width: 320px)
-			/* diamond */
-			.diamond
-				height: 28vh
-				width: 28vh
-				margin: calc(36vh) calc(25%)
+				left: calc(30vw)
 
 		/* small */
-		@media only screen and (min-width: 412px)
-			/* diamond */
+		@media only screen and (min-width: 321px) and (max-width: 420px)
 			.diamond
-				height: 28vh
-				width: 28vh
-				margin: calc(36vh) calc(30.6%)
+				left: calc(35vw)
 
-		/* small medium */
-		@media only screen and (min-width: 560px)
-			/* diamond */
+		/* soft */
+		@media all and (min-width: 421px) and (max-width: 580px)
 			.diamond
-				height: 28vh
-				width: 28vh
-				margin: calc(36vh) calc(35.4%)
+				left: calc(40vw)
+		// @media only screen and (min-width: 280px)
+		// 	/* diamond */
+		// 	.diamond
+		// 		height: 28vh
+		// 		width: 28vh
+		// 		//margin: calc(36vh) calc(23%)
 
-		/* medium */
-		@media only screen and (min-width: 660px)
-			/* diamond */
-			.diamond
-				height: 28vh
-				width: 28vh
-				margin: calc(36vh) calc(37.7%)
+		// /* very small */
+		// @media only screen and (min-width: 320px)
+		// 	/* diamond */
+		// 	.diamond
+		// 		height: 28vh
+		// 		width: 28vh
+		// 		//margin: calc(36vh) calc(25%)
 
-		/* medium */
-		@media only screen and (min-width: 760px)
-			/* diamond */
-			.diamond
-				height: 28vh
-				width: 28vh
-				margin: calc(36vh) calc(39%)
+		// /* small */
+		// @media only screen and (min-width: 412px)
+		// 	/* diamond */
+		// 	.diamond
+		// 		height: 28vh
+		// 		width: 28vh
+		// 		//margin: calc(36vh) calc(30.6%)
 
-		/* medium large */
-		@media only screen and (min-width: 900px)
-			/* diamond */
-			.diamond
-				height: 28vh
-				width: 28vh
-				margin: calc(36vh) calc(40%)
+		// /* small medium */
+		// @media only screen and (min-width: 560px)
+		// 	/* diamond */
+		// 	.diamond
+		// 		height: 28vh
+		// 		width: 28vh
+		// 		//margin: calc(36vh) calc(35.4%)
 
-		/* large */
-		@media only screen and (min-width: 1024px)
-			/* diamond */
-			.diamond
-				height: 28vh
-				width: 28vh
-				margin: calc(36vh) calc(41.3%)
+		// /* medium */
+		// @media only screen and (min-width: 660px)
+		// 	/* diamond */
+		// 	.diamond
+		// 		height: 28vh
+		// 		width: 28vh
+		// 		//margin: calc(36vh) calc(37.7%)
 
-		/* large II */
-		@media only screen and (min-width: 1110px)
-			/* diamond */
-			.diamond
-				height: 28vh
-				width: 28vh
-				margin: calc(36vh) calc(41.8%)
+		// /* medium */
+		// @media only screen and (min-width: 720px)
+		// 	/* diamond */
+		// 	.diamond
+		// 		height: 28vh
+		// 		width: 28vh
+		// 		//margin: calc(36vh) calc(39%)
 
-		/* large III */
-		@media only screen and (min-width: 1220px)
-			/* diamond */
-			.diamond
-				height: 40vh
-				width: 40vh
-				margin: calc(30vh) calc(39.9%)
+		// /* medium large */
+		// @media only screen and (min-width: 900px)
+		// 	/* diamond */
+		// 	.diamond
+		// 		height: 28vh
+		// 		width: 28vh
+		// 		//margin: calc(36vh) calc(40%)
 
-		/* large IV */
-		@media only screen and (min-width: 1340px)
-			/* diamond */
-			.diamond
-				height: 40vh
-				width: 40vh
-				margin: calc(30vh) calc(39.5%)
+		// /* large */
+		// @media only screen and (min-width: 1024px)
+		// 	/* diamond */
+		// 	.diamond
+		// 		height: 28vh
+		// 		width: 28vh
+		// 		//margin: calc(36vh) calc(41.3%)
+
+		// /* large II */
+		// @media only screen and (min-width: 1110px)
+		// 	/* diamond */
+		// 	.diamond
+		// 		height: 28vh
+		// 		width: 28vh
+		// 		//margin: calc(36vh) calc(41.8%)
+
+		// /* large III */
+		// @media only screen and (min-width: 1220px)
+		// 	/* diamond */
+		// 	.diamond
+		// 		height: 40vh
+		// 		width: 40vh
+		// 		//margin: calc(30vh) calc(39.9%)
+
+		// /* large IV */
+		// @media only screen and (min-width: 1340px)
+		// 	/* diamond */
+		// 	.diamond
+		// 		height: 40vh
+		// 		width: 40vh
+		// 		//margin: calc(30vh) calc(39.5%)
