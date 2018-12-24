@@ -38,7 +38,7 @@ ehthumbs.db
 Thumbs.db
 
 # Rails specific stuff
-config/database.yml
+# config/database.yml
 config/env.yml
 config/app_config.yml
 config/secrets.yml

@@ -1,6 +1,6 @@
 // Projec: Distrito Rugby
 // Author: Johnny Zapata
-// User: @jsamzapata
+// @jsamzapata
 
 @import "home/**/*"
 
@@ -24,6 +24,7 @@
 			height: calc(50vh)
 			width: calc(100%)
 			background-color: $main-menu-a
+			border: 0.25px solid white
 			justify-content: center
 			align-items: center
 			padding: 10px
@@ -42,6 +43,7 @@
 			height: calc(50vh)
 			width: calc(100%)
 			background-color: $main-menu-b
+			border: 0.25px solid white
 			justify-content: center
 			align-items: center
 			padding: 10px
@@ -59,6 +61,7 @@
 			height: calc(50vh)
 			width: calc(100%)
 			background-color: $main-menu-c
+			border: 0.25px solid white
 			justify-content: center
 			align-items: center
 			padding: 10px
@@ -77,6 +80,7 @@
 			height: calc(50vh)
 			width: calc(100%)
 			background-color: $main-menu-d
+			border: 0.25px solid white
 			justify-content: center
 			align-items: center
 			padding: 10px
@@ -90,29 +94,28 @@
 					color: $white
 					background-color: $carmine
 		
-		/* diamond */
-		.diamond
+		/* Symbol */
+		.symbol	
 			display: flex
-			position: absolute
 			justify-content: center
-			align-items: center
-			height: 28vh
-			width: 28vh
-			background-color: $dark
-			background: url('https://media2.giphy.com/media/26DN2sglox9GdAZoc/200w.gif?cid=3640f6095be92ec372416f3645297a81') no-repeat
-			background-size: calc(100%) calc(100%)
-			border: 1px solid white
-			transform: rotate(45deg)
-			-webkit-transform: rotate(45deg)
-			z-index: 1
-			//margin: calc(36vh) calc(50%)
-			left: calc(43vw)
-			top: calc(36vh)
-			animation: rotary 4s
-			--webkit-animation: rotary 4s
-			animation-direction: alternate
-			--webkit-animation-direction: alternate
-			animation-iteration-count: 3
+			padding: auto
+			/* diamond */
+			.diamond
+				display: flex
+				position: absolute
+				margin: auto
+				height: calc(28vh)
+				width: calc(28vh)
+				background-color: $dark
+				background: url('https://media2.giphy.com/media/26DN2sglox9GdAZoc/200w.gif?cid=3640f6095be92ec372416f3645297a81') no-repeat
+				background-size: calc(100%) calc(100%)
+				border: 1px solid white
+				transform: rotate(45deg)
+				-webkit-transform: rotate(45deg)
+				z-index: 1
+				top: calc(36vh)
+				animation: rotary 4s
+				--webkit-animation: rotary 4s
 
 		@keyframes rotary
 			0%
@@ -146,19 +149,27 @@
 			padding-left: 0 !important
 
 		/* very very small */
-		@media only screen and (min-width: 280px) and (max-width: 320px)
-			.diamond
-				left: calc(30vw)
+		// @media only screen and (min-width: 320vw) and (min-height: 480vh)
+		// 	.diamond
+		// 		left: calc(21.2vw)
 
-		/* small */
-		@media only screen and (min-width: 321px) and (max-width: 420px)
-			.diamond
-				left: calc(35vw)
+		// /* samsung galaxy s9 */
+		// @media only screen and (min-width: 360vw) and (min-height: 670vh)
+		// 	.diamond
+		// 		left: calc(21.2vw)
 
-		/* soft */
-		@media all and (min-width: 421px) and (max-width: 580px)
-			.diamond
-				left: calc(40vw)
+		// /* iphon 6/7/8 */
+		// @media only screen and (min-width: 375vw) and (min-height: 635vh)
+		// 	.diamond
+		// 		left: calc(25%)
+		// @media only screen and (min-width: 667vw) and (min-height: 375vh)
+		// 	.diamond
+		// 		left: calc(42.3vw)
+
+		// /* soft */
+		// @media all and (min-width: 421px) and (max-width: 580px)
+		// 	.diamond
+		// 		left: calc(38.5vw)
 		// @media only screen and (min-width: 280px)
 		// 	/* diamond */
 		// 	.diamond
@@ -166,82 +177,4 @@
 		// 		width: 28vh
 		// 		//margin: calc(36vh) calc(23%)
 
-		// /* very small */
-		// @media only screen and (min-width: 320px)
-		// 	/* diamond */
-		// 	.diamond
-		// 		height: 28vh
-		// 		width: 28vh
-		// 		//margin: calc(36vh) calc(25%)
-
-		// /* small */
-		// @media only screen and (min-width: 412px)
-		// 	/* diamond */
-		// 	.diamond
-		// 		height: 28vh
-		// 		width: 28vh
-		// 		//margin: calc(36vh) calc(30.6%)
-
-		// /* small medium */
-		// @media only screen and (min-width: 560px)
-		// 	/* diamond */
-		// 	.diamond
-		// 		height: 28vh
-		// 		width: 28vh
-		// 		//margin: calc(36vh) calc(35.4%)
-
-		// /* medium */
-		// @media only screen and (min-width: 660px)
-		// 	/* diamond */
-		// 	.diamond
-		// 		height: 28vh
-		// 		width: 28vh
-		// 		//margin: calc(36vh) calc(37.7%)
-
-		// /* medium */
-		// @media only screen and (min-width: 720px)
-		// 	/* diamond */
-		// 	.diamond
-		// 		height: 28vh
-		// 		width: 28vh
-		// 		//margin: calc(36vh) calc(39%)
-
-		// /* medium large */
-		// @media only screen and (min-width: 900px)
-		// 	/* diamond */
-		// 	.diamond
-		// 		height: 28vh
-		// 		width: 28vh
-		// 		//margin: calc(36vh) calc(40%)
-
-		// /* large */
-		// @media only screen and (min-width: 1024px)
-		// 	/* diamond */
-		// 	.diamond
-		// 		height: 28vh
-		// 		width: 28vh
-		// 		//margin: calc(36vh) calc(41.3%)
-
-		// /* large II */
-		// @media only screen and (min-width: 1110px)
-		// 	/* diamond */
-		// 	.diamond
-		// 		height: 28vh
-		// 		width: 28vh
-		// 		//margin: calc(36vh) calc(41.8%)
-
-		// /* large III */
-		// @media only screen and (min-width: 1220px)
-		// 	/* diamond */
-		// 	.diamond
-		// 		height: 40vh
-		// 		width: 40vh
-		// 		//margin: calc(30vh) calc(39.9%)
-
-		// /* large IV */
-		// @media only screen and (min-width: 1340px)
-		// 	/* diamond */
-		// 	.diamond
-		// 		height: 40vh
-		// 		width: 40vh
-		// 		//margin: calc(30vh) calc(39.5%)
+		
