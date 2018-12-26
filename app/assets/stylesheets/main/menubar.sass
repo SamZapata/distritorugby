@@ -1,0 +1,62 @@
+// Projec: Distrito Rugby
+// Author: Johnny Zapata
+// @jsamzapata
+
+.distrito-rugby-menu-bar
+	width: calc(100%)
+	
+	.menu-bar--button
+		height: calc(5vh)
+		&:hover
+			background-color: $menu-button
+		.mb-button--label
+			display: flex
+			justify-content: center
+			align-items: center
+			.mb-button--label__text
+				font-size: 1em
+				color: $mb--text
+				font-family: verdana
+				font-weight: bold
+
+	.menu-bar--modal
+		display: block
+		height: calc(90vh)
+		background-color: $menu-modal
+		.mb-modal--label
+			display: flex
+			width: calc(100%)
+			height: calc(14.8vh)
+			background-color: $menu-item
+			justify-content: center
+			align-items: center
+			&:hover
+				background-color: $menu-item-hover
+			.mb-modal--label__text
+				font-size: 1.3em
+				font-family: verdana
+				font-weight: bold
+				color: $white
+				justify-content: center
+				align-items: center
+				&:hover
+					color: $maroon
+		.mb-modal--label__home
+			display: flex
+			width: calc(100%)
+			height: calc(8vh)
+			justify-content: center
+			align-items: center
+			&:hover
+				background-color: $menu-item-hover
+				.label_text
+					color: $white
+			.label_text
+				display: flex
+				justify-content: center
+				align-items: center
+				color: $dark
+				align-items: center
+				font-family: verdana
+				font-weight: bold
+

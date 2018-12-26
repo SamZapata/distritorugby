@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'stories/index'
+  get 'news/index'
+  get 'toolbox/index'
+  get 'tournaments/index'
+  get 'histories/index'
+  get 'team/index'
   get 'home/index'
   get 'home/aboute'
 

@@ -1,13 +1,20 @@
 ---
 es:
-  home:
-    stories: 'Historias de Vida'
-    tournaments: 'Competencias'
-    
-  context:
-    district: 'Distrito de Aguablanca'
-
   about:
+    section: Es una iniciativa que busca ser un instrumento que permita compartir
+      saberes, experiencias, historias, noticias, anécdotas, artículos y contenido
+      alrededor del rugby, donde estos puedan ser útiles o sirvan de motivación para
+      otras personas, grupos o comunidades que trabajan por el desarrollo y posicionamiento
+      en/de esta disciplina deportiva.
     title: Sobre Distrito Rugby
-    section:  Es una iniciativa que busca ser un instrumento que permita compartir saberes, experiencias, historias, noticias, anécdotas, artículos y contenido alrededor del rugby, donde estos puedan ser útiles o sirvan de motivación para otras personas, grupos o comunidades que trabajan por el desarrollo y posicionamiento en/de esta disciplina deportiva.
-
+  context:
+    district: Distrito de Aguablanca
+  home:
+    stories: Historias de Vida
+    tournaments: Competencias
+  menu:
+    news: Noticias
+    stories: Historias
+    team: Equipo
+    toolbox: Toolbox
+    tournaments: Torneos

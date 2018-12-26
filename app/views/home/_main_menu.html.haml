@@ -9,21 +9,17 @@
 			.col-6.col-lg-6.col-md-6.col-sm-6
 				.mm-a
 					.text
-						.text--caption
-							= 'Rugby en el ' + (I18n.t 'context.district')
+						= link_to 'Rugby en el ' + (I18n.t 'context.district'), team_index_path, :class => 'text--caption'
 			.col-6.col-lg-6.col-md-6.col-sm-6
 				.mm-b
 					.text
-						.text--caption
-							= I18n.t 'home.stories'
+						= link_to (I18n.t 'home.stories'), stories_index_path, :class => 'text--caption'
 		.row
 			.col-6.col-lg-6.col-md-6.col-sm-6
 				.mm-c
 					.text
-						.text--caption
-							= t 'home.tournaments'
+						= link_to (I18n.t 'home.tournaments'), tournaments_index_path, :class => 'text--caption'
 			.col-6.col-lg-6.col-md-6.col-sm-6
 				.mm-d
 					.text
-						.text--caption
-							Toolbox
+						= link_to 'Toolbox', toolbox_index_path, :class => 'text--caption'

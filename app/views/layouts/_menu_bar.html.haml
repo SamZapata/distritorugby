@@ -1,0 +1,29 @@
+// Project: Distrito Rugby
+// Author: Johnny Zapata -@jsamzapata
+// File: menu bar
+
+.distrito-rugby-menu-bar
+	.menu-bar--button
+		.mb-button--label
+			.mb-button--label__text{"data-target" => "#showMenu", "data-toggle" => "modal"}
+				MENU
+
+	#showMenu.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "showMenuBar", :role => "dialog", :tabindex => "-1"}
+		.modal-dialog{:role => "document"}
+			.modal-content
+				.menu-bar--modal
+					.mb-modal--label__home
+						= link_to 'HOME', '/', :class => 'label_text'
+					.mb-modal--label
+						= link_to (I18n.t 'menu.team'), team_index_path, :class => 'mb-modal--label__text'
+					.mb-modal--label
+						= link_to (I18n.t 'menu.news'), news_index_path, :class => 'mb-modal--label__text'
+					.mb-modal--label
+						= link_to t('menu.stories'), stories_index_path, :class => 'mb-modal--label__text'
+					.mb-modal--label
+						= link_to t('menu.tournaments'), tournaments_index_path, :class => 'mb-modal--label__text'
+					.mb-modal--label
+						= link_to t('menu.toolbox'), toolbox_index_path, :class => 'mb-modal--label__text'
+					.mb-modal--label__home
+						.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+
