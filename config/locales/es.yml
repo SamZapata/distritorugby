@@ -4,11 +4,12 @@ es:
     section: Es una iniciativa que busca ser un instrumento que permita compartir
       saberes, experiencias, historias, noticias, anécdotas, artículos y contenido
       alrededor del rugby, donde estos puedan ser útiles o sirvan de motivación para
-      otras personas, grupos o comunidades que trabajan por el desarrollo y posicionamiento
-      en/de esta disciplina deportiva.
+      otras personas, grupos o comunidades que trabajan por el desarrollo y posicionamiento en/de esta disciplina deportiva.
+      Distrito Rugby nace con el fin de promover el desarrollo, promoción e implementación del rugby en lugares donde aún es poco conocido o en los cuales se gestan procesos deportivos con niños, niñas, adolescentes y jóvenes que ven en el rugby un nuevo estilo de vida, sobreponiéndose así, con dinamismo, a las falsas percepciones recurrentes alrededor del rugby, aún cuando se desconocen tan siquiera sus principios, tanto de juego como en valores de vida.
     title: Sobre Distrito Rugby
   common:
     close: Cerrar
+    see_pdf: ver pdf
   context:
     district: Distrito de Aguablanca
   home:
@@ -20,3 +21,10 @@ es:
     team: Equipo
     toolbox: Toolbox
     tournaments: Torneos
+  team:
+    about: En el Distrito de Aguablanca han existido grupos de práctica de rugby en las comunas 13, 14 y 21. Dichos grupos se han disuelto con el tiempo. Sin embargo, se buscó mantener una base que sirviera como referente para impulsar el desarrollo de nuevos deportistas y formalizar un equipo que represente la unidad de las personas que viven en estas comunas y que en su mayoría deben afrontar el flagelo de las fronteras invisibles, entre otras situaciones sociales de gran complejidad. Leones y Tikunas Rugby Club son la institución deportiva que por ahora le apuesta a la conformación de semilleros de práctica en esta zona de la ciudad, promoviendo así espacios de entreno abiertos a donde pueden asistir hombres y mujeres a partir de los 14 años. En el documento adjunto se presenta una reseña breve que describe parte de los procesos que se han llevado a cabo.
+    training:
+      i_want: Quiero Entrenar!
+      schedule: Martes y Viernes - 6:30pm
+      site: Cancha de Los Naranjos I
+    know_more: Conocer Más
