@@ -1,2 +1,17 @@
-%h1 Stories#index
-%p Find me in app/views/stories/index.html.haml
+// Project: Distrito Rugby
+// Author: Johnny Zapata
+// @jsamzapata
+// file: stories index
+
+.distrito-rugby-stories
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a{:href => "/", :class => 'link'}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a{:href => stories_index_path, :class => 'link' }= t('breadcrumb.stories')
+      %li.breadcrumb-item.active{"aria-current" => "page"} Index
+
+  .stories-content
+    .stories-content--out
