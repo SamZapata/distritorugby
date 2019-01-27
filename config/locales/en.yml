@@ -21,3 +21,22 @@ en:
     team: Team
     toolbox: Toolbox
     tournaments: Tournaments
+  team:
+    about: En el Distrito de Aguablanca han existido grupos de práctica de rugby en
+      las comunas 13, 14 y 21. Dichos grupos se han disuelto con el tiempo. Sin embargo,
+      se buscó mantener una base que sirviera como referente para impulsar el desarrollo
+      de nuevos deportistas y formalizar un equipo que represente la unidad de las
+      personas que viven en estas comunas y que en su mayoría deben afrontar el flagelo
+      de las fronteras invisibles, entre otras situaciones sociales de gran complejidad.
+      Leones y Tikunas Rugby Club son la institución deportiva que por ahora le apuesta
+      a la conformación de semilleros de práctica en esta zona de la ciudad, promoviendo
+      así espacios de entreno abiertos a donde pueden asistir hombres y mujeres a
+      partir de los 14 años. En el documento adjunto se presenta una reseña breve
+      que describe parte de los procesos que se han llevado a cabo.
+    index:
+      schedule-training: Schedule-training
+    know_more: Conocer Más
+    training:
+      i_want: Quiero Entrenar!
+      schedule: Martes y Viernes - 6:30pm
+      site: Cancha de Los Naranjos I

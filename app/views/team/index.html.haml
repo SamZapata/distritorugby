@@ -10,13 +10,37 @@
 
 		.team--content__about
 			= t('team.about') + " "
-			= link_to t('common.see_pdf'), 'https://drive.google.com/file/d/1ohoQRWy5sdW4pi7rjz4uzZ9021NcohGm/view', :class => 'link', target: :_blank
 		.col-12
 			.team--token
 				.row
 					.col-6
-						.team--token__style
-							= t('team.training.i_want')
+						.team--token__style{"data-target" => "#infoTrainingModal", "data-toggle" => "modal", :title => "Ver Entrenos"}
+							.team--token__style--text
+								= t('team.training.i_want')
 					.col-6
-						.team--token__style
-							= t('team.know_more')
+						= link_to t('team.know_more'), 'https://drive.google.com/file/d/1ohoQRWy5sdW4pi7rjz4uzZ9021NcohGm/view', :class => 'team--token__style', target: :_blank
+
+		%br
+
+	#infoTrainingModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "ModalInfoTraining", :role => "dialog", :tabindex => "-1"}
+		.modal-dialog{:role => "document"}
+			.modal-content
+				.modal-header
+					.modal-title
+						.team-modal--title
+							= t('team.schedule-training')
+						.pull-right
+					%button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+						%span{"aria-hidden" => "true"} ×
+				.modal-body
+					.team-modal--text
+						.fas.fa-clock
+						= t('team.training.schedule')
+					.team-modal--text
+						.fas.fa-phone
+						= t('team.training.phone_numbers')
+					.team-modal--text
+						.fas.fa-map-marker-alt
+						= t('team.training.site')
+					.team-modal--map
+						%iframe{:allowfullscreen => "", :frameborder => "0", :height => "450", :src => "https://www.google.com/maps/embed?pb=!4v1548567375531!6m8!1m7!1stFfxCTxjjkvUrtCdlT4YGw!2m2!1d3.433103439597375!2d-76.48042001719799!3f228.43624689400204!4f-10.007626776577837!5f1.1924812503605782", :style => "border:0", :width => "calc(100%)"}

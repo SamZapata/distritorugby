@@ -38,6 +38,7 @@ gem 'popper_js', '~> 1.9', '>= 1.9.9'
 gem 'rails-i18n', '~> 5.1'
 # load pdf
 gem 'pdfjs_viewer-rails'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
