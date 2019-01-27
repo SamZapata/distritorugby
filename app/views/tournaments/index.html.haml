@@ -1,2 +1,21 @@
-%h1 Tournaments#index
-%p Find me in app/views/tournaments/index.html.haml
+// Project: Distrito Rugby
+// Author: Johnny Zapata
+// @jsamzapata
+// file: tournaments index
+
+.distrito-rugby-tournaments
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a{:href => "/", :class => 'link'}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a{:href => tournaments_index_path, :class => 'link' }= t('breadcrumb.tournaments')
+      %li.breadcrumb-item.active{"aria-current" => "page"} Index
+
+  .tournament-content
+    .tournament-content--out
+      = image_tag 'common/undraw_under_construction.svg', :class => 'tournament-content--out'
+      %br
+      .tournament-content--out__text
+        = t('tournaments.building')
