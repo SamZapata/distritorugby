@@ -1,0 +1,17 @@
+// Project: Distrito Rugby
+// Author: Johnny Zapata
+// @jsamzapata
+// file: news new
+
+.distrito-rugby-news
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a{:href => "/", :class => 'link'}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a{:href => news_index_path, :class => 'link' }= t('breadcrumb.news')
+      %li.breadcrumb-item.active{"aria-current" => "page"}= t('news.new')
+
+  .news-content
+    = render 'form'

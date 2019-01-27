@@ -1,0 +1,19 @@
+// Project: Distrito Rugby
+// Author: Johnny Zapata
+// @jsamzapata
+// file: news form
+
+.distrito-rugby-news
+  .news-form
+    = simple_form_for @news do |f|
+      = f.error_notification
+      = f.input :title
+      = f.input :summary
+      = f.input :talking
+      = f.input :emb_video
+
+      = f.simple_fields_for :tags_attributes do |p|
+        = p.input :name
+
+      -# save
+      = f.button :submit, class: 'btn btn-info btn-lg'

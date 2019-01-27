@@ -13,6 +13,11 @@ es:
       aún cuando se desconocen tan siquiera sus principios, tanto de juego como en
       valores de vida.
     title: Sobre Distrito Rugby
+  breadcrumb:
+    news: Noticias
+    stories: Historias
+    toolbox: Caja de Herramientas
+    tournaments: Torneos
   common:
     close: Cerrar
     see_pdf: ver pdf
@@ -27,6 +32,12 @@ es:
     team: Equipo
     toolbox: Toolbox
     tournaments: Torneos
+  news:
+    new: Nueva Noticia
+    notice:
+      confirm_creation: Confirm creation
+      confirm_destruction: Registro eliminado satisfactoriamente
+      confirm_update: Confirm update
   team:
     about: En el Distrito de Aguablanca han existido grupos de práctica de rugby en
       las comunas 13, 14 y 21. Dichos grupos se han disuelto con el tiempo. Sin embargo,
@@ -38,24 +49,17 @@ es:
       a la conformación de semilleros de práctica en esta zona de la ciudad, promoviendo
       así espacios de entreno abiertos a donde pueden asistir hombres y mujeres a
       partir de los 14 años.
-      # En el documento adjunto se presenta una reseña breve que describe parte de los procesos que se han llevado a cabo.
-    schedule-training: Horarios de Entreno
+    index:
+      schedule-training: Schedule-training
     know_more: Conocer Más
+    schedule-training: Horarios de Entreno
     training:
+      contact: Contacto
       i_want: Quiero Entrenar!
+      phone_numbers: 304 373 6578 - 311 419 6682
       schedule: Martes y Viernes - 6:30pm
       site: Cancha de Los Naranjos I - (Cra 26g3 con Cll 77a)
-      contact: Contacto
-      phone_numbers: 304 373 6578 - 311 419 6682
-
-  tournaments:
-    building: En construcción!!!
-
   toolbox:
     building: En construcción!!!
-
-  breadcrumb:
-    tournaments: Torneos
-    toolbox: Caja de Herramientas
-    news: Noticias
-    stories: Historias
+  tournaments:
+    building: En construcción!!!

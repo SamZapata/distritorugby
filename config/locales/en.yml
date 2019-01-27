@@ -7,6 +7,11 @@ en:
       otras personas, grupos o comunidades que trabajan por el desarrollo y posicionamiento
       en/de esta disciplina deportiva.
     title: About Distrito Rugby
+  breadcrumb:
+    news: Noticias
+    stories: Historias
+    toolbox: Caja de Herramientas
+    tournaments: Torneos
   common:
     close: Close
     see_pdf: See pdf
@@ -21,6 +26,12 @@ en:
     team: Team
     toolbox: Toolbox
     tournaments: Tournaments
+  news:
+    new: New
+    notice:
+      confirm_creation: Confirm creation
+      confirm_destruction: Confirm destruction
+      confirm_update: Confirm update
   team:
     about: En el Distrito de Aguablanca han existido grupos de práctica de rugby en
       las comunas 13, 14 y 21. Dichos grupos se han disuelto con el tiempo. Sin embargo,
@@ -36,7 +47,14 @@ en:
     index:
       schedule-training: Schedule-training
     know_more: Conocer Más
+    schedule-training: Horarios de Entreno
     training:
+      contact: Contacto
       i_want: Quiero Entrenar!
+      phone_numbers: 304 373 6578 - 311 419 6682
       schedule: Martes y Viernes - 6:30pm
       site: Cancha de Los Naranjos I
+  toolbox:
+    building: En construcción!!!
+  tournaments:
+    building: En construcción!!!
