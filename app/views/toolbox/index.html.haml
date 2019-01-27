@@ -1,2 +1,21 @@
-%h1 Toolbox#index
-%p Find me in app/views/toolbox/index.html.haml
+// Project: Distrito Rugby
+// Author: Johnny Zapata
+// @jsamzapata
+// file: toolbox index
+
+.distrito-rugby-toolbox
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a{:href => "/", :class => 'link'}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a{:href => toolbox_index_path, :class => 'link' }= t('breadcrumb.toolbox')
+      %li.breadcrumb-item.active{"aria-current" => "page"} Index
+
+  .toolbox-content
+    .toolbox-content--out
+      = image_tag 'common/undraw_under_construction.svg', :class => 'toolbox-content--out'
+      %br
+      .toolbox-content--out__text
+        = t('toolbox.building')

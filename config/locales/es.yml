@@ -51,5 +51,8 @@ es:
   tournaments:
     building: En construcción!!!
 
+  toolbox:
+    building: En construcción!!!
+
   breadcrumb:
     tournaments: Torneos
