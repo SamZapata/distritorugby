@@ -55,7 +55,7 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  # sassC inline source maps 
+  # sassC inline source maps
   config.sass.inline_source_maps = true
 
   # Use an evented file watcher to asynchronously detect changes in source code,
@@ -63,5 +63,8 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Internationalization
-  # config.i18n.available_locales = [:es, :en]
+  config.i18n.available_locales = [:es, :en]
+
+   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
 end

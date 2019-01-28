@@ -1,6 +1,6 @@
-window.Rugby = {}
-window.Rugby.init = ->
+window.DistritoRugby = {}
+window.DistritoRugby.init = ->
 	console.log 'Made by @jsamzapata'
-	
+
 $(document).on 'turbolinks:load', ->
-  Ludiko.init()
+  DistritoRugby.init()

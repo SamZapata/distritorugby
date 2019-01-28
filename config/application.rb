@@ -1,6 +1,7 @@
 require_relative 'boot'
 
 require 'rails/all'
+# require 'devise/orm/active_record'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -16,7 +17,7 @@ module Distritorugby
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     config.time_zone = 'Bogota'
 
-    config.i18n.available_locales = [:en, :es]
+    config.i18n.available_locales = [:es, :en]
 
     config.i18n.load_path +=
       Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]

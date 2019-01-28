@@ -22,9 +22,19 @@
     .distrito-rugby-footer
       %footer
         .panel-footer
-          .footer--text
+          - if !user_signed_in?
+            = link_to new_user_session_path, :class => "footer--login" do
+              .fas.fa-sign-in-alt{ "title" => t('sessions.login')}
+            = link_to new_user_registration_path, :class => "footer--login" do
+              .fas.fa-user-plus{ "title" => t('sessions.new_user')}
+
+          .footer--developer
             Developed by:
             = link_to "@jsamzapata", "https://github.com/SamZapata", {"target" => "_blank", :class => 'link'}
+
+          - if user_signed_in?
+            = link_to destroy_user_session_path, method: :delete, :class => "footer--logout" do
+              .fas.fa-sign-out-alt{ "title" => t('sessions.logout')}
 
     %script{:crossorigin => "anonymous", :integrity => "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo", :src => "https://code.jquery.com/jquery-3.3.1.slim.min.js"}
     %script{:crossorigin => "anonymous", :integrity => "sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49", :src => "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"}

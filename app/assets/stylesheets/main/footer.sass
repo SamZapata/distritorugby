@@ -8,7 +8,8 @@
     min-height: 70px
     width: calc(100vw)
     background-color: $bg-footer
-    .footer--text
+    .footer--developer
+      position: static
       font-size: 13px
       color: white
       margin: auto
@@ -16,3 +17,27 @@
         color: $link
         &:hover
           font-weight: bold
+
+    .footer--login
+      font-size: 18px
+      // text-align: left
+      color: $white
+      margin-top: auto
+      margin-bottom: auto
+      margin-left: 30px
+      &:hover
+        cursor: pointer
+        color: $link !important
+        font-weight: bold
+
+    .footer--logout
+      font-size: 18px
+      text-align: right
+      color: $white
+      margin-top: auto
+      margin-bottom: auto
+      margin-right: 30px
+      &:hover
+        cursor: pointer
+        color: $link !important
+        font-weight: bold

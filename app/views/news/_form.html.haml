@@ -5,15 +5,23 @@
 
 .distrito-rugby-news
   .news-form
-    = simple_form_for @news do |f|
-      = f.error_notification
-      = f.input :title
-      = f.input :summary
-      = f.input :talking
-      = f.input :emb_video
+    %form
+      .form-group
+        = simple_form_for @news do |f|
+          = f.error_notification
+          .news-form--caption
+            = f.input :title, input_html: { class: "form-control" }, label: t('news.title')
+          .news-form--caption
+            = f.input :summary, input_html: { class: "form-control" }, label: t('news.summary')
+          .news-form--caption
+            = f.input :talking, input_html: { class: "form-control" }, label: t('news.talking')
+          .news-form--caption
+            = f.input :emb_video, input_html: { class: "form-control" }, label: t('news.video')
 
-      = f.simple_fields_for :tags_attributes do |p|
-        = p.input :name
+          -# = f.simple_fields_for :tags_attributes do |p|
+          -#   .news-form--caption
+          -#     = p.input :name, input_html: { class: "form-control" }, label: t('news.tags.name')
 
-      -# save
-      = f.button :submit, class: 'btn btn-info btn-lg'
+          %br
+          -# save
+          = f.button :submit, t('news.create'), class: 'btn btn-danger btn-lg'
