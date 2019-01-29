@@ -14,8 +14,11 @@
       %li.breadcrumb-item.active{"aria-current" => "page"} Index
 
   .news-content
-    .news-content--out
-      -# = image_tag 'common/undraw_under_construction.svg', :class => 'news-content--out'
-      -# %br
-      -# .news-content--out__text
-      -#   = t('news.building')
+    .news-index
+      .col-md-12
+        .row
+          - @all_news.each do |news|
+            .col-md-6
+              .news-index--set
+                = image_tag('common/400x400.png', class: 'ni--set--image img-thumnail')
+                -# = news.title

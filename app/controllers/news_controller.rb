@@ -18,7 +18,6 @@ class NewsController < ApplicationController
 
 	def create
 		@news = News.new(news_params)
-		authorize @news
 		respond_to do |format|
 			if @news.save
         format.html { redirect_to news_index_path, notice: t('news.notice.confirm_creation') }
@@ -50,10 +49,10 @@ class NewsController < ApplicationController
 
 	def news_params
 		params.require(:news).permit(
-			:title, :talking, :emb_video, :summary,
-			# tag_attributes: [
-			# 	:name,
-			# ]
+			:title, :talking, :image, :emb_video, :summary,
+			tag_attributes: [
+				:name,
+			]
 		)
 	end
 end

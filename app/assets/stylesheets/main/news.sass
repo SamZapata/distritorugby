@@ -22,3 +22,32 @@
         font-weight: bold
         color: $dark
         text-align: center
+
+  .news-index
+    .news-index--set
+      display: block
+      margin: 10px auto
+      width: calc(45vw)
+      height: auto
+      // background-color: red
+      .ni--set--title
+        font-size: 17px
+        font-weight: 370
+        margin: 5px 5px 10px 10px
+        color: $title
+      .ni--set--date
+        text-align: right
+        font-size: 12px
+        color: $date
+      .ni--set--summary
+        color: $gray
+        font-size: 14px
+        font-style: oblique
+      .ni--set--image
+        z-index: 1
+        height: auto
+      .ni--set--tags
+
+    @media only screen and (max-width: 600px)
+      .news-index--set
+        width: calc(65vw)
