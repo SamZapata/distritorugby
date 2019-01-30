@@ -26,6 +26,7 @@ es:
   home:
     stories: Historias de Vida
     tournaments: Competencias
+    news: Noticias
   menu:
     news: Noticias
     stories: Historias
@@ -33,7 +34,8 @@ es:
     toolbox: Toolbox
     tournaments: Torneos
   news:
-    create: Crear Notícia
+    create: Crear Noticia
+    image: Imagen
     new: Nueva Noticia
     notice:
       confirm_creation: Confirm creation
@@ -42,7 +44,7 @@ es:
     summary: Resumen
     tags:
       name: Etiquetas
-    talking: Cuerpo de la Notícia
+    talking: Cuerpo de la Noticia
     title: Título
     video: Video
   sessions:

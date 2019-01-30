@@ -49,7 +49,7 @@ class NewsController < ApplicationController
 
 	def news_params
 		params.require(:news).permit(
-			:title, :talking, :image, :emb_video, :summary,
+			:title, :talking, :image, :image_license, :emb_video, :summary,
 			tag_attributes: [
 				:name,
 			]

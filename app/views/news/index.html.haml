@@ -3,22 +3,22 @@
 // @jsamzapata
 // file: news index
 
-.distrito-rugby-news
-  %nav{"aria-label" => "breadcrumb"}
-    %ol.breadcrumb
-      %li.breadcrumb-item
-        %a{:href => "/", :class => 'link'}
-          .fas.fa-home
-      %li.breadcrumb-item
-        %a{:href => news_index_path, :class => 'link' }= t('breadcrumb.news')
-      %li.breadcrumb-item.active{"aria-current" => "page"} Index
+-# .distrito-rugby-news
+%nav{"aria-label" => "breadcrumb"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      %a{:href => "/", :class => 'link'}
+        .fas.fa-home
+    %li.breadcrumb-item
+      %a{:href => news_index_path, :class => 'link' }= t('breadcrumb.news')
+    %li.breadcrumb-item.active{"aria-current" => "page"} Index
 
-  .news-content
-    .news-index
-      .col-md-12
-        .row
-          - @all_news.each do |news|
-            .col-md-6
-              .news-index--set
-                = image_tag('common/400x400.png', class: 'ni--set--image img-thumnail')
-                -# = news.title
+.news-content
+  .news-index
+    .col-md-12
+      .row
+        - @all_news.each do |news|
+          .col-md-6
+            .news-index--set
+              = image_tag(news.image, class: 'ni--set--image img-thumnail')
+              -# = news.title
