@@ -2,7 +2,6 @@
 // Author: Johnny Zapata
 // @jsamzapata
 // file: news index
-
 -# .distrito-rugby-news
 %nav{"aria-label" => "breadcrumb"}
   %ol.breadcrumb
@@ -13,12 +12,16 @@
       %a{:href => news_index_path, :class => 'link' }= t('breadcrumb.news')
     %li.breadcrumb-item.active{"aria-current" => "page"} Index
 
-.news-content
-  .news-index
-    .col-md-12
-      .row
+.news-index
+  .col-md-12
+    .row
+      .col-md-2
+      .col-md-10
         - @all_news.each do |news|
-          .col-md-6
-            .news-index--set
-              = image_tag(news.image, class: 'ni--set--image img-thumnail')
-              -# = news.title
+          .news-index--space
+            .col-6
+              .news-index--set
+                = image_tag(news.image, class: 'ni--set--image')
+                .ni--set--title
+                  = news.title
+      -# .col-md-1

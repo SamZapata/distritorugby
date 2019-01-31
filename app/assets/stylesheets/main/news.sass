@@ -25,15 +25,27 @@
         text-align: center
 
   .news-index
+    width: calc(100vw)
+    min-height: calc(100vh)
+    height: auto
+    .news-index--space
+      margin: auto
+      display: inline-grid
+
     .news-index--set
       display: block
       margin: 10px auto
-      width: calc(45vw)
-      height: auto
-      // background-color: red
+      padding: 10px
+      width: calc(30vw)
+      height: calc(40vh)
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+      -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+      // outline: groove 4px $light-gray
+
       .ni--set--title
-        font-size: 17px
-        font-weight: 370
+        font-size: 90%
+        font-weight: bold
+        text-align: center
         margin: 5px 5px 10px 10px
         color: $title
       .ni--set--date
@@ -46,9 +58,20 @@
         font-style: oblique
       .ni--set--image
         z-index: 1
-        height: auto
+        height: calc(80%)
+        width: calc(80%)
+        display: block
+        margin: auto
       .ni--set--tags
 
     @media only screen and (max-width: 600px)
       .news-index--set
         width: calc(65vw)
+        height: calc(35vh)
+        .ni--set--title
+          font-size: 63%
+
+    @media only screen and (min-width: 1125px)
+      .news-index--set
+        .ni--set--title
+          font-size: 100%

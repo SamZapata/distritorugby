@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_01_29_061309) do
     t.text "summary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
+    t.string "image", default: 'common/400x400.png'
   end
 
   create_table "tags", force: :cascade do |t|
