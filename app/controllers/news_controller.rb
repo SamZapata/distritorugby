@@ -1,4 +1,5 @@
 class NewsController < ApplicationController
+	before_action :set_news, only: [:show, :edit, :update, :destroy]
 
 	layout 'news/layoutNews'
 
@@ -46,6 +47,10 @@ class NewsController < ApplicationController
   end
 
 	private
+
+	def set_news
+		@notice = News.find(params[:id])
+	end
 
 	def news_params
 		params.require(:news).permit(

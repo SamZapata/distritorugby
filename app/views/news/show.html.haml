@@ -11,6 +11,26 @@
           .fas.fa-home
       %li.breadcrumb-item
         %a{:href => news_index_path, :class => 'link' }= t('breadcrumb.news')
-      %li.breadcrumb-item.active{"aria-current" => "page"} show
+      %li.breadcrumb-item.active{"aria-current" => "page"}= @notice.title
 
-  .news-content
+  .news-show
+    .row
+      .col-2
+
+      .col-8
+        .news-show--title
+          .text-center
+            = @notice.title
+        %hr
+        .news-show--date
+          .float-right
+            = t('common.published_on: ') + @notice.created_at.strftime("%Y - %m - %d")
+        .news-show--summary
+          = @notice.summary
+
+        = image_tag(@notice.image, class: 'news-show--image')
+
+        .news-show--body
+          = simple_format @notice.talking
+
+      .col-2

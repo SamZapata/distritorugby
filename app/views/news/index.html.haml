@@ -16,12 +16,14 @@
   .col-md-12
     .row
       .col-md-2
+
       .col-md-10
-        - @all_news.each do |news|
-          .news-index--space
-            .col-6
-              .news-index--set
-                = image_tag(news.image, class: 'ni--set--image')
-                .ni--set--title
-                  = news.title
+        .pull-right
+          - @all_news.each do |news|
+            .news-index--space
+              .col-6
+                .news-index--set
+                  = image_tag(news.image, class: 'ni--set--image')
+                  .ni--set--title
+                    = link_to news.title, news, class: 'link'
       -# .col-md-1

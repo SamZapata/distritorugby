@@ -21,6 +21,7 @@ es:
   common:
     close: Cerrar
     see_pdf: ver pdf
+    published_on: Publicado el
   context:
     district: Distrito de Aguablanca
   home:
