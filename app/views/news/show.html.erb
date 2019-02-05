@@ -20,7 +20,7 @@
         </a>
       </li>
       <li aria-current="page" class="breadcrumb-item active">
-        <%= @notice.title %>
+        <%= @news.title %>
       </li>
     </ol>
   </nav>
@@ -30,7 +30,7 @@
       <div class="col-8">
         <div class="news-show--title">
           <div class="text-center">
-            <%= @notice.title %>
+            <%= @news.title %>
           </div>
         </div>
         <%- if user_signed_in? %>
@@ -42,17 +42,17 @@
         <hr/>
         <div class="news-show--date">
           <div class="float-right">
-            <%= t('common.published_on: ') + @notice.created_at.strftime("%Y - %m - %d") %>
+            <%= t('common.published_on: ') + @news.created_at.strftime("%Y - %m - %d") %>
           </div>
         </div>
         <div class="news-show--summary">
-          <%= @notice.summary %>
+          <%= @news.summary %>
         </div>
-        <%= image_tag(@notice.image, class: 'news-show--image', alt: "##{@notice.title} #DistritoRugby" ) %>
+        <%= image_tag(@news.image, class: 'news-show--image', alt: "##{@news.title} #DistritoRugby" ) %>
         <div class="news-show--body">
-          <%= simple_format @notice.talking %>
+          <%= simple_format @news.talking %>
         </div>
-        <iframe width="560" height="315" src= "<%= @notice.emb_video %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="news-show--video"></iframe>
+        <iframe width="560" height="315" src= "<%= @news.emb_video %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="news-show--video"></iframe>
 
       </div>
       <div class="col-2"></div>

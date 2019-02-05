@@ -31,8 +31,8 @@ class NewsController < ApplicationController
 
 	def update
     respond_to do |format|
-      if @notice.update(news_params)
-        format.html { redirect_to @notice, notice: t('news.notice.confirm_update') }
+      if @news.update(news_params)
+        format.html { redirect_to @news, notice: t('news.notice.confirm_update') }
       else
         format.html { render :edit }
       end
@@ -50,7 +50,7 @@ class NewsController < ApplicationController
 	private
 
 	def set_news
-		@notice = News.find(params[:id])
+		@news = News.find(params[:id])
 	end
 
 	def news_params
