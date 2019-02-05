@@ -36,8 +36,11 @@ es:
     tournaments: Torneos
   news:
     create: Crear Noticia
+    edit: Editar
+    edit_title: Editar la Noticia
     image: Imagen
     new: Nueva Noticia
+    news: Noticias
     notice:
       confirm_creation: Confirm creation
       confirm_destruction: Registro eliminado satisfactoriamente

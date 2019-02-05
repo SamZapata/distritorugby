@@ -14,4 +14,4 @@
       %li.breadcrumb-item.active{"aria-current" => "page"}= t('news.new')
 
   .news-content
-    = render 'form'
+    = render 'form', news: @notice

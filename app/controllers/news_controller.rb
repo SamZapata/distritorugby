@@ -15,6 +15,7 @@ class NewsController < ApplicationController
 	end
 
 	def edit
+
 	end
 
 	def create
@@ -30,8 +31,8 @@ class NewsController < ApplicationController
 
 	def update
     respond_to do |format|
-      if @news.update(news_params)
-        format.html { redirect_to @news, notice: t('news.notice.confirm_update') }
+      if @notice.update(news_params)
+        format.html { redirect_to @notice, notice: t('news.notice.confirm_update') }
       else
         format.html { render :edit }
       end
