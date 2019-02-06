@@ -1,6 +1,6 @@
 class News < ApplicationRecord
 
-  validates :title, :summary, :talking, presence: true
+  validates :title, :summary, :talking,  presence: true
 
   # has_many :tags, class_name: 'Tag'
 

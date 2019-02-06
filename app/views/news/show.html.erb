@@ -48,14 +48,45 @@
         <div class="news-show--summary">
           <%= @news.summary %>
         </div>
-        <%= image_tag(@news.image, class: 'news-show--image', alt: "##{@news.title} #DistritoRugby" ) %>
+        <div class="news-show--image">
+          <%= image_tag(@news.image, class: 'news-show--image', alt: "##{@news.title} #DistritoRugby" ) %>
+          <div class="news-show--caption">
+            <%= @news.image_legend %>
+          </div>
+        </div>
+
         <div class="news-show--body">
           <%= simple_format @news.talking %>
         </div>
-        <iframe width="560" height="315" src= "<%= @news.emb_video %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="news-show--video"></iframe>
-
+        <div class="news-show--video">
+          <iframe width="560" height="315" src= "<%= @news.emb_video %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" class="news-show--video" allowfullscreen ></iframe>
+            <div class="news-show--caption">
+              <%= @news.video_legend %>
+            </div>
+        </div>
+        <!-- Return to Top -->
+        <button onclick="topFunction()" id="scrollUp" title="Go to top"><i> <%= fa_icon "angle-up" %></i></button>
       </div>
       <div class="col-2"></div>
     </div>
   </div>
 </div>
+
+<script>
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("scrollUp").style.display = "block";
+  } else {
+    document.getElementById("scrollUp").style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>

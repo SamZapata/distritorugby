@@ -26,6 +26,14 @@
     height: auto
     max-height: 500px
     margin: 15px auto
+    .news-show--caption
+      justify-content: center
+      color: $gray
+      font-size: 0.8em
+      text-align: center
+      width: calc(79%)
+      margin-left: 10%
+      margin-bottom: 20px
   .news-show--body
     font-size: 1.1em
     color: $dark
@@ -34,6 +42,36 @@
   .news-show--video
     display: block
     width: calc(80%)
-    // height: auto
+    min-height: 315px
+    height: auto
     max-height: 500px
-    margin: 15px auto
+    margin: 15px auto 10px auto
+    .news-show--caption
+      justify-content: center
+      color: $gray
+      font-size: 0.8em
+      text-align: center
+      width: calc(79%)
+      margin-left: 10%
+      margin-bottom: 20px
+
+  #scrollUp
+    display: none
+    position: fixed
+    bottom: 40px
+    right: 18px
+    z-index: 99
+    font-size: 30px
+    border: none
+    outline: none
+    background-color: $date
+    color: white
+    cursor: pointer
+    padding: auto
+    height: 50px
+    width: 50px
+    border-radius: 50%
+    opacity: 0.5
+
+  #scrollUp:hover
+    background-color: $gray

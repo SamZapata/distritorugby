@@ -43,6 +43,8 @@ gem 'devise-i18n', '~> 1.6', '>= 1.6.4'
 gem 'pdfjs_viewer-rails'
 # forms
 gem 'simple_form'
+#Gema para iconos font-awesome
+gem 'font-awesome-rails'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
