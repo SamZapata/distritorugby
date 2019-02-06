@@ -64,29 +64,9 @@
               <%= @news.video_legend %>
             </div>
         </div>
-        <!-- Return to Top -->
-        <button onclick="topFunction()" id="scrollUp" title="Go to top"><i> <%= fa_icon "angle-up" %></i></button>
+        
       </div>
       <div class="col-2"></div>
     </div>
   </div>
 </div>
-
-<script>
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    document.getElementById("scrollUp").style.display = "block";
-  } else {
-    document.getElementById("scrollUp").style.display = "none";
-  }
-}
-
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
-</script>
