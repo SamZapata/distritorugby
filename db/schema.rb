@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_02_06_043333) do
     t.text "summary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image", default: "common/400x400.png"
+    t.string "image"
     t.string "image_legend"
     t.string "video_legend"
   end
