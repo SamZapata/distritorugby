@@ -15,14 +15,16 @@
 .news-index
   .col-md-12
     .row
-      .col-md-2
-
-      .col-md-10
+      .col-md-2.col-lg-2
+      .col-md-10.col-lg-10
         - @all_news.each do |news|
           .news-index--space
             .col-6
               .news-index--set
-                = image_tag(news.image, class: 'ni--set--image')
-                .ni--set--title
+                .ni--set__date
+                  .fas.fa-calendar-check
+                  = l(news.created_at, format: :own)
+                = image_tag(news.image, class: 'ni--set__image')
+                .ni--set__title
                   = link_to news.title, news, class: 'link'
       -# .col-md-1

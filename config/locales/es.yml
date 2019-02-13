@@ -76,6 +76,9 @@ es:
       phone_numbers: 304 373 6578 - 311 419 6682
       schedule: Martes y Viernes - 6:30pm
       site: Cancha de Los Naranjos I - (Cra 26g3 con Cll 77a)
+  time:
+    formats:
+      own: '%b %d, %Y'
   toolbox:
     building: En construcción!!!
   tournaments:

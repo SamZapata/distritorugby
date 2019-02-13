@@ -30,47 +30,49 @@
     height: auto
     .news-index--space
       margin: auto
-      display: inline-grid
-
+      display: inline-flex
     .news-index--set
       display: block
       margin: 10px auto
       padding: 10px
       width: calc(30vw)
-      height: calc(40vh)
+      min-height: calc(40vh)
+      height: calc(64vh)
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
       -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 
-      .ni--set--title
+      .ni--set__title
         font-size: 90%
         font-weight: bold
         text-align: center
         margin: 5px 5px 10px 10px
         color: $title
-      .ni--set--date
-        text-align: right
+      .ni--set__date
+        text-align: center
         font-size: 12px
         color: $date
-      .ni--set--summary
+        margin: 0 0 10px 0
+      .ni--set__summary
         color: $gray
         font-size: 14px
         font-style: oblique
-      .ni--set--image
+      .ni--set__image
         z-index: 1
         height: calc(80%)
         width: calc(80%)
         display: block
         margin: auto
-      .ni--set--tags
+      .ni--set__tags
 
     @media only screen and (max-width: 600px)
       .news-index--set
-        width: calc(65vw)
-        height: calc(35vh)
-        .ni--set--title
-          font-size: 63%
+        width: calc(80vw)
+        // min-height: calc(50vh)
+        // height: 100%
+        .ni--set__title
+          font-size: 80%
 
     @media only screen and (min-width: 1125px)
       .news-index--set
-        .ni--set--title
-          font-size: 100%
+        .ni--set__title
+          font-size: 90%
