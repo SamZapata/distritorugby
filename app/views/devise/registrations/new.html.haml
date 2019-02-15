@@ -1,0 +1,32 @@
+.sessions-content
+  %br
+  .offset-2.col-md-8.col-lg-8.card
+    %br
+    %h2.text-center= t('sessions.signup')
+    .card-body
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = f.error_notification
+        .form-inputs.form-group
+          = f.input :email,
+            required: true,
+            label: false,
+            placeholder: 'email',
+            autofocus: true ,
+            input_html: { autocomplete: "email", class: 'form-control' }
+          %br
+          = f.input :password,
+            required: true,
+            label: false,
+            placeholder: 'password',
+            hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+            input_html: { autocomplete: "new-password", class: 'form-control' }
+          %br
+          = f.input :password_confirmation,
+            required: true,
+            label: false,
+            placeholder: 'password',
+            input_html: { autocomplete: "new-password", class: 'form-control' }
+        .form-actions
+          = f.button :submit, "Sign up", class: 'btn btn-primary'
+        %br
+      = render "devise/shared/links"

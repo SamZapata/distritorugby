@@ -1,0 +1,27 @@
+.sessions-content
+  %br
+  .offset-2.col-md-8.col-lg-8.card
+    %br
+    %h2.text-center= t('sessions.login')
+    .card-body
+      = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .form-inputs.form-group
+          = f.input :email,
+            required: false,
+            label: false,
+            placeholder: 'email',
+            autofocus: true,
+            input_html: { autocomplete: "email", class: 'form-control' }
+          %br
+          = f.input :password,
+            required: false,
+            label: false,
+            placeholder: 'password',
+            input_html: { autocomplete: "current-password", class: 'form-control' }
+          .form-check.form-check-input
+            = f.input :remember_me, label: t('sessions.remember_me'), as: :boolean if devise_mapping.rememberable?
+        %br
+        .form-actions
+          = f.button :submit, "Log in", class: 'btn btn-primary'
+        %br
+      = render "devise/shared/links", class: 'link'
