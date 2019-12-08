@@ -3,15 +3,28 @@
 // @jsamzapata
 // file: stories index
 
-.distrito-rugby-stories
-  %nav{"aria-label" => "breadcrumb"}
-    %ol.breadcrumb
-      %li.breadcrumb-item
-        %a{:href => "/", :class => 'link'}
-          .fas.fa-home
-      %li.breadcrumb-item
-        %a{:href => stories_index_path, :class => 'link' }= t('breadcrumb.stories')
-      %li.breadcrumb-item.active{"aria-current" => "page"} Index
+-# .distrito-rugby-stories
+%nav{"aria-label" => "breadcrumb"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      %a{:href => "/", :class => 'link'}
+        .fas.fa-home
+    %li.breadcrumb-item
+      %a{:href => stories_index_path, :class => 'link' }= t('breadcrumb.stories')
+    %li.breadcrumb-item.active{"aria-current" => "page"} Index
 
-  .stories-content
-    .stories-content--out
+.stories-index
+
+  -# last upload
+  .w-stories-index__recents
+    .row
+      .container
+        d
+  -# highlights for news, tournaments, new content and others
+  .w-stories-index__highlights
+
+  -# story of ... whatever ... (action, viral content, persons, players, clubs/teams, news, others more)
+  .w-stories-index__live
+
+
+  -# .stories-content--out

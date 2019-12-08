@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  
+
   get 'stories/index'
   get 'toolbox/index'
   get 'tournaments/index'
@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/aboute'
 
-  resources :news
+  namespace :core do
+    resources :news
+  end
 
   # load pdf
   # mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'

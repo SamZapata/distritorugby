@@ -10,7 +10,7 @@
         %a{:href => "/", :class => 'link'}
           .fas.fa-home
       %li.breadcrumb-item
-        %a{:href => news_index_path, :class => 'link' }= t('breadcrumb.news')
+        %a{:href => core_news_index_path, :class => 'link' }= t('breadcrumb.news')
       %li.breadcrumb-item.active{"aria-current" => "page"}= t('news.new')
 
   .news-content

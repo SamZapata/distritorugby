@@ -46,6 +46,12 @@ gem 'simple_form'
 #Gema para iconos font-awesome
 gem 'font-awesome-rails'
 
+# React JS
+gem 'webpacker'
+gem 'react-rails'
+# yarn
+gem 'yarn', '~> 0.1.1'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

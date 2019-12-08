@@ -1,4 +1,4 @@
-class News < ApplicationRecord
+class Core::News < ApplicationRecord
 
   validates :title, :summary, :talking,  presence: true
 
