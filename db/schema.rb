@@ -10,45 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_040250) do
+ActiveRecord::Schema.define(version: 2019_12_10_053321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "core_news", force: :cascade do |t|
     t.string "title"
-    t.text "talking"
-    t.string "emb_video"
     t.text "summary"
+    t.string "image"
+    t.string "image_legend"
+    t.string "emb_video"
+    t.string "video_legend"
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image", default: "common/400x400.png"
-    t.string "image_legend"
-    t.string "video_legend"
   end
 
   create_table "core_stories", force: :cascade do |t|
     t.string "name"
-    t.text "description"
-    t.string "emb_video"
-    t.string "video_caption"
-    t.string "image"
-    t.string "img_caption"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "phrase"
+    t.text "intro"
+    t.text "body"
     t.datetime "birthdate"
     t.datetime "deathdate"
-    t.string "phrase"
-    t.string "intro"
-    t.string "socialmedia", default: [], array: true
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
+    t.string "image"
+    t.string "img_caption"
+    t.string "emb_video"
+    t.string "video_caption"
+    t.string "socialmedia", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "news_id"
   end
 
   create_table "users", force: :cascade do |t|

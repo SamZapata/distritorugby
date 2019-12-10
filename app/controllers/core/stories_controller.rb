@@ -1,4 +1,4 @@
-class StoriesController < ApplicationController
+class Core::StoriesController < ApplicationController
 
 	layout 'stories/layoutStory'
 

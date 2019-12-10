@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  get 'stories/index'
-  get 'toolbox/index'
   get 'tournaments/index'
   get 'histories/index'
   get 'team/index'
@@ -12,6 +10,8 @@ Rails.application.routes.draw do
 
   namespace :core do
     resources :news
+    get 'stories/index'
+    get 'toolbox/index'
   end
 
   # load pdf
