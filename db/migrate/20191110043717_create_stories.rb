@@ -1,6 +1,6 @@
-class CreateStories < ActiveRecord::Migration[5.2]
+class CreateCoreStories < ActiveRecord::Migration[5.2]
   def change
-    create_table :stories do |t|
+    create_table :core_stories do |t|
       t.string :name
       t.text :description
       t.string :emb_video

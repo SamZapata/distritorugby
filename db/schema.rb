@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_10_043717) do
+ActiveRecord::Schema.define(version: 2019_12_10_040250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "news", force: :cascade do |t|
+  create_table "core_news", force: :cascade do |t|
     t.string "title"
     t.text "talking"
     t.string "emb_video"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_11_10_043717) do
     t.string "video_legend"
   end
 
-  create_table "stories", force: :cascade do |t|
+  create_table "core_stories", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.string "emb_video"
@@ -36,6 +36,11 @@ ActiveRecord::Schema.define(version: 2019_11_10_043717) do
     t.string "img_caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "birthdate"
+    t.datetime "deathdate"
+    t.string "phrase"
+    t.string "intro"
+    t.string "socialmedia", default: [], array: true
   end
 
   create_table "tags", force: :cascade do |t|
