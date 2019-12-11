@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_053321) do
+ActiveRecord::Schema.define(version: 2019_12_11_053904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 2019_12_10_053321) do
     t.string "emb_video"
     t.string "video_caption"
     t.string "socialmedia", array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "core_toolboxes", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "image"
+    t.string "video_embed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
