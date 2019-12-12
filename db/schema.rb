@@ -10,10 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_11_053904) do
+ActiveRecord::Schema.define(version: 2019_12_12_045433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "competence_matches", force: :cascade do |t|
+    t.string "name"
+    t.string "team1"
+    t.string "team2"
+    t.datetime "play_date"
+    t.string "referee"
+    t.string "field"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "competence_stats", force: :cascade do |t|
+    t.integer "trys_t1"
+    t.integer "trys_t2"
+    t.integer "conversion_t1"
+    t.integer "conversion_t2"
+    t.integer "dropgoal_t1"
+    t.integer "dropgoal_t2"
+    t.integer "penalties_t1"
+    t.integer "penalties_t2"
+    t.integer "yellows_t1"
+    t.integer "yellows_t2"
+    t.integer "reds_t1"
+    t.integer "reds_t2"
+    t.integer "tackles_t1"
+    t.integer "tackles_t2"
+    t.integer "scrums_t1"
+    t.integer "scrums_t2"
+    t.integer "won_scrums_t1"
+    t.integer "won_scrums_t2"
+    t.integer "lines_t1"
+    t.integer "lines_t2"
+    t.integer "won_lines_t1"
+    t.integer "won_lines_t2"
+    t.integer "mauls_t1"
+    t.integer "mauls_t2"
+    t.integer "possession_t1"
+    t.integer "possession_t2"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "competence_tournaments", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "core_news", force: :cascade do |t|
     t.string "title"
@@ -48,6 +96,86 @@ ActiveRecord::Schema.define(version: 2019_12_11_053904) do
     t.string "description"
     t.string "image"
     t.string "video_embed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_drills", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "figure"
+    t.string "video_emb"
+    t.string "time"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_equipment", force: :cascade do |t|
+    t.string "name"
+    t.integer "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_goals", force: :cascade do |t|
+    t.string "verb"
+    t.string "howdo"
+    t.string "moment"
+    t.string "forwhat"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_principles", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "stage"
+    t.string "image"
+    t.string "video_emb"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_skills", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "keyfactors", array: true
+    t.string "image"
+    t.string "video_emb"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roles_coaches", force: :cascade do |t|
+    t.text "about"
+    t.date "start_date"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roles_managers", force: :cascade do |t|
+    t.text "about"
+    t.date "start_date"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roles_players", force: :cascade do |t|
+    t.text "about"
+    t.date "start_date"
+    t.integer "position"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roles_referees", force: :cascade do |t|
+    t.text "about"
+    t.date "start_date"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
