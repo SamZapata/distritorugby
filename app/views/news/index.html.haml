@@ -24,7 +24,7 @@
                 .ni--set__date
                   .fas.fa-calendar-check
                   = l(news.created_at, format: :own)
-                = image_tag(news.image, class: 'ni--set__image')
+                -#= image_tag(news.image, class: 'ni--set__image')
                 .ni--set__title
                   = link_to news.title, news, class: 'link'
       -# .col-md-1
