@@ -1,3 +1,3 @@
-class League < ActiveRecord::Base
+class League < ApplicationRecord
 	
 end

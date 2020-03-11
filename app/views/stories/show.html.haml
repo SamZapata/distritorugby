@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @story.name
+%p
+  %b Summary:
+  = @story.summary
+%p
+  %b Body:
+  = @story.body
+%p
+  %b Emb video:
+  = @story.emb_video
+%p
+  %b Image:
+  = @story.image
+%p
+  %b Image caption:
+  = @story.image_caption
+%p
+  %b Video caption:
+  = @story.video_caption
+
+= link_to 'Edit', edit_story_path(@story)
+\|
+= link_to 'Back', stories_path

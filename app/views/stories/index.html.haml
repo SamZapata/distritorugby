@@ -2,16 +2,29 @@
 // Author: Johnny Zapata
 // @jsamzapata
 // file: stories index
+-# .distrito-rugby-stories
+%nav{"aria-label" => "breadcrumb"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      %a{:href => "/", :class => 'link'}
+        .fas.fa-home
+    %li.breadcrumb-item
+      %a{:href => stories_path, :class => 'link' }= t('breadcrumb.stories')
+    %li.breadcrumb-item.active{"aria-current" => "page"} Index
 
-.distrito-rugby-stories
-  %nav{"aria-label" => "breadcrumb"}
-    %ol.breadcrumb
-      %li.breadcrumb-item
-        %a{:href => "/", :class => 'link'}
-          .fas.fa-home
-      %li.breadcrumb-item
-        %a{:href => stories_index_path, :class => 'link' }= t('breadcrumb.stories')
-      %li.breadcrumb-item.active{"aria-current" => "page"} Index
-
-  .stories-content
-    .stories-content--out
+.stories-index
+  .col-md-12
+    .row
+      .col-md-2.col-lg-2
+      .col-md-10.col-lg-10
+        - Story.all.each do |story|
+          .stories-index--space
+            .col-6
+              .stories-index--set
+                .ni--set__date
+                  .fas.fa-calendar-check
+                  = l(story.created_at, format: :own)
+                = image_tag(story.image, class: 'ni--set__image')
+                .ni--set__title
+                  = link_to story.title, stories, class: 'link'
+      -# .col-md-1

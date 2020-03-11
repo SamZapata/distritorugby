@@ -1,0 +1,16 @@
+-# frozen_string_literal: true
+= simple_form_for(@story) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :name
+    = f.input :summary
+    = f.input :body
+    = f.input :emb_video
+    = f.input :image
+    = f.input :image_caption
+    = f.input :video_caption
+
+  .form-actions
+    = f.button :submit

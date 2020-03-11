@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
+  resources :stories
   devise_for :users
   
-  get 'stories/index'
+  # get 'stories/index'
   get 'toolbox/index'
   get 'tournaments/index'
-  get 'histories/index'
+  # get 'histories/index'
   get 'team/index'
   get 'home/index'
   get 'home/aboute'
