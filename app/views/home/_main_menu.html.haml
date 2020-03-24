@@ -6,34 +6,43 @@
 		-# .symbol
 			-# .diamond
 		.components
-			.figure_container
-				.figu
+			.figure
+				.diamond
 			.areas
 				.row
 					.col-6.col-lg-6.col-md-6.col-sm-6
 						.a-i
+							.mm-option
+								= link_to (I18n.t 'home.news'), news_index_path, :class => 'text-caption'
 					.col-6.col-lg-6.col-md-6.col-sm-6
 						.a-ii
+							= image_tag('main/dr-at-belisario-2018.jpg', class: 'a-background')
+							.mm-option
+								= link_to (I18n.t 'home.stories'), stories_path, :class => 'text-caption'
 				.row
 					.col-6.col-lg-6.col-md-6.col-sm-6
 						.a-iii
+							.mm-option
+								= link_to (I18n.t 'home.tournaments'), tournaments_index_path, :class => 'text-caption'
 					.col-6.col-lg-6.col-md-6.col-sm-6
 						.a-iv
-		.row
-			.col-6.col-lg-6.col-md-6.col-sm-6
-				.mm-a
-					.text
-						= link_to (I18n.t 'home.news'), news_index_path, :class => 'text--caption'
-			.col-6.col-lg-6.col-md-6.col-sm-6
-				.mm-b
-					.text
-						= link_to (I18n.t 'home.stories'), stories_path, :class => 'text--caption'
-		.row
-			.col-6.col-lg-6.col-md-6.col-sm-6
-				.mm-c
-					.text
-						= link_to (I18n.t 'home.tournaments'), tournaments_index_path, :class => 'text--caption'
-			.col-6.col-lg-6.col-md-6.col-sm-6
-				.mm-d
-					.text
-						= link_to 'Toolbox', toolbox_index_path, :class => 'text--caption'
+							.mm-option
+								= link_to (I18n.t 'home.toolbox'), toolbox_index_path, :class => 'text-caption'
+		-# .row
+		-# 	.col-6.col-lg-6.col-md-6.col-sm-6
+		-# 		.mm-a
+		-# 			.text
+		-# 				= link_to (I18n.t 'home.news'), news_index_path, :class => 'text-caption'
+		-# 	.col-6.col-lg-6.col-md-6.col-sm-6
+		-# 		.mm-b
+		-# 			.text
+		-# 				= link_to (I18n.t 'home.stories'), stories_path, :class => 'text--caption'
+		-# .row
+		-# 	.col-6.col-lg-6.col-md-6.col-sm-6
+		-# 		.mm-c
+		-# 			.text
+		-# 				= link_to (I18n.t 'home.tournaments'), tournaments_index_path, :class => 'text--caption'
+		-# 	.col-6.col-lg-6.col-md-6.col-sm-6
+		-# 		.mm-d
+		-# 			.text
+		-# 				= link_to 'Toolbox', toolbox_index_path, :class => 'text--caption'

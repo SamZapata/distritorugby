@@ -25,9 +25,10 @@ es:
   context:
     district: Distrito de Aguablanca
   home:
-    stories: Historias de Vida
-    tournaments: Competencias
-    news: Noticias
+    stories: HISTORIAS
+    tournaments: TORNEOS
+    news: NOTICIAS
+    toolbox: TOOLBOX
   menu:
     news: Noticias
     stories: Historias

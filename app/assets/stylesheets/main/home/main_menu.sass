@@ -4,68 +4,44 @@
 // User: @jsamzapata
 
 .main-menu
-	height: calc(100vh)
-	width: calc(100%)
-
+	.mm-option
+		color: $base-text
+		position: absolute
+		.text-caption
+			font-weight: bold
+			font-size: 1.1rem
+			color: $white
+			&:hover
+				color: $carmine !important
+				background-color: $white !important
 	.components
-		.figure_container
-			position: absolute
-			top: 50vh
-			left: 50vw
-			margin-top: 50vh
-			margin-left: 50vw
-			display: flex
-			.figu
-				display: flex
-				position: relative
-				width: 50px
-				height: 50px
-				background-color: yellow
-			//display: flex
+		height: calc(100vh)
+		width: calc(100%)
 		.figure
-			position: absolute
-			top: 50vh
-			left: 50vw
-			margin-top: 50vh
-			margin-left: 50vw
-			z-index: 10
-			// display: flex
-			// justify-content: center
-			// align-items: center
-			// vertical-align: center
+			display: flex
+			justify-content: center
+			padding: auto
+			/* diamond */
 			.diamond
+				display: flex
 				position: absolute
 				margin: auto
-				height: calc(50vh)
-				width: calc(50vw)
+				height: calc(35vh)
+				width: calc(35vh)
 				background-color: $dark
-				animation: rotary 4s
-				--webkit-animation: rotary 4s
+				border: 2px solid $white
+				transform: rotate(45deg)
+				-webkit-transform: rotate(45deg)
+				z-index: 100
+				top: calc(32.5vh)
 
-			/*======old=======*/
-			// display: flex
-			// justify-content: center
-			// align-items: center
-			// vertical-align: middle
-			/* diamond */
-			// .diamond
-			// 	display: flex
-			// 	position: absolute
-			// 	margin: auto
-			// 	height: calc(50vh)
-			// 	width: calc(50vw)
-			// 	background-color: $dark
-			// 	background: url('https://media2.giphy.com/media/26DN2sglox9GdAZoc/200w.gif?cid=3640f6095be92ec372416f3645297a81') no-repeat
-			// 	background-size: calc(100%) calc(100%)
-			// 	border: 1px solid black
-				/*transform: rotate(45deg)*/
-				/*-webkit-transform: rotate(45deg)*/
-				/*top: calc(36vh)*/
-				// z-index: 1
-				// animation: rotary 4s
-				// --webkit-animation: rotary 4s
 		.areas
+			.a-background
+				position: relative
+				img
+					height: calc(20vh)
 			.a-i
+				display: flex
 				height: calc(50vh)
 				width: calc(100%)
 				background-color: $main-menu-a
@@ -73,6 +49,7 @@
 				justify-content: center
 				align-items: center
 			.a-ii
+				display: flex
 				height: calc(50vh)
 				width: calc(100%)
 				background-color: $main-menu-b
@@ -80,6 +57,7 @@
 				justify-content: center
 				align-items: center
 			.a-iii
+				display: flex
 				height: calc(50vh)
 				width: calc(100%)
 				background-color: $main-menu-c
@@ -87,6 +65,7 @@
 				justify-content: center
 				align-items: center
 			.a-iv
+				display: flex
 				height: calc(50vh)
 				width: calc(100%)
 				background-color: $main-menu-d
