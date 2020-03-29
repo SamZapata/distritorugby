@@ -7,25 +7,37 @@
 			-# .diamond
 		.components
 			.figure
-				.diamond
+				.case-diamond
+					.diamond
 			.areas
 				.row
 					.col-6.col-lg-6.col-md-6.col-sm-6
 						.a-i
+							-# area background
+							.a-bg
+								-# = image_tag('main/nz-news.jpg')
 							.mm-option
 								= link_to (I18n.t 'home.news'), news_index_path, :class => 'text-caption'
 					.col-6.col-lg-6.col-md-6.col-sm-6
 						.a-ii
-							= image_tag('main/dr-at-belisario-2018.jpg', class: 'a-background')
+							-# area background
+							.a-bg
+								-# = image_tag('main/nz-stories.jpg')
 							.mm-option
 								= link_to (I18n.t 'home.stories'), stories_path, :class => 'text-caption'
 				.row
 					.col-6.col-lg-6.col-md-6.col-sm-6
 						.a-iii
+							-# area background
+							.a-bg
+								-# = image_tag('main/nz-tournaments.jpg')
 							.mm-option
 								= link_to (I18n.t 'home.tournaments'), tournaments_index_path, :class => 'text-caption'
 					.col-6.col-lg-6.col-md-6.col-sm-6
 						.a-iv
+							-# area background
+							.a-bg
+								-# = image_tag('main/nz-toolbox.jpg')
 							.mm-option
 								= link_to (I18n.t 'home.toolbox'), toolbox_index_path, :class => 'text-caption'
 		-# .row

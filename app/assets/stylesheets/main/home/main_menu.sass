@@ -21,31 +21,43 @@
 			display: flex
 			justify-content: center
 			padding: auto
-			/* diamond */
-			.diamond
+			/* conteiner of figure */
+			.case-diamond
 				display: flex
 				position: absolute
 				margin: auto
-				height: calc(35vh)
-				width: calc(35vh)
-				background-color: $dark
-				border: 2px solid $white
+				height: calc(37vh)
+				width: calc(37vh)
+				background-color: $white
+				border: 3px solid $white
 				transform: rotate(45deg)
 				-webkit-transform: rotate(45deg)
-				z-index: 100
-				top: calc(32.5vh)
+				z-index: 99
+				top: calc(31.515vh)
+
+				/* diamond */
+				.diamond
+					width: calc(37vh)
+					background-color: $dark
+					z-index: 100
+					animation: rotary 4s
+					--webkit-animation: rotary 4s
+					// transform: rotate(45deg)
+					// -webkit-transform: rotate(45deg)
 
 		.areas
-			.a-background
-				position: relative
+			.a-bg
 				img
-					height: calc(20vh)
+					height: calc(49.8vh)
+					width: calc(49.5vw)
+					border: 3px solid $white
+					opacity: 0.6
 			.a-i
 				display: flex
 				height: calc(50vh)
 				width: calc(100%)
 				background-color: $main-menu-a
-				border: 0.25px solid white
+				border: 0.8px solid white
 				justify-content: center
 				align-items: center
 			.a-ii
@@ -53,15 +65,16 @@
 				height: calc(50vh)
 				width: calc(100%)
 				background-color: $main-menu-b
-				border: 0.25px solid white
+				border: 0.8px solid white
 				justify-content: center
 				align-items: center
+				// background: asset_url('main/DR-2018b.jpg') center
 			.a-iii
 				display: flex
 				height: calc(50vh)
 				width: calc(100%)
 				background-color: $main-menu-c
-				border: 0.25px solid white
+				border: 0.8px solid white
 				justify-content: center
 				align-items: center
 			.a-iv
@@ -69,6 +82,6 @@
 				height: calc(50vh)
 				width: calc(100%)
 				background-color: $main-menu-d
-				border: 0.25px solid white
+				border: 0.8px solid white
 				justify-content: center
 				align-items: center
