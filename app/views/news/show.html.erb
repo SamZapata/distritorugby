@@ -49,7 +49,6 @@
           <%= @news.summary %>
         </div>
         <div class="news-show--image">
-          <%# <%= image_tag('common/600x400.svg', class: 'news-show--image', alt: "##{@news.title} #DistritoRugby" ) %>
           <%= image_tag(@news.image, class: 'news-show--image', alt: "##{@news.title} #DistritoRugby" ) %>
           <div class="news-show--caption">
             <%= @news.image_legend %>
@@ -59,14 +58,16 @@
         <div class="news-show--body">
           <%= simple_format @news.talking %>
         </div>
-        <div class="news-show--video">
-          <%= @news.emb_video.html_safe %>
-          <!-- <iframe width="100%" height="100%" src="https://www.youtube.com/embed/TGXGs42EDa0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-            <div class="news-show--caption">
-              <%= @news.video_legend %>
-            </div>
-        </div>
-
+        <!-- video -->
+        <%- if @news.emb_video.present? %>
+          <div class="news-show--video">
+            <%= @news.emb_video.html_safe %>
+            <!-- <iframe width="100%" height="100%" src="https://www.youtube.com/embed/TGXGs42EDa0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+              <div class="news-show--caption">
+                <%= @news.video_legend %>
+              </div>
+          </div>
+        <%- end %>
       </div>
       <div class="col-2"></div>
     </div>
