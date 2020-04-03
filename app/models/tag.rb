@@ -1,5 +1,7 @@
-class Tag < ApplicationRecord
+module Tag
 
-  # belongs_to :news, class_name: 'News'
+  def self.table_name_prefix
+    'tag_'
+  end
 
 end
