@@ -1,7 +1,5 @@
-module Tag
-
+module Tags
   def self.table_name_prefix
-    'tag_'
+    'tags_'
   end
-
 end
