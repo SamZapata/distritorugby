@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_04_052731) do
+ActiveRecord::Schema.define(version: 2020_04_04_104055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2020_04_04_052731) do
     t.string "video_caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "tags", default: [], array: true
   end
 
   create_table "tags_news", force: :cascade do |t|
