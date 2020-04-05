@@ -14,25 +14,18 @@
 
 .news-filters
   .scrollmenu
-    %a{:href => "#mens"} Hombres
-    %a{:href => "#womens"} Mujeres
-    %a{:href => "#rwc"} RWC
-    %a{:href => "#womensrwc2021"} WomensRWC2021
-    %a{:href => "#superrugby"} SuperRugby
-    %a{:href => "#slar"} SLAR
-    %a{:href => "#6naciones"} 6Naciones
-    %a{:href => "#jugadores"} Jugadores
-    %a{:href => "#clubes"} Clubes
-    %a{:href => "#rugbyvalle"} RugbyValle
-    %a{:href => "#rugbypaisa"} RugbyPaisa
-    %a{:href => "#rugbybogota"} RugbyBogotá
+    -# improve
+    - Tags::News.all.each do |tag|
+      = link_to tag.name, "##{tag.name}"
+    -# TODO: Create an array with the main tags to show. tags = %(RWC FCR ...)
 
 .news-index
-  .col-md-12
-    .card-columns
-      - @all_news.each do |news|
-        .card
-          = link_to(image_tag(news.image, width: '100%', alt: "##{news.title} #DistritoRugby" ), news)
-          .card-body
-            %h5.card-title= link_to news.title, news, class: 'link'
-            %p.card-text= news.summary
+  .news--all
+    .col-12
+      .card-columns
+        - @all_news.each do |news|
+          .card
+            = link_to(image_tag(news.image, width: '100%', alt: "##{news.title} #DistritoRugby" ), news)
+            .card-body
+              %h5.card-title= link_to news.title, news, class: 'link'
+              %p.card-text= news.summary

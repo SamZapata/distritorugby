@@ -7,6 +7,10 @@ class NewsController < ApplicationController
 		@all_news = News.all
   end
 
+	def tags
+		@news_by_tag = Core::News::FetchNewsByTag.new.call
+	end
+
 	def new
 		@news = News.new
 	end
