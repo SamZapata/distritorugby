@@ -3,29 +3,34 @@
 // @jsamzapata
 // file: news index
 -# .distrito-rugby-news
-%nav{"aria-label" => "breadcrumb"}
-  %ol.breadcrumb
-    %li.breadcrumb-item
-      %a{:href => "/", :class => 'link'}
-        .fas.fa-home
-    %li.breadcrumb-item
-      %a{:href => news_index_path, :class => 'link' }= t('breadcrumb.news')
-    -# %li.breadcrumb-item.active{"aria-current" => "page"} Index
+.news-breadcrumb
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a{:href => "/", :class => 'link'}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a{:href => news_index_path, :class => 'link' }= t('breadcrumb.news')
+      %li.breadcrumb-item.active{"aria-current" => "page"} Lo último
 
 .news-filters
   .scrollmenu
     -# improve
-    - Tags::News.all.each do |tag|
+    -# - Tags::News.all.each do |tag|
       = link_to tag.name, "##{tag.name}"
+    -# TODO: Create an array with the main tags to show. tags = %(RWC FCR ...)
+    -# improve
+
+    - Tags::News.all.each do |tag|
+      = link_to tag.name, "/news/tags/#{tag.name}", remote: true
     -# TODO: Create an array with the main tags to show. tags = %(RWC FCR ...)
 
 .news-index
-  .news--all
-    .col-12
-      .card-columns
-        - @all_news.each do |news|
-          .card
-            = link_to(image_tag(news.image, width: '100%', alt: "##{news.title} #DistritoRugby" ), news)
-            .card-body
-              %h5.card-title= link_to news.title, news, class: 'link'
-              %p.card-text= news.summary
+  .col-12
+    .news-selection.card-columns
+      - @all_news.each do |news|
+        .card
+          = link_to(image_tag(news.image, width: '100%', alt: "##{news.title} #DistritoRugby" ), news)
+          .card-body
+            %h5.card-title= link_to news.title, news, class: 'link'
+            %p.card-text= news.summary
