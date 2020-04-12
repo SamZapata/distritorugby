@@ -1,9 +1,8 @@
 class Core::News::FetchNewsByTag
   def call(tag)
+    puts "=============== Fetch news by: #{tag} =========="
     result = News.includes(:tags_news).where("tags_news.name" => tag)
-    puts '===============Come here my friend=========='
-    puts result
-    puts '===============Come here my friend=========='
+    puts "Total news: #{result.count}"
     return result
   end
 end

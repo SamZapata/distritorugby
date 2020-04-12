@@ -15,11 +15,6 @@
 
 .news-filters
   .scrollmenu
-    -# improve
-    -# - Tags::News.all.each do |tag|
-      = link_to tag.name, "##{tag.name}"
-    -# TODO: Create an array with the main tags to show. tags = %(RWC FCR ...)
-    -# improve
 
     - Tags::News.all.each do |tag|
       = link_to tag.name, "/news/tags/#{tag.name}", remote: true
@@ -30,7 +25,7 @@
     .news-selection.card-columns
       - @all_news.each do |news|
         .card
-          = link_to(image_tag(news.image, width: '100%', alt: "##{news.title} #DistritoRugby" ), news)
+          = link_to(image_tag(news.image, width: '100%', alt: "##{news.title} #DistritoRugby", class: 'img-hov' ), news)
           .card-body
             %h5.card-title= link_to news.title, news, class: 'link'
             %p.card-text= news.summary
