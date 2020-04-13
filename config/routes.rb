@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :stories
   devise_for :users
+
+  resources :news, controller: 'news' do
+    # get 'tags/:tag', to: 'news#tags'
+  end
+  get 'news/tags/:tag', to: 'news#tags'
+
+  resources :stories
+  get 'stories/tags/:tag', to: 'stories#tags'
 
   # get 'stories/index'
   get 'toolbox/index'
@@ -10,11 +17,6 @@ Rails.application.routes.draw do
   get 'team/index'
   get 'home/index'
   get 'home/aboute'
-
-  resources :news, controller: 'news' do
-    # get 'tags/:tag', to: 'news#tags'
-  end
-  get 'news/tags/:tag', to: 'news#tags'
 
   # load pdf
   # mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'

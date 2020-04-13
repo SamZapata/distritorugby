@@ -3,14 +3,23 @@
 // @jsamzapata
 // file: stories index
 -# .distrito-rugby-stories
-%nav{"aria-label" => "breadcrumb"}
-  %ol.breadcrumb
-    %li.breadcrumb-item
-      %a{:href => "/", :class => 'link'}
-        .fas.fa-home
-    %li.breadcrumb-item
-      %a{:href => stories_path, :class => 'link' }= t('breadcrumb.stories')
-    %li.breadcrumb-item.active{"aria-current" => "page"} Index
+.news-breadcrumb
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a{:href => "/", :class => 'link'}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a{:href => stories_path, :class => 'link' }= t('breadcrumb.stories')
+      %li.breadcrumb-item.active{"aria-current" => "page"} Top
+
+.stories-filters
+  .scrollmenu
+
+    - Tags::Story.all.each do |tag|
+      = link_to tag.name, "/stories/tags/#{tag.name}", remote: true
+    -# TODO: Create an array with the main tags to show. TOP of Stories
+
 
 .stories-index
   .col-md-12
@@ -23,8 +32,8 @@
               .stories-index--set
                 .ni--set__date
                   .fas.fa-calendar-check
-                  = l(story.created_at, format: :own)
+                  -# = l(story.created_at, format: :own)
                 = image_tag(story.image, class: 'ni--set__image')
                 .ni--set__title
-                  = link_to story.title, stories, class: 'link'
+                  -# = link_to story.name, stories, class: 'link'
       -# .col-md-1
