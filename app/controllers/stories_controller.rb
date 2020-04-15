@@ -6,7 +6,7 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-    @stories = Story.all
+    @all_stories = Story.all
   end
 
   def tags

@@ -1,3 +1,4 @@
 // var c = "<%= @news_by_tag %>";
 $('.news-breadcrumb nav ol.breadcrumb .breadcrumb-item.active').text("<%= params[:tag] %>")
-$('.news-index .news-selection.card-columns').html("<%= j (render partial: 'news/tags/news_by_tag', :news_by_tag => @news_by_tag) %>")
+$('.news-index .news-index__content.col-12').html("")
+$('.news-index').html("<%= j (render partial: 'news/tags/news_by_tag', :news_by_tag => @news_by_tag) %>")
