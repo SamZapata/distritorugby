@@ -1,21 +1,33 @@
-// Project: Distrito Rugby
-// Author: Johnny Zapata
-// @jsamzapata
-// file: tournaments index
+%h1 Listing tournaments
 
-.distrito-rugby-tournaments
-  %nav{"aria-label" => "breadcrumb"}
-    %ol.breadcrumb
-      %li.breadcrumb-item
-        %a{:href => "/", :class => 'link'}
-          .fas.fa-home
-      %li.breadcrumb-item
-        %a{:href => tournaments_index_path, :class => 'link' }= t('breadcrumb.tournaments')
-      %li.breadcrumb-item.active{"aria-current" => "page"} Index
+%table
+  %thead
+    %tr
+      %th Name
+      %th Start date
+      %th End date
+      %th About
+      %th Country
+      %th Region
+      %th Producer
+      %th
+      %th
+      %th
 
-  .tournament-content
-    .tournament-content--out
-      = image_tag 'common/undraw_under_construction.svg', :class => 'tournament-content--out'
-      %br
-      .tournament-content--out__text
-        = t('tournaments.building')
+  %tbody
+    - @tournaments.each do |tournament|
+      %tr
+        %td= tournament.name
+        %td= tournament.start_date
+        %td= tournament.end_date
+        %td= tournament.about
+        %td= tournament.country
+        %td= tournament.region
+        %td= tournament.producer
+        %td= link_to 'Show', tournament
+        %td= link_to 'Edit', edit_tournament_path(tournament)
+        %td= link_to 'Destroy', tournament, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Tournament', new_tournament_path

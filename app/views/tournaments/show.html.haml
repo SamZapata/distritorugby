@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @tournament.name
+%p
+  %b Start date:
+  = @tournament.start_date
+%p
+  %b End date:
+  = @tournament.end_date
+%p
+  %b About:
+  = @tournament.about
+%p
+  %b Country:
+  = @tournament.country
+%p
+  %b Region:
+  = @tournament.region
+%p
+  %b Producer:
+  = @tournament.producer
+
+= link_to 'Edit', edit_tournament_path(@tournament)
+\|
+= link_to 'Back', tournaments_path

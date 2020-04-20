@@ -73,6 +73,7 @@ group :development do
   gem 'spring'
   # gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spirit_hands'
+  gem 'faker'
 end
 
 group :test do
