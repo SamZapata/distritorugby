@@ -1,0 +1,2 @@
+json.extract! game_match_stat, :id, :tries_a, :tries_b, :conversions_a, :conversions_b, :penalty_goal_a, :penalty_goal_b, :drop_goal_a, :drop_goal_b, :scrums_a, :scrums_b, :lines_a, :lines_b, :mauls_a, :mauls_b, :handling_a, :handling_b, :yellows_a, :yellows_b, :reds_a, :reds_b, :penalties_a, :penalties_b, :match_id, :created_at, :updated_at
+json.url game_match_stat_url(game_match_stat, format: :json)

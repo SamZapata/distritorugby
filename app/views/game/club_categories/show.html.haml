@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @game_club_category.name
+%p
+  %b Branch:
+  = @game_club_category.branch
+
+= link_to 'Edit', edit_game_club_category_path(@game_club_category)
+\|
+= link_to 'Back', game_club_categories_path

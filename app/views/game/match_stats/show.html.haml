@@ -1,0 +1,75 @@
+%p#notice= notice
+
+%p
+  %b Tries a:
+  = @game_match_stat.tries_a
+%p
+  %b Tries b:
+  = @game_match_stat.tries_b
+%p
+  %b Conversions a:
+  = @game_match_stat.conversions_a
+%p
+  %b Conversions b:
+  = @game_match_stat.conversions_b
+%p
+  %b Penalty goal a:
+  = @game_match_stat.penalty_goal_a
+%p
+  %b Penalty goal b:
+  = @game_match_stat.penalty_goal_b
+%p
+  %b Drop goal a:
+  = @game_match_stat.drop_goal_a
+%p
+  %b Drop goal b:
+  = @game_match_stat.drop_goal_b
+%p
+  %b Scrums a:
+  = @game_match_stat.scrums_a
+%p
+  %b Scrums b:
+  = @game_match_stat.scrums_b
+%p
+  %b Lines a:
+  = @game_match_stat.lines_a
+%p
+  %b Lines b:
+  = @game_match_stat.lines_b
+%p
+  %b Mauls a:
+  = @game_match_stat.mauls_a
+%p
+  %b Mauls b:
+  = @game_match_stat.mauls_b
+%p
+  %b Handling a:
+  = @game_match_stat.handling_a
+%p
+  %b Handling b:
+  = @game_match_stat.handling_b
+%p
+  %b Yellows a:
+  = @game_match_stat.yellows_a
+%p
+  %b Yellows b:
+  = @game_match_stat.yellows_b
+%p
+  %b Reds a:
+  = @game_match_stat.reds_a
+%p
+  %b Reds b:
+  = @game_match_stat.reds_b
+%p
+  %b Penalties a:
+  = @game_match_stat.penalties_a
+%p
+  %b Penalties b:
+  = @game_match_stat.penalties_b
+%p
+  %b Match:
+  = @game_match_stat.match_id
+
+= link_to 'Edit', edit_game_match_stat_path(@game_match_stat)
+\|
+= link_to 'Back', game_match_stats_path

@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Play date:
+  = @game_match.play_date
+%p
+  %b Play time:
+  = @game_match.play_time
+%p
+  %b Emb location:
+  = @game_match.emb_location
+%p
+  %b Address:
+  = @game_match.address
+
+= link_to 'Edit', edit_game_match_path(@game_match)
+\|
+= link_to 'Back', game_matches_path

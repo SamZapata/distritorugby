@@ -10,10 +10,87 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_221636) do
+ActiveRecord::Schema.define(version: 2020_04_21_092830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "game_category_schedules", force: :cascade do |t|
+    t.string "day"
+    t.time "start_time"
+    t.time "end_time"
+    t.integer "club_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_club_categories", force: :cascade do |t|
+    t.string "name"
+    t.string "branch"
+    t.integer "club_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_club_matches", force: :cascade do |t|
+    t.integer "club_id"
+    t.integer "match_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_clubs", force: :cascade do |t|
+    t.string "name"
+    t.text "about"
+    t.string "picture"
+    t.string "emb_location"
+    t.string "phone"
+    t.string "email"
+    t.string "webpage"
+    t.string "instagram"
+    t.string "facebook"
+    t.string "twitter"
+    t.string "youtube"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_match_stats", force: :cascade do |t|
+    t.integer "tries_a"
+    t.integer "tries_b"
+    t.integer "conversions_a"
+    t.integer "conversions_b"
+    t.integer "penalty_goal_a"
+    t.integer "penalty_goal_b"
+    t.integer "drop_goal_a"
+    t.integer "drop_goal_b"
+    t.integer "scrums_a"
+    t.integer "scrums_b"
+    t.integer "lines_a"
+    t.integer "lines_b"
+    t.integer "mauls_a"
+    t.integer "mauls_b"
+    t.integer "handling_a"
+    t.integer "handling_b"
+    t.integer "yellows_a"
+    t.integer "yellows_b"
+    t.integer "reds_a"
+    t.integer "reds_b"
+    t.integer "penalties_a"
+    t.integer "penalties_b"
+    t.integer "match_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_matches", force: :cascade do |t|
+    t.date "play_date"
+    t.time "play_time"
+    t.string "emb_location"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "news", force: :cascade do |t|
     t.string "title"

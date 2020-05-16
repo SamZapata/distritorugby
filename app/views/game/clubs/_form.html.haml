@@ -1,0 +1,20 @@
+-# frozen_string_literal: true
+= simple_form_for(@game_club) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :name
+    = f.input :about
+    = f.input :picture
+    = f.input :emb_location
+    = f.input :phone
+    = f.input :email
+    = f.input :webpage
+    = f.input :instagram
+    = f.input :facebook
+    = f.input :twitter
+    = f.input :youtube
+
+  .form-actions
+    = f.button :submit

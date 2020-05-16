@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Day:
+  = @game_category_schedule.day
+%p
+  %b Start time:
+  = @game_category_schedule.start_time
+%p
+  %b End time:
+  = @game_category_schedule.end_time
+
+= link_to 'Edit', edit_game_category_schedule_path(@game_category_schedule)
+\|
+= link_to 'Back', game_category_schedules_path

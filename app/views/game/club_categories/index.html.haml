@@ -1,0 +1,23 @@
+%h1 Listing game_club_categories
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Branch
+      %th
+      %th
+      %th
+
+  %tbody
+    - @game_club_categories.each do |game_club_category|
+      %tr
+        %td= game_club_category.name
+        %td= game_club_category.branch
+        %td= link_to 'Show', game_club_category
+        %td= link_to 'Edit', edit_game_club_category_path(game_club_category)
+        %td= link_to 'Destroy', game_club_category, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Club category', new_game_club_category_path

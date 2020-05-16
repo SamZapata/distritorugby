@@ -1,0 +1,65 @@
+%h1 Listing game_match_stats
+
+%table
+  %thead
+    %tr
+      %th Tries a
+      %th Tries b
+      %th Conversions a
+      %th Conversions b
+      %th Penalty goal a
+      %th Penalty goal b
+      %th Drop goal a
+      %th Drop goal b
+      %th Scrums a
+      %th Scrums b
+      %th Lines a
+      %th Lines b
+      %th Mauls a
+      %th Mauls b
+      %th Handling a
+      %th Handling b
+      %th Yellows a
+      %th Yellows b
+      %th Reds a
+      %th Reds b
+      %th Penalties a
+      %th Penalties b
+      %th Match
+      %th
+      %th
+      %th
+
+  %tbody
+    - @game_match_stats.each do |game_match_stat|
+      %tr
+        %td= game_match_stat.tries_a
+        %td= game_match_stat.tries_b
+        %td= game_match_stat.conversions_a
+        %td= game_match_stat.conversions_b
+        %td= game_match_stat.penalty_goal_a
+        %td= game_match_stat.penalty_goal_b
+        %td= game_match_stat.drop_goal_a
+        %td= game_match_stat.drop_goal_b
+        %td= game_match_stat.scrums_a
+        %td= game_match_stat.scrums_b
+        %td= game_match_stat.lines_a
+        %td= game_match_stat.lines_b
+        %td= game_match_stat.mauls_a
+        %td= game_match_stat.mauls_b
+        %td= game_match_stat.handling_a
+        %td= game_match_stat.handling_b
+        %td= game_match_stat.yellows_a
+        %td= game_match_stat.yellows_b
+        %td= game_match_stat.reds_a
+        %td= game_match_stat.reds_b
+        %td= game_match_stat.penalties_a
+        %td= game_match_stat.penalties_b
+        %td= game_match_stat.match_id
+        %td= link_to 'Show', game_match_stat
+        %td= link_to 'Edit', edit_game_match_stat_path(game_match_stat)
+        %td= link_to 'Destroy', game_match_stat, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Match stat', new_game_match_stat_path

@@ -1,5 +1,20 @@
 Rails.application.routes.draw do
 
+  namespace :game do
+    resources :match_stats
+  end
+  namespace :game do
+    resources :matches
+  end
+  namespace :game do
+    resources :category_schedules
+  end
+  namespace :game do
+    resources :club_categories
+  end
+  namespace :game do
+    resources :clubs
+  end
   resources :tournaments
   devise_for :users
 

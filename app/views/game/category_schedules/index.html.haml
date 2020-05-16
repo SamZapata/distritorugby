@@ -1,0 +1,25 @@
+%h1 Listing game_category_schedules
+
+%table
+  %thead
+    %tr
+      %th Day
+      %th Start time
+      %th End time
+      %th
+      %th
+      %th
+
+  %tbody
+    - @game_category_schedules.each do |game_category_schedule|
+      %tr
+        %td= game_category_schedule.day
+        %td= game_category_schedule.start_time
+        %td= game_category_schedule.end_time
+        %td= link_to 'Show', game_category_schedule
+        %td= link_to 'Edit', edit_game_category_schedule_path(game_category_schedule)
+        %td= link_to 'Destroy', game_category_schedule, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Category schedule', new_game_category_schedule_path

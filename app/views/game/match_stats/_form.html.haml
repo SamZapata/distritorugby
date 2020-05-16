@@ -1,0 +1,32 @@
+-# frozen_string_literal: true
+= simple_form_for(@game_match_stat) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :tries_a
+    = f.input :tries_b
+    = f.input :conversions_a
+    = f.input :conversions_b
+    = f.input :penalty_goal_a
+    = f.input :penalty_goal_b
+    = f.input :drop_goal_a
+    = f.input :drop_goal_b
+    = f.input :scrums_a
+    = f.input :scrums_b
+    = f.input :lines_a
+    = f.input :lines_b
+    = f.input :mauls_a
+    = f.input :mauls_b
+    = f.input :handling_a
+    = f.input :handling_b
+    = f.input :yellows_a
+    = f.input :yellows_b
+    = f.input :reds_a
+    = f.input :reds_b
+    = f.input :penalties_a
+    = f.input :penalties_b
+    = f.input :match_id
+
+  .form-actions
+    = f.button :submit

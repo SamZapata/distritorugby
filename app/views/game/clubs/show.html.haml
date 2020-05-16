@@ -1,0 +1,39 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @game_club.name
+%p
+  %b About:
+  = @game_club.about
+%p
+  %b Picture:
+  = @game_club.picture
+%p
+  %b Emb location:
+  = @game_club.emb_location
+%p
+  %b Phone:
+  = @game_club.phone
+%p
+  %b Email:
+  = @game_club.email
+%p
+  %b Webpage:
+  = @game_club.webpage
+%p
+  %b Instagram:
+  = @game_club.instagram
+%p
+  %b Facebook:
+  = @game_club.facebook
+%p
+  %b Twitter:
+  = @game_club.twitter
+%p
+  %b Youtube:
+  = @game_club.youtube
+
+= link_to 'Edit', edit_game_club_path(@game_club)
+\|
+= link_to 'Back', game_clubs_path
