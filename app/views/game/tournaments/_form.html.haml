@@ -1,5 +1,5 @@
 -# frozen_string_literal: true
-= simple_form_for(@tournament) do |f|
+= simple_form_for(@game_tournament) do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
@@ -10,7 +10,8 @@
     = f.input :about
     = f.input :country
     = f.input :region
-    = f.input :producer
+    = f.input :city
+    = f.input :organizer
 
   .form-actions
     = f.button :submit

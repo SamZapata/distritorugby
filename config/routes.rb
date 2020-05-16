@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   namespace :game do
+    resources :tournaments
+  end
+  namespace :game do
     resources :match_stats
   end
   namespace :game do
@@ -15,7 +18,6 @@ Rails.application.routes.draw do
   namespace :game do
     resources :clubs
   end
-  resources :tournaments
   devise_for :users
 
   resources :news, controller: 'news' do
@@ -28,7 +30,6 @@ Rails.application.routes.draw do
 
   # get 'stories/index'
   get 'toolbox/index'
-  get 'tournaments/index'
   # get 'histories/index'
   get 'team/index'
   get 'home/index'

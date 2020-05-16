@@ -1,13 +1,14 @@
-class CreateTournaments < ActiveRecord::Migration[5.2]
+class CreateGameTournaments < ActiveRecord::Migration[5.2]
   def change
-    create_table :tournaments do |t|
+    create_table :game_tournaments do |t|
       t.string :name
       t.date :start_date
       t.date :end_date
       t.text :about
       t.string :country
       t.string :region
-      t.string :producer
+      t.string :city
+      t.string :organizer
 
       t.timestamps
     end
