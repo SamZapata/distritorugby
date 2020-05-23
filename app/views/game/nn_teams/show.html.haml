@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @game_nn_team.name
+%p
+  %b About:
+  = @game_nn_team.about
+%p
+  %b Birthdate:
+  = @game_nn_team.birthdate
+
+= link_to 'Edit', edit_game_nn_team_path(@game_nn_team)
+\|
+= link_to 'Back', game_nn_teams_path

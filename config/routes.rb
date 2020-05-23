@@ -1,6 +1,21 @@
 Rails.application.routes.draw do
 
   namespace :game do
+    resources :referees
+  end
+  namespace :game do
+    resources :coaches
+  end
+  namespace :game do
+    resources :players
+  end
+  namespace :game do
+    resources :nn_teams
+  end
+  namespace :game do
+    resources :club_teams
+  end
+  namespace :game do
     resources :tournaments
   end
   namespace :game do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_16_204404) do
+ActiveRecord::Schema.define(version: 2020_05_23_234649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 2020_05_16_204404) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "game_club_teams", force: :cascade do |t|
+    t.string "name"
+    t.text "about"
+    t.date "birthdate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "club_id"
+  end
+
   create_table "game_clubs", force: :cascade do |t|
     t.string "name"
     t.text "about"
@@ -51,6 +60,27 @@ ActiveRecord::Schema.define(version: 2020_05_16_204404) do
     t.string "facebook"
     t.string "twitter"
     t.string "youtube"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_coach_team_joins", force: :cascade do |t|
+    t.integer "club_team_id"
+    t.integer "coach_id"
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_coaches", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "identification"
+    t.date "birthdate"
+    t.string "eps"
+    t.text "about"
+    t.string "phone"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -88,6 +118,45 @@ ActiveRecord::Schema.define(version: 2020_05_16_204404) do
     t.time "play_time"
     t.string "emb_location"
     t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_nn_teams", force: :cascade do |t|
+    t.string "name"
+    t.text "about"
+    t.date "birthdate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "game_players", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "identification"
+    t.date "birthdate"
+    t.string "eps"
+    t.float "weigth"
+    t.float "height"
+    t.string "position"
+    t.string "phone"
+    t.string "injuries"
+    t.text "about"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "club_team_id"
+  end
+
+  create_table "game_referees", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "identification"
+    t.date "birthdate"
+    t.string "eps"
+    t.text "about"
+    t.string "phone"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

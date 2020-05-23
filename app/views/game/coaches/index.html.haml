@@ -1,0 +1,35 @@
+%h1 Listing game_coaches
+
+%table
+  %thead
+    %tr
+      %th First name
+      %th Last name
+      %th Identification
+      %th Birthdate
+      %th Eps
+      %th About
+      %th Phone
+      %th Email
+      %th
+      %th
+      %th
+
+  %tbody
+    - @game_coaches.each do |game_coach|
+      %tr
+        %td= game_coach.first_name
+        %td= game_coach.last_name
+        %td= game_coach.identification
+        %td= game_coach.birthdate
+        %td= game_coach.eps
+        %td= game_coach.about
+        %td= game_coach.phone
+        %td= game_coach.email
+        %td= link_to 'Show', game_coach
+        %td= link_to 'Edit', edit_game_coach_path(game_coach)
+        %td= link_to 'Destroy', game_coach, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Coach', new_game_coach_path

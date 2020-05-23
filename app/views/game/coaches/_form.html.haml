@@ -1,0 +1,17 @@
+-# frozen_string_literal: true
+= simple_form_for(@game_coach) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :identification
+    = f.input :birthdate
+    = f.input :eps
+    = f.input :about
+    = f.input :phone
+    = f.input :email
+
+  .form-actions
+    = f.button :submit

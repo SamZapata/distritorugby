@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b First name:
+  = @game_coach.first_name
+%p
+  %b Last name:
+  = @game_coach.last_name
+%p
+  %b Identification:
+  = @game_coach.identification
+%p
+  %b Birthdate:
+  = @game_coach.birthdate
+%p
+  %b Eps:
+  = @game_coach.eps
+%p
+  %b About:
+  = @game_coach.about
+%p
+  %b Phone:
+  = @game_coach.phone
+%p
+  %b Email:
+  = @game_coach.email
+
+= link_to 'Edit', edit_game_coach_path(@game_coach)
+\|
+= link_to 'Back', game_coaches_path
