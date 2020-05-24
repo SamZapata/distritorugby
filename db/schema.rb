@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_234649) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "team_id"
     t.integer "club_team_id"
   end
 

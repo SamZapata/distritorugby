@@ -74,6 +74,8 @@ group :development do
   # gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spirit_hands'
   gem 'faker'
+  # graph db
+  gem "rails-erd"
 end
 
 group :test do
