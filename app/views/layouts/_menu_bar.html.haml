@@ -5,8 +5,10 @@
 .distrito-rugby-menu-bar
 	.menu-bar--button
 		.mb-button--label
-			.mb-button--label__text{"data-target" => "#showMenu", "data-toggle" => "modal"}
-				MENU
+			.mb-button--label__text.d-flex.align-items-center{"data-target" => "#showMenu", "data-toggle" => "modal"}
+				%span.symbol-menu &#9776
+				DR
+				%span.symbol-menu &#9776
 
 	#showMenu.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "showMenuBar", :role => "dialog", :tabindex => "-1"}
 		.modal-dialog{:role => "document"}

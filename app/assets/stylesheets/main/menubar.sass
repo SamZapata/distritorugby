@@ -2,10 +2,13 @@
 // Author: Johnny Zapata
 // @jsamzapata
 
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap')
+
 .distrito-rugby-menu-bar
 	width: calc(100%)
 
 	.menu-bar--button
+		font-family: 'Black Ops One'
 		height: auto
 		background-color: $menu-button
 		.mb-button--label
@@ -13,15 +16,15 @@
 			justify-content: center
 			align-items: center
 			.mb-button--label__text
-				font-size: 1em
+				font-size: 1.4em
 				color: $white
-				font-family: verdana
-				font-weight: bold
 				opacity: 0.5
 				&:hover
 					color: $white
 					opacity: 1
 					cursor: pointer
+			span.symbol-menu
+				font-size: 0.5em
 
 	.menu-bar--modal
 		display: block
