@@ -17,7 +17,8 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
 
 // From core of the application
 //= require main
+// = require core/menu-bar.js
+// = require core/utilities.js
