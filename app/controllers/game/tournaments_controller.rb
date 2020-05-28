@@ -1,10 +1,12 @@
 class Game::TournamentsController < ApplicationController
   before_action :set_game_tournament, only: [:show, :edit, :update, :destroy]
 
+  layout 'tournaments/layoutTournament'
+
   # GET /game/tournaments
   # GET /game/tournaments.json
   def index
-    @game_tournaments = Game::Tournament.all
+    @all_tournaments = Game::Tournament.all
   end
 
   # GET /game/tournaments/1

@@ -1,27 +1,41 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = @story.name
-%p
-  %b Summary:
-  = @story.summary
-%p
-  %b Body:
-  = @story.body
-%p
-  %b Emb video:
-  = @story.emb_video
-%p
-  %b Image:
-  = @story.image
-%p
-  %b Image caption:
-  = @story.image_caption
-%p
-  %b Video caption:
-  = @story.video_caption
-
-= link_to 'Edit', edit_story_path(@story)
-\|
-= link_to 'Back', stories_path
+.distrito-rugby-story
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a.link{:href => "/"}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a.link{:href => stories_path}
+          = t('breadcrumb.stories')
+      %li.breadcrumb-item.active{"aria-current" => "page"}
+        = @story.name
+  .story-show
+    .row
+      .col-1
+      .col-11
+        .story-show--name
+          .text-center
+            = @story.name
+        - if user_signed_in?
+          .story-edit-button.float-right
+            = link_to t('stories.edit'), edit_story_path, class: 'link'
+        %hr/
+        .story-show--date
+          .float-right
+            = t('common.published_on: ') + @story.created_at.strftime("%Y - %m - %d")
+        .story-show--summary
+          = @story.summary
+        .story-show--image
+          = image_tag(@story.image, class: 'story-show--image', alt: "##{@story.name} #DistritoRugby" )
+          .story-show--caption
+            = @story.image_caption
+        %br/
+        .story-show--body
+          = simple_format @story.body
+        / video
+        - if @story.emb_video.present?
+          .story-show--video
+            = @story.emb_video.html_safe
+            .story-show--caption
+              = @story.video_caption
+      .col-2

@@ -1,35 +1,31 @@
-%h1 Listing game_tournaments
+// Project: Distrito Rugby
+// Author: Johnny Zapata
+// @jsamzapata
+// file: tournaments index
+-# .distrito-rugby-tournaments
+.tournaments-breadcrumb
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a{:href => "/", :class => 'link'}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a{:href => game_tournaments_path, :class => 'link' }= t('breadcrumb.tournaments')
+      %li.breadcrumb-item.active{"aria-current" => "page"} Top
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Start date
-      %th End date
-      %th About
-      %th Country
-      %th Region
-      %th City
-      %th Organizer
-      %th
-      %th
-      %th
+.tournaments-filters
+  .scrollmenu
 
-  %tbody
-    - @game_tournaments.each do |game_tournament|
-      %tr
-        %td= game_tournament.name
-        %td= game_tournament.start_date
-        %td= game_tournament.end_date
-        %td= game_tournament.about
-        %td= game_tournament.country
-        %td= game_tournament.region
-        %td= game_tournament.city
-        %td= game_tournament.organizer
-        %td= link_to 'Show', game_tournament
-        %td= link_to 'Edit', edit_game_tournament_path(game_tournament)
-        %td= link_to 'Destroy', game_tournament, method: :delete, data: { confirm: 'Are you sure?' }
+    - Tags::Tournament.all.each do |tag|
+      = link_to tag.name, "/tournaments/tags/#{tag.name}", remote: true
+    -# TODO: Create an array with the main tags to show. TOP of Stories
 
-%br
-
-= link_to 'New Tournament', new_game_tournament_path
+.tournaments-index
+  .tournaments-index__content.col-12
+    .tournaments-selection.card-columns
+      - @all_tournaments.each do |tournament|
+        .card
+          -# = link_to(image_tag(tournament.image, width: '100%', alt: "##{tournament.name} #DistritoRugby", class: 'img-hov' ), tournament)
+          .card-body
+            %h5.card-title= link_to tournament.name, tournament, class: 'link'
+            %p.card-text= tournament.about

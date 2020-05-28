@@ -52,6 +52,8 @@ es:
     talking: Cuerpo de la Noticia
     title: Título
     video: Video
+  stories:
+    edit: Editar
   sessions:
     login: Iniciar Sesión
     logout: Cerrar Sesión
