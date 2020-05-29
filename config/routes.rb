@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     # get 'tags/:tag', to: 'news#tags'
   end
   get 'news/tags/:tag', to: 'news#tags'
+  get 'news/:id/tags/:tag', to: 'news#show'
 
   resources :stories
   get 'stories/tags/:tag', to: 'stories#tags'

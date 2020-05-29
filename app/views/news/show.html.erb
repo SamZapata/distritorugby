@@ -8,6 +8,9 @@
 -->
 <div class="distrito-rugby-news">
   <nav aria-label="breadcrumb">
+    <!-- <div class="button-filters"> -->
+      <!-- <i class="fas fa-exchange-alt"></i> -->
+    </div>
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
         <a class="link" href="/">
@@ -20,7 +23,7 @@
         </a>
       </li>
       <li aria-current="page" class="breadcrumb-item active">
-        <%= @news.title %>
+        <%= params[:tag] %>
       </li>
     </ol>
   </nav>

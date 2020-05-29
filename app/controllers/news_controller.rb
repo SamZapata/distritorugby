@@ -9,6 +9,7 @@ class NewsController < ApplicationController
 
 	def tags
 		@news_by_tag = Core::News::FetchNewsByTag.new.call params[:tag]
+		@label = params[:tag]
 	end
 
 	def new
