@@ -11,11 +11,13 @@ class StoriesController < ApplicationController
 
   def tags
 		@stories_by_tag = Core::Story::FetchStoriesByTag.new.call params[:tag]
+    @label = params[:tag]
 	end
 
   # GET /stories/1
   # GET /stories/1.json
   def show
+    @label = params[:tag]
   end
 
   # GET /stories/new

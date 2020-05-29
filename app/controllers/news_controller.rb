@@ -17,6 +17,7 @@ class NewsController < ApplicationController
 	end
 
 	def show
+		@label = params[:tag]
 	end
 
 	def edit

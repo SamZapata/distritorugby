@@ -1,4 +1,4 @@
 // var c = "<%= @stories_by_tag %>";
 $('.stories-breadcrumb nav ol.breadcrumb .breadcrumb-item.active').text("<%= params[:tag] %>")
 $('.stories-index .stories-index__content.col-12').html("")
-$('.stories-index').html("<%= j (render partial: 'stories/tags/stories_by_tag', :stories_by_tag => @stories_by_tag) %>")
+$('.stories-index').html("<%= j (render partial: 'stories/tags/stories_by_tag', locals: {label: @label, :stories_by_tag => @stories_by_tag}) %>")

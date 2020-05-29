@@ -4,5 +4,5 @@
       .card
         = link_to(image_tag(news.image, width: '100%', alt: "##{news.title} #DistritoRugby", class: 'img-hov' ), "/news/#{news.id}/tags/#{label}")
         .card-body
-          %h5.card-title= link_to news.title, news, class: 'link'
+          %h5.card-title= link_to news.title, "/news/#{news.id}/tags/#{label}", class: 'link'
           %p.card-text= news.summary

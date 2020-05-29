@@ -1,5 +1,7 @@
 .distrito-rugby-story
   %nav{"aria-label" => "breadcrumb"}
+    .button-filters
+      %i.fas.fa-exchange-alt
     %ol.breadcrumb
       %li.breadcrumb-item
         %a.link{:href => "/"}
@@ -8,7 +10,7 @@
         %a.link{:href => stories_path}
           = t('breadcrumb.stories')
       %li.breadcrumb-item.active{"aria-current" => "page"}
-        = @story.name
+        = @label.present? ? @label : @story.tags_stories.last.name
   .story-show
     .row
       .col-1

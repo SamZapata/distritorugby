@@ -43,6 +43,7 @@ Rails.application.routes.draw do
 
   resources :stories
   get 'stories/tags/:tag', to: 'stories#tags'
+  get 'stories/:id/tags/:tag', to: 'stories#show'
 
   # get 'stories/index'
   get 'toolbox/index'
