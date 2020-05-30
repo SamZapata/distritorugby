@@ -11,12 +11,12 @@
           .fas.fa-home
       %li.breadcrumb-item
         %a{:href => game_clubs_path, :class => 'link' }= t('breadcrumb.clubs')
-      %li.breadcrumb-item.active{"aria-current" => "page"} Recientes
+      %li.breadcrumb-item.active Recientes
 
 .clubs-filters
   .scrollmenu
     - Game::Club::REGIONS.each do |k, v|
-      = link_to v, "/game/clubs/tags/#{k}", class: 'link-w', remote: true
+      = link_to v, "/game/clubs/continent/#{k}", class: 'link-w', remote: true
 
 .clubs-index
   .clubs-index__content.col-12
@@ -26,15 +26,14 @@
       - @all_clubs.each do |club|
         .card
           - if club.picture != nil
-            = link_to(image_tag(club.picture, width: '100%', alt: "##{club.name} #DistritoRugby", class: 'img-hov' ), "#")
-            .card-img-overlay.d-flex.align-items-end.shadow
-              .card-title-box
-                .card-title= link_to club.name, club, class: 'link-w'
+            = image_tag(club.picture, width: '100%', alt: "##{club.name} #DistritoRugby", class: 'img-hov' )
           - else
-            = link_to(image_tag("common/600x400.svg", width: '100%', alt: "##{club.name} #DistritoRugby", class: 'img-hov' ), club)
+            = image_tag("common/600x400.svg", width: '100%', alt: "##{club.name} #DistritoRugby", class: 'img-hov' )
+
+          = link_to club, class: 'link-w' do
             .card-img-overlay.d-flex.align-items-end.shadow
               .card-title-box
-                .card-title= link_to club.name, club, class: 'link-w'
+                .card-title= club.name
 
 -# %h1 Listing game_clubs
 -#

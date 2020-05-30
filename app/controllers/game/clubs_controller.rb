@@ -9,6 +9,16 @@ class Game::ClubsController < ApplicationController
     @all_clubs = Game::Club.all
   end
 
+  def continent
+    @continent = params[:c]
+  end
+
+  def union
+    @c = params[:c]
+    @u = params[:u]
+    @union = Game::Union.find_by(abbr: params[:u])
+  end
+
   def tags
     @clubs_by_tag = Game::Club.where(name: 'Lobos Rugby Club')
     @label = params[:tag]
