@@ -69,6 +69,6 @@ class Game::UnionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_union_params
-      params.require(:game_union).permit(:name, :about, :founded, :website, :logo, :country, :abbr)
+      params.require(:game_union).permit(:name, :about, :founded, :website, :logo, :country, :abbr, :alias)
     end
 end

@@ -8,6 +8,7 @@ class CreateGameUnions < ActiveRecord::Migration[5.2]
       t.string :logo
       t.string :country
       t.string :abbr
+      t.string :alias
 
       t.timestamps
     end

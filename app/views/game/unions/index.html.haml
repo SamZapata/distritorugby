@@ -10,6 +10,7 @@
       %th Logo
       %th Country
       %th Abbr
+      %th Alias
       %th
       %th
       %th
@@ -24,6 +25,7 @@
         %td= game_union.logo
         %td= game_union.country
         %td= game_union.abbr
+        %td= game_union.alias
         %td= link_to 'Show', game_union
         %td= link_to 'Edit', edit_game_union_path(game_union)
         %td= link_to 'Destroy', game_union, method: :delete, data: { confirm: 'Are you sure?' }

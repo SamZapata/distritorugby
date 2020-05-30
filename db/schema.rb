@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_30_014239) do
+ActiveRecord::Schema.define(version: 2020_05_30_021040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_05_30_014239) do
     t.string "youtube"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "union_id"
   end
 
   create_table "game_coach_team_joins", force: :cascade do |t|
@@ -191,6 +192,7 @@ ActiveRecord::Schema.define(version: 2020_05_30_014239) do
     t.string "logo"
     t.string "country"
     t.string "abbr"
+    t.string "alias"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
