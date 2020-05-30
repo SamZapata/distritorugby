@@ -1,15 +1,23 @@
 class Game::ClubsController < ApplicationController
   before_action :set_game_club, only: [:show, :edit, :update, :destroy]
 
+  layout 'game/layoutClub'
+
   # GET /game/clubs
   # GET /game/clubs.json
   def index
-    @game_clubs = Game::Club.all
+    @all_clubs = Game::Club.all
+  end
+
+  def tags
+    @clubs_by_tag = Game::Club.where(name: 'Lobos Rugby Club')
+    @label = params[:tag]
   end
 
   # GET /game/clubs/1
   # GET /game/clubs/1.json
   def show
+    @label = params[:tag]
   end
 
   # GET /game/clubs/new

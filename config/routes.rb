@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   end
   namespace :game do
     resources :clubs
+    get 'clubs/tags/:tag', to: 'clubs#tags'
   end
   devise_for :users
 

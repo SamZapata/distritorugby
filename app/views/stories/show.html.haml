@@ -1,7 +1,8 @@
 .distrito-rugby-story
-  %nav{"aria-label" => "breadcrumb"}
-    .button-filters
-      %i.fas.fa-exchange-alt
+  %nav.story-breadcrumb{"aria-label" => "breadcrumb"}
+    -# .button-filters
+      = link_to '#collapseFilter', class: 'link', 'data-toggle': 'collapse', 'role': 'button', "aria-expanded": "false", 'aria-controls': "collapseFilter" do
+        %i.fas.fa-exchange-alt
     %ol.breadcrumb
       %li.breadcrumb-item
         %a.link{:href => "/"}
@@ -11,6 +12,12 @@
           = t('breadcrumb.stories')
       %li.breadcrumb-item.active{"aria-current" => "page"}
         = @label.present? ? @label : @story.tags_stories.last.name
+    -# #collapseFilter.collapse
+      - tags = %w(tagOne tagTwo tagThree tagFour)
+      .stories-filters
+        .scrollmenu
+          - tags.each do |t|
+            =link_to t, '#'
   .story-show
     .row
       .col-1
@@ -41,3 +48,11 @@
             .story-show--caption
               = @story.video_caption
       .col-2
+
+:javascript
+  $('i.fas.fa-exchange-alt').click(function() {
+    var selected = $("#collapseFilter.collapse").hasClass("show");
+    if (selected) {
+      console.log(selected);
+    }
+  });

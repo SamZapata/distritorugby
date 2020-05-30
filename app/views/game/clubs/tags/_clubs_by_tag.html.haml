@@ -1,0 +1,18 @@
+.clubs-index__content.col-12
+  - l = - Game::Club::REGIONS[label.to_sym]
+  %h5= "Clubes registrados por federación ó unión de rugby de #{l}"
+  %hr
+
+  .clubs-selection.card-columns
+    - @clubs_by_tag.each do |club|
+      .card
+        - if club.picture != nil
+          = link_to(image_tag(club.picture, width: '100%', alt: "##{club.name} #DistritoRugby", class: 'img-hov' ), "#")
+          .card-img-overlay.d-flex.align-items-end.shadow
+            .card-title-box
+              .card-title= link_to club.name, club, class: 'link-w'
+        - else
+          = link_to(image_tag("common/600x400.svg", width: '100%', alt: "##{club.name} #DistritoRugby", class: 'img-hov' ), club)
+          .card-img-overlay.d-flex.align-items-end.shadow
+            .card-title-box
+              .card-title= link_to club.name, club, class: 'link-w'

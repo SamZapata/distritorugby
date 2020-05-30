@@ -1,0 +1,3 @@
+$('.clubs-breadcrumb nav ol.breadcrumb .breadcrumb-item.active').text("<%= Game::Club::REGIONS[params[:tag].to_sym] %>")
+$('.clubs-index .clubs-index__content.col-12').html("")
+$('.clubs-index').html("<%= j (render partial: 'game/clubs/tags/clubs_by_tag', locals: {label: @label, :clubs_by_tag => @clubs_by_tag}) %>")

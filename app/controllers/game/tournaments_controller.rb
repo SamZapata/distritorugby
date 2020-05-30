@@ -1,7 +1,7 @@
 class Game::TournamentsController < ApplicationController
   before_action :set_game_tournament, only: [:show, :edit, :update, :destroy]
 
-  layout 'tournaments/layoutTournament'
+  layout 'game/layoutTournament'
 
   # GET /game/tournaments
   # GET /game/tournaments.json

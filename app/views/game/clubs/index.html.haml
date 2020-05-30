@@ -1,41 +1,79 @@
-%h1 Listing game_clubs
+// Project: Distrito Rugby
+// Author: Johnny Zapata
+// @jsamzapata
+// file: clubs index
+-# .distrito-rugby-clubs
+.clubs-breadcrumb
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a{:href => "/", :class => 'link'}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a{:href => game_clubs_path, :class => 'link' }= t('breadcrumb.clubs')
+      %li.breadcrumb-item.active{"aria-current" => "page"} Recientes
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th About
-      %th Picture
-      %th Emb location
-      %th Phone
-      %th Email
-      %th Webpage
-      %th Instagram
-      %th Facebook
-      %th Twitter
-      %th Youtube
-      %th
-      %th
-      %th
+.clubs-filters
+  .scrollmenu
+    - Game::Club::REGIONS.each do |k, v|
+      = link_to v, "/game/clubs/tags/#{k}", class: 'link-w', remote: true
 
-  %tbody
-    - @game_clubs.each do |game_club|
-      %tr
-        %td= game_club.name
-        %td= game_club.about
-        %td= game_club.picture
-        %td= game_club.emb_location
-        %td= game_club.phone
-        %td= game_club.email
-        %td= game_club.webpage
-        %td= game_club.instagram
-        %td= game_club.facebook
-        %td= game_club.twitter
-        %td= game_club.youtube
-        %td= link_to 'Show', game_club
-        %td= link_to 'Edit', edit_game_club_path(game_club)
-        %td= link_to 'Destroy', game_club, method: :delete, data: { confirm: 'Are you sure?' }
+.clubs-index
+  .clubs-index__content.col-12
+    %h5 Clubes registrados recientemente
+    %hr
+    .clubs-selection.card-columns
+      - @all_clubs.each do |club|
+        .card
+          - if club.picture != nil
+            = link_to(image_tag(club.picture, width: '100%', alt: "##{club.name} #DistritoRugby", class: 'img-hov' ), "#")
+            .card-img-overlay.d-flex.align-items-end.shadow
+              .card-title-box
+                .card-title= link_to club.name, club, class: 'link-w'
+          - else
+            = link_to(image_tag("common/600x400.svg", width: '100%', alt: "##{club.name} #DistritoRugby", class: 'img-hov' ), club)
+            .card-img-overlay.d-flex.align-items-end.shadow
+              .card-title-box
+                .card-title= link_to club.name, club, class: 'link-w'
 
-%br
-
-= link_to 'New Club', new_game_club_path
+-# %h1 Listing game_clubs
+-#
+-# %table
+-#   %thead
+-#     %tr
+-#       %th Name
+-#       %th About
+-#       %th Picture
+-#       %th Emb location
+-#       %th Phone
+-#       %th Email
+-#       %th Webpage
+-#       %th Instagram
+-#       %th Facebook
+-#       %th Twitter
+-#       %th Youtube
+-#       %th
+-#       %th
+-#       %th
+-#
+-#   %tbody
+-#     - @game_clubs.each do |game_club|
+-#       %tr
+-#         %td= game_club.name
+-#         %td= game_club.about
+-#         %td= game_club.picture
+-#         %td= game_club.emb_location
+-#         %td= game_club.phone
+-#         %td= game_club.email
+-#         %td= game_club.webpage
+-#         %td= game_club.instagram
+-#         %td= game_club.facebook
+-#         %td= game_club.twitter
+-#         %td= game_club.youtube
+-#         %td= link_to 'Show', game_club
+-#         %td= link_to 'Edit', edit_game_club_path(game_club)
+-#         %td= link_to 'Destroy', game_club, method: :delete, data: { confirm: 'Are you sure?' }
+-#
+-# %br
+-#
+-# = link_to 'New Club', new_game_club_path
