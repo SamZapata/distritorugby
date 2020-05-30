@@ -28,6 +28,7 @@ class Game::ClubsController < ApplicationController
   # GET /game/clubs/1.json
   def show
     @label = params[:tag]
+    @union = Game::Club.find(params[:id]).union
   end
 
   # GET /game/clubs/new

@@ -1,39 +1,80 @@
-%p#notice= notice
+// Project: Distrito Rugby
+// Author: Johnny Zapata
+// @jsamzapata
+// file: clubs show
+.distrito-rugby-club
+  .club-breadcrumb
+    %nav{"aria-label" => "breadcrumb"}
+      %ol.breadcrumb
+        %li.breadcrumb-item
+          %a{:href => "/", :class => 'link'}
+            .fas.fa-home
+        %li.breadcrumb-item
+          %a{:href => game_clubs_path, :class => 'link' }= t('breadcrumb.clubs')
+        %li.breadcrumb-item.active
+          = @union.class.to_s == 'Game::Union' ? @union.country : @game_club.name
 
-%p
-  %b Name:
-  = @game_club.name
-%p
-  %b About:
-  = @game_club.about
-%p
-  %b Picture:
-  = @game_club.picture
-%p
-  %b Emb location:
-  = @game_club.emb_location
-%p
-  %b Phone:
-  = @game_club.phone
-%p
-  %b Email:
-  = @game_club.email
-%p
-  %b Webpage:
-  = @game_club.webpage
-%p
-  %b Instagram:
-  = @game_club.instagram
-%p
-  %b Facebook:
-  = @game_club.facebook
-%p
-  %b Twitter:
-  = @game_club.twitter
-%p
-  %b Youtube:
-  = @game_club.youtube
+  .club-show
+    .club-title= @game_club.name
+    .club-show__cover
+      - if @game_club.picture.present?
+        = image_tag(@game_club.picture)
+    .container
+      .club-about
+        %b Presentación
+        %hr
+        = @game_club.about
+        %br
+        %button.float-right.mt-1{class: 'btn btn-dark', 'data-toggle' => 'modal', 'data-target' => '#infoClubModal'} saber más
+      .club-categories
+        %b Categorías
+        %hr
+        .scrollmenu
+          - if @game_club.club_categories.exists?
+            -@game_club.club_categories.each do |cc|
+              = cc.name
 
-= link_to 'Edit', edit_game_club_path(@game_club)
-\|
-= link_to 'Back', game_clubs_path
+#infoClubModal.modal.fade{'tabindex' => '-1', role: 'dialog', 'aria-labelledby' => 'infoClubModal', 'aria-hidden' => 'true'}
+  .modal-dialog.modal-dialog-centered.modal-dialog-scrollable
+    .modal-content
+      .modal-header
+        %h5.modal-title= @game_club.name
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        - if @game_club.emb_location.present?
+          = @game_club.emb_location.html_safe
+        %b Contacto
+        - if @game_club.address.present?
+          %p
+            %i.fas.fa-home
+            = @game_club.address
+        - if @game_club.phone.present?
+          %p
+            %i.fas.fa-phone
+            = @game_club.phone
+        - if @game_club.email.present?
+          %p
+            %i.fas.fa-at
+            = @game_club.email
+        - if @game_club.webpage.present?
+          %p
+            %i.fas.fa-link
+            = link_to @game_club.webpage, @game_club.webpage, target: '_blank'
+        .d-flex
+          - if @game_club.facebook.present?
+            %p.mr-2
+              = link_to @game_club.facebook, target: '_blank', class: 'link' do
+                %i.fab.fa-facebook.fa-2x
+          - if @game_club.instagram.present?
+            %p.mr-2
+              = link_to @game_club.instagram, target: '_blank', class: 'link' do
+                %i.fab.fa-instagram
+          - if @game_club.twitter.present?
+            %p.mr-2
+              = link_to @game_club.twitter, target: '_blank', class: 'link' do
+                %i.fab.fa-twitter
+          - if @game_club.youtube.present?
+            %p.mr-2
+              = link_to @game_club.youtube, target: '_blank', class: 'link' do
+                %i.fab.fa-youtube

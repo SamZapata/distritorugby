@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     get 'clubs/tags/:tag', to: 'clubs#tags'
     get 'clubs/continent/:c', to: 'clubs#continent'
     get 'clubs/:c/union/:u', to: 'clubs#union'
+    get 'clubs/:union/:id', to: 'clubs#show'
   end
   devise_for :users
 
