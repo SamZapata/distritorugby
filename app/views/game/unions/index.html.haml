@@ -1,0 +1,33 @@
+%h1 Listing game_unions
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th About
+      %th Founded
+      %th Website
+      %th Logo
+      %th Country
+      %th Abbr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @game_unions.each do |game_union|
+      %tr
+        %td= game_union.name
+        %td= game_union.about
+        %td= game_union.founded
+        %td= game_union.website
+        %td= game_union.logo
+        %td= game_union.country
+        %td= game_union.abbr
+        %td= link_to 'Show', game_union
+        %td= link_to 'Edit', edit_game_union_path(game_union)
+        %td= link_to 'Destroy', game_union, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Union', new_game_union_path
