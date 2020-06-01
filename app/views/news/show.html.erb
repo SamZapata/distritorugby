@@ -23,9 +23,6 @@
         </a>
       </li>
       <li aria-current="page" class="breadcrumb-item active">
-        <%= if @label.present? || @news.tags_news.present?
-
-        end %>
         <%- if @label.present? %>
           <%= @label %>
         <%- elsif @news.tags_news.present? %>
@@ -33,7 +30,6 @@
         <%- else %>
           <%= @news.created_at.strftime("%Y-%m-%d") %>
         <%- end %>
-        <%= @label.present? ? @label : @news.tags_news.last.name %>
       </li>
     </ol>
   </nav>
