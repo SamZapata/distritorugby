@@ -1,18 +1,18 @@
 .sessions-content
   %br
-  .offset-2.col-md-8.col-lg-8.card
-    %br
-    %h2.text-center= t('sessions.login')
+  .card.user-devise-form
+    .card-header.bg-dark
+      .header-title.text-center= t('sessions.login')
     .card-body
       = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .form-inputs.form-group
+        .form-group
           = f.input :email,
             required: false,
             label: false,
             placeholder: 'email',
             autofocus: true,
             input_html: { autocomplete: "email", class: 'form-control' }
-          %br
+        .form-group
           = f.input :password,
             required: false,
             label: false,
@@ -22,6 +22,6 @@
             = f.input :remember_me, label: t('sessions.remember_me'), as: :boolean if devise_mapping.rememberable?
         %br
         .form-actions
-          = f.button :submit, "Log in", class: 'btn btn-primary'
+          = f.button :submit, t('sessions.intro'), class: 'btn btn-dark'
         %br
       = render "devise/shared/links", class: 'link'

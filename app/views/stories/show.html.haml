@@ -25,7 +25,7 @@
         .story-show--name
           .text-center
             = @story.name
-        - if user_signed_in?
+        -# - if user_signed_in?
           .story-edit-button.float-right
             = link_to t('stories.edit'), edit_story_path, class: 'link'
         %hr/

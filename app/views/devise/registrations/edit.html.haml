@@ -2,9 +2,9 @@
   %br
   .card.user-devise-form
     .card-header.bg-dark
-      .header-title.text-center= t('sessions.signup')
+      .header-title.text-center= t('sessions.update_user')
     .card-body
-      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
         = f.error_notification
         .form-group
           = f.input :email,
@@ -13,6 +13,8 @@
             placeholder: 'email',
             autofocus: true ,
             input_html: { autocomplete: "email", class: 'form-control' }
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            %p= "Currently waiting confirmation for: #{resource.unconfirmed_email}"
         .form-group
           = f.input :password,
             required: true,
@@ -27,6 +29,9 @@
             placeholder: 'password',
             input_html: { autocomplete: "new-password", class: 'form-control' }
         .form-actions
-          = f.button :submit, t('sessions.new_user'), class: 'btn btn-dark'
+          = f.button :submit, "Aceptar", class: 'btn btn-dark'
         %br
-      = render "devise/shared/links"
+
+  .mr-5.mt-5.float-right
+    %h5 Eliminar mi cuenta
+    =link_to "Cancel my account", registration_path(resource_name), class: 'link', data: { confirm: "Are you sure?" }, method: :delete

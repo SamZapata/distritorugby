@@ -37,11 +37,6 @@
             <%= @news.title %>
           </div>
         </div>
-        <%- if user_signed_in? %>
-          <div class="news-edit-button float-right">
-            <%= link_to t('news.edit'), edit_news_path, class: 'link' %>
-          </div>
-        <%- end %>
         <hr/>
         <div class="news-show--date">
           <div class="float-right">
