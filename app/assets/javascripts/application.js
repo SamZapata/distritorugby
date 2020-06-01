@@ -20,5 +20,5 @@
 
 // From core of the application
 //= require main
-// = require core/main-menu.js
-// = require core/utilities.js
+//= require core/main-menu.js
+//= require core/utilities.js
