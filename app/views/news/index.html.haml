@@ -17,7 +17,7 @@
   .scrollmenu
 
     - Tags::News.all.each do |tag|
-      = link_to tag.name, "/news/tags/#{tag.name}", remote: true
+      = link_to tag.name, "/news/tags/#{tag.name}", class: 'link-w', remote: true
     -# TODO: Create an array with the main tags to show. tags = %(RWC FCR ...)
 
 .news-index
