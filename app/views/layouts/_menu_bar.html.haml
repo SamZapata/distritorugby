@@ -17,14 +17,24 @@
 					.mb-modal--label__home
 						= link_to 'HOME', '/', :class => 'label_text'
 					.mb-modal--label
-						= link_to (I18n.t 'menu.team'), team_index_path, :class => 'mb-modal--label__text'
-					.mb-modal--label
 						= link_to (I18n.t 'menu.news'), news_index_path, :class => 'mb-modal--label__text'
 					.mb-modal--label
 						= link_to t('menu.stories'), stories_path, :class => 'mb-modal--label__text'
 					.mb-modal--label
 						= link_to t('menu.tournaments'), game_tournaments_path, :class => 'mb-modal--label__text'
 					.mb-modal--label
+						= link_to t('menu.clubs'), game_clubs_path, :class => 'mb-modal--label__text'
+					.mb-modal--label
 						= link_to t('menu.toolbox'), toolbox_index_path, :class => 'mb-modal--label__text'
-					.mb-modal--label__home
-						.btn.btn-default{"data-dismiss" => "modal"}= t('common.close')
+					.mb-modal--label
+						= link_to (I18n.t 'menu.team'), team_index_path, :class => 'mb-modal--label__text'
+					.mb-modal--label__footer
+						= link_to '#', class: 'label_text' do
+							%i.fas.fa-question-circle.fa-2x
+						= link_to '#', class: 'label_text' do
+							%i.fab.fa-facebook.fa-2x
+						= link_to '#', class: 'label_text' do
+							%i.fab.fa-instagram.fa-2x
+						%span.float-right
+							= link_to '#', class: 'label_text', "data-dismiss" => "modal" do
+								%i.fas.fa-times.fa-2x

@@ -45,24 +45,13 @@
 						.area.a-iii
 							-# area background
 							.a-bg
-								-# = image_tag('main/nz-toolbox.jpg')
+								-# add something
 							.mm-option
-								= link_to (I18n.t 'home.toolbox'), toolbox_index_path, :class => 'text-caption'
-		-# .row
-		-# 	.col-6.col-lg-6.col-md-6.col-sm-6
-		-# 		.mm-a
-		-# 			.text
-		-# 				= link_to (I18n.t 'home.news'), news_index_path, :class => 'text-caption'
-		-# 	.col-6.col-lg-6.col-md-6.col-sm-6
-		-# 		.mm-b
-		-# 			.text
-		-# 				= link_to (I18n.t 'home.stories'), stories_path, :class => 'text--caption'
-		-# .row
-		-# 	.col-6.col-lg-6.col-md-6.col-sm-6
-		-# 		.mm-c
-		-# 			.text
-		-# 				= link_to (I18n.t 'home.tournaments'), tournaments_index_path, :class => 'text--caption'
-		-# 	.col-6.col-lg-6.col-md-6.col-sm-6
-		-# 		.mm-d
-		-# 			.text
-		-# 				= link_to 'Toolbox', toolbox_index_path, :class => 'text--caption'
+								= link_to (I18n.t 'home.clubs'), game_clubs_path, :class => 'text-caption'
+					-# .col-6.col-lg-6.col-md-6.col-sm-6
+					-# 	.area.a-iii
+					-# 		-# area background
+					-# 		.a-bg
+					-# 			-# = image_tag('main/nz-toolbox.jpg')
+					-# 		.mm-option
+					-# 				= link_to 'Toolbox', toolbox_index_path, :class => 'text--caption'

@@ -26,9 +26,9 @@
 				font-size: 0.5em
 
 	.menu-bar--modal
-		display: block
-		height: calc(90vh)
-		background-color: $menu-modal
+		// display: block
+		// height: calc(90vh)
+		// background-color: $menu-modal
 		.mb-modal--label
 			display: flex
 			width: calc(100%)
@@ -65,3 +65,20 @@
 				align-items: center
 				font-family: verdana
 				font-weight: bold
+
+		.mb-modal--label__footer
+			// display: inline-block
+			width: calc(100%)
+			height: calc(8vh)
+			text-align: start
+			padding: calc(1.8vh) 4%
+			&:hover
+				background-color: $menu-item-hover
+				.label_text
+					color: $white
+			.label_text
+				color: $dark
+				align-items: center
+				font-family: verdana
+				font-weight: bold
+				margin: 0 4px

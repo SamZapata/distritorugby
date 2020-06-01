@@ -26,11 +26,13 @@ es:
   context:
     district: Distrito de Aguablanca
   home:
+    clubs: CLUBES
     stories: HISTORIAS
     tournaments: TORNEOS
     news: NOTICIAS
     toolbox: TOOLBOX
   menu:
+    clubs: Clubes
     news: Noticias
     stories: Historias
     team: Equipo
