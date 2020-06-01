@@ -1,6 +1,8 @@
 class Game::PlayersController < ApplicationController
   before_action :set_game_player, only: [:show, :edit, :update, :destroy]
 
+  layout 'game/layoutPlayer'
+
   # GET /game/players
   # GET /game/players.json
   def index

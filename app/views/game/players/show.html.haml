@@ -1,42 +1,85 @@
-%p#notice= notice
+.player-show
+  %nav.player-breadcrumb{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a.link{:href => "/"}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a.link{:href => game_player_path}
+          = t('breadcrumb.players')
+      %li.breadcrumb-item.active{"aria-current" => "page"}
+        = @game_player.first_name.capitalize + " " + @game_player.last_name.capitalize
 
-%p
-  %b First name:
-  = @game_player.first_name
-%p
-  %b Last name:
-  = @game_player.last_name
-%p
-  %b Identification:
-  = @game_player.identification
-%p
-  %b Birthdate:
-  = @game_player.birthdate
-%p
-  %b Eps:
-  = @game_player.eps
-%p
-  %b Weigth:
-  = @game_player.weigth
-%p
-  %b Height:
-  = @game_player.height
-%p
-  %b Position:
-  = @game_player.position
-%p
-  %b Phone:
-  = @game_player.phone
-%p
-  %b Injuries:
-  = @game_player.injuries
-%p
-  %b About:
-  = @game_player.about
-%p
-  %b Email:
-  = @game_player.email
+  .player-content
+    .container
+      %h2.text-center Ficha Técnica del Jugador
+      .player-image
+        = image_tag "https://path2buypartner.com/images/avatar.png"
+      %hr
+      .player-info
+        %dl#player-name
+          %dt
+            %b Nombre completo
+          %dd= @game_player.first_name.capitalize + " " + @game_player.last_name.capitalize
+        %dl#player-birthdate
+          %dt
+            %b Fecha de nacimiento
+          %dd= @game_player.birthdate
+        %dl#player-current-club
+          %dt
+            %b Club actual
+          %dd= @game_player.club_teams.last.club.name
+        .player-about
+          .card
+            .card-body
+              %b Presentación
+              %p= @game_player.about
+            .card-footer
+              %i Redes Sociales
+        -# %dl#player-position
+        -#   %dt
+        -#     %b Posición
+        -#   %dd= @game_player
 
-= link_to 'Edit', edit_game_player_path(@game_player)
-\|
-= link_to 'Back', game_players_path
+-# %p#notice= notice
+-#
+-# %p
+-#   %b First name:
+-#   = @game_player.first_name
+-# %p
+-#   %b Last name:
+-#   = @game_player.last_name
+-# %p
+-#   %b Identification:
+-#   = @game_player.identification
+-# %p
+-#   %b Birthdate:
+-#   = @game_player.birthdate
+-# %p
+-#   %b Eps:
+-#   = @game_player.eps
+-# %p
+-#   %b Weigth:
+-#   = @game_player.weigth
+-# %p
+-#   %b Height:
+-#   = @game_player.height
+-# %p
+-#   %b Position:
+-#   = @game_player.position
+-# %p
+-#   %b Phone:
+-#   = @game_player.phone
+-# %p
+-#   %b Injuries:
+-#   = @game_player.injuries
+-# %p
+-#   %b About:
+-#   = @game_player.about
+-# %p
+-#   %b Email:
+-#   = @game_player.email
+-#
+-# = link_to 'Edit', edit_game_player_path(@game_player)
+-# \|
+-# = link_to 'Back', game_players_path
