@@ -1,6 +1,6 @@
 class Game::PlayerCteamJoin < ApplicationRecord
 
   belongs_to :player, class_name: 'Game::Player'
-  belongs_to :club_team, class_name: 'Game::ClubTeam'
-  
+  belongs_to :club_team, class_name: 'Game::ClubTeam', inverse_of: :player_cteam
+
 end

@@ -13,6 +13,11 @@ class Game::ClubsController < ApplicationController
     @continent = params[:c]
   end
 
+  def category
+    @game_club = Game::Club.find(params[:id])
+    @category = @game_club.club_categories.find_by(name: params[:category])
+  end
+
   def union
     @c = params[:c]
     @u = params[:u]
@@ -29,6 +34,7 @@ class Game::ClubsController < ApplicationController
   def show
     @label = params[:tag]
     @union = Game::Club.find(params[:id]).union
+    @category = @game_club.club_categories.first
   end
 
   # GET /game/clubs/new

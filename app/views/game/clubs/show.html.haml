@@ -32,8 +32,78 @@
         .scrollmenu
           - if @game_club.club_categories.exists?
             -@game_club.club_categories.each do |cc|
-              = cc.name
+              = link_to "/game/clubs/#{@game_club.id}/categories/#{cc.name}", class: 'link-w', remote: true do
+                %span= cc.name
+                %span= cc.branch
 
+        .club-category
+          - if @category.present?
+            .category-info
+              %dl#category-name
+                %dt Categoría
+                %dd= @category.name + " " + @category.branch
+              - schedules = @category.category_schedules
+              - if schedules.present?
+                %p Horarios de entreno
+                - schedules.each do |cs|
+                  %dl#category-schedule
+                    %dt= cs.day
+                    %dd= cs.start_time.strftime("%H:%M") + " - " + cs.end_time.strftime("%H:%M")
+
+            .category-teams
+              - if @category.club_teams.present?
+                %p
+                  %b Equipos
+                %ul#pills-tab-teams.nav.nav-pills.mb-3{:role => "tablist"}
+                  - @category.club_teams.each_with_index do |ct, i|
+                    - if i == 0
+                      %li.nav-item
+                        %a.nav-link.active{ id: "#{ct.mode}-tab","aria-controls" => "pills-home", "aria-selected" => "true", "data-toggle" => "pill", :href => "#pills-#{ct.mode}", :role => "tab"}= "Rugby " + ct.mode.to_s + "'s"
+                    - else
+                      %li.nav-item
+                        %a.nav-link{ id: "#{ct.mode}-tab", "aria-controls" => "pills-profile", "aria-selected" => "false", "data-toggle" => "pill", :href => "#pills-#{ct.mode}", :role => "tab"}= "Rugby " + ct.mode.to_s + "'s"
+                #pills-tabContent-teams.tab-content
+                  - @category.club_teams.each_with_index do |ct, i|
+                    - if i == 0
+                      .tab-pane.fade.show.active{ id: "pills-#{ct.mode}", "aria-labelledby" => "pills-home-tab", :role => "tabpanel"}
+                        .category-team-about
+                          - if ct.about.present?
+                            %p= ct.about
+                        .category-team-players
+                          %p
+                            %b Jugadores
+                          - if ct.players.present?
+                            .card-columns
+                              - ct.players.each do |p|
+                                .card
+                                  .card-header.text-center
+                                    = link_to "/game/players/#{p.id}", class: 'link' do
+                                      =p.first_name.capitalize + " " + p.last_name.capitalize
+                                    %br
+                                    %i position
+                          - else
+                            Lo sentimos, aún no hay jugadores registrados en este equipo. Comunicate con la persona encargada!
+
+                    - else
+                      .tab-pane.fade{ id: "pills-#{ct.mode}", "aria-labelledby" => "pills-profile-tab", :role => "tabpanel"}
+                        .category-team-about
+                          - if ct.about.present?
+                            %p= ct.about
+                        .category-team-players
+                          %p
+                            %b Jugadores
+                          - if ct.players.present?
+                            .card-columns
+                              - ct.players.each do |p|
+                                .card
+                                  .card-header.text-center
+                                    = link_to "/game/players/#{p.id}", class: 'link' do
+                                      =p.first_name.capitalize + " " + p.last_name.capitalize
+                                    %br
+                                    %i position
+
+
+-# modal info club
 #infoClubModal.modal.fade{'tabindex' => '-1', role: 'dialog', 'aria-labelledby' => 'infoClubModal', 'aria-hidden' => 'true'}
   .modal-dialog.modal-dialog-centered.modal-dialog-scrollable
     .modal-content
