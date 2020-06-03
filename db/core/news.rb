@@ -1,7 +1,6 @@
 require 'csv'
 
-# first time just News
-CSV.foreach(Rails.root.join('seed/update_020420_news.csv'), headers: true) do |row|
+CSV.foreach(Rails.root.join('seed/seeds-news.csv'), headers: true) do |row|
   # create tags for news
   tags = row['tags'].split(/, */)
   tags.each do |tag|
