@@ -15,8 +15,8 @@
 
 .clubs-filters
   .scrollmenu
-    - Game::Club::REGIONS.each do |k, v|
-      = link_to v, "/game/clubs/continent/#{k}", class: 'link-w', remote: true
+    - @countries.each do |c|
+      = link_to c, "/game/clubs/region/#{c}", class: 'link-w', remote: true
 
 .clubs-index
   .clubs-index__content.col-12

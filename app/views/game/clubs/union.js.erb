@@ -1,6 +1,0 @@
-var continent = "<%= Game::Club::REGIONS[@c.to_sym] %>"
-
-$('.clubs-breadcrumb nav ol.breadcrumb li').last().remove();
-$('.clubs-breadcrumb nav ol.breadcrumb').last().append(`<li class="breadcrumb-item">${continent}</li> <li class="breadcrumb-item active"> <%= @u %> </li>`);
-$('.clubs-index .clubs-index__content.col-12').html("")
-$('.clubs-index .clubs-index__content.col-12').html("<%= j (render partial: 'game/clubs/tags/clubs_by_union', locals: {c: @c, union: @union, u: @u}) %>")

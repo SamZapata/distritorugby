@@ -7,21 +7,17 @@ class Game::ClubsController < ApplicationController
   # GET /game/clubs.json
   def index
     @all_clubs = Game::Club.all
+    @countries = ::Game::FetchCountryUnion.new.call
   end
 
-  def continent
-    @continent = params[:c]
+  def region
+    @region = params[:r]
+    @union  = Game::Union.find_by(country: @region.to_s)
   end
 
   def category
     @game_club = Game::Club.find(params[:id])
     @category = @game_club.club_categories.find_by(name: params[:category])
-  end
-
-  def union
-    @c = params[:c]
-    @u = params[:u]
-    @union = Game::Union.find_by(abbr: params[:u])
   end
 
   def tags

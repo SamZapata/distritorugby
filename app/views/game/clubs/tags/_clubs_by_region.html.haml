@@ -1,6 +1,5 @@
 .clubs-index__content.col-12
-  - c = Game::Club::REGIONS[continent.to_sym]
-  %h5= "Conoce los clubes registrados por federación o unión de rugby de #{c}"
+  %h5= "Conoce los clubes registrados por federación o unión de rugby de #{region}"
   %hr
 
   .clubs-selection.card-columns
@@ -11,7 +10,7 @@
           = image_tag(union.logo, width: '100%', alt: "##{union.name} #DistritoRugby", class: 'img-hov' )
         - else
           = image_tag("common/600x400.svg", width: '100%', alt: "##{union.name} #DistritoRugby", class: 'img-hov' )
-        = link_to "/game/clubs/#{continent}/union/#{union.abbr}", class: 'link-w', remote: true do
+        = link_to "/game/clubs/#{region}/union/#{union.abbr}", class: 'link-w', remote: true do
           .card-img-overlay.d-flex.align-items-end.shadow
             .card-title-box
               .card-title

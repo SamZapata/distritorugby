@@ -1,0 +1,16 @@
+// modify breadcrumb active
+$('.clubs-breadcrumb nav ol.breadcrumb .breadcrumb-item.active').text("<%= @region %>");
+// add new html
+$('.clubs-index .clubs-index__content.col-12').html("")
+$('.clubs-index').html("<%= j (render partial: 'game/clubs/tags/clubs_by_union', locals: {union: @union}) %>")
+
+// var count_li = $('.clubs-breadcrumb nav ol.breadcrumb li').length;
+// ===================----------------
+// if (count_li == 3) {
+//   $('.clubs-breadcrumb nav ol.breadcrumb .breadcrumb-item.active').text("<%= @region %>");
+// }
+// else {
+//   $('.clubs-breadcrumb nav ol.breadcrumb li').last().remove();
+//   $('.clubs-breadcrumb nav ol.breadcrumb li').last().remove();
+//   $('.clubs-breadcrumb nav ol.breadcrumb').last().append(`<li class="breadcrumb-item active"> <%= @region %> </li>`);
+// }
