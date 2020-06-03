@@ -1,7 +1,7 @@
 .category-info
   %dl#category-name
     %dt Categoría
-    %dd= category.name + " " + category.branch
+    %dd= category.name.capitalize + " " + category.branch.capitalize
   - schedules = category.category_schedules
   - if schedules.present?
     %p Horarios de entreno
@@ -15,7 +15,7 @@
     %p
       %b Equipos
     %ul#pills-tab-teams.nav.nav-pills.mb-3{:role => "tablist"}
-      - category.club_teams.each_with_index do |ct, i|
+      - category_teams.each_with_index do |ct, i|
         - if i == 0
           %li.nav-item
             %a.nav-link.active{ id: "#{ct.mode}-tab","aria-controls" => "pills-home", "aria-selected" => "true", "data-toggle" => "pill", :href => "#pills-#{ct.mode}", :role => "tab"}= "Rugby " + ct.mode.to_s + "'s"
@@ -23,7 +23,7 @@
           %li.nav-item
             %a.nav-link{ id: "#{ct.mode}-tab", "aria-controls" => "pills-profile", "aria-selected" => "false", "data-toggle" => "pill", :href => "#pills-#{ct.mode}", :role => "tab"}= "Rugby " + ct.mode.to_s + "'s"
     #pills-tabContent-teams.tab-content
-      - category.club_teams.each_with_index do |ct, i|
+      - category_teams.each_with_index do |ct, i|
         - if i == 0
           .tab-pane.fade.show.active{ id: "pills-#{ct.mode}", "aria-labelledby" => "pills-home-tab", :role => "tabpanel"}
             .category-team-about

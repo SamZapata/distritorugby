@@ -1,25 +1,31 @@
 .clubs-index__content.col-12
-  %h5.text-center= union.name
+  %h5.text-center= union.name.titleize
   %hr
+  .text-center= image_tag union.logo, class: 'club-logo'
   %p.text-justify= union.about
   %p
     %b= "Fundada: "
     = union.founded.year
+  %p
+    %b= "Alias: "
+    = union.alias.capitalize
   %p
     %b= "Website: "
     = link_to union.website, union.website, target: '_blank'
   %br
   %b Clubes
   %hr
-
-  .clubs-selection.card-columns
-    - union.clubs.each do |club|
-      .card
-        - if club.picture != nil
-          = image_tag(club.picture, width: '100%', alt: "##{club.name} #DistritoRugby", class: 'img-hov' )
-        - else
-          = image_tag("common/600x400.svg", width: '100%', alt: "##{club.name} #DistritoRugby", class: 'img-hov' )
-        = link_to club, class: 'link-w' do
-          .card-img-overlay.d-flex.align-items-end.shadow
-            .card-title-box
-              .card-title= club.name
+  - if union.clubs.present?
+    .clubs-selection.card-columns
+      - union.clubs.each do |club|
+        .card
+          - if club.picture != nil
+            = image_tag(club.picture, width: '100%', alt: "##{club.name} #DistritoRugby", class: 'img-hov' )
+          - else
+            = image_tag("common/600x400.svg", width: '100%', alt: "##{club.name} #DistritoRugby", class: 'img-hov' )
+          = link_to club, class: 'link-w' do
+            .card-img-overlay.d-flex.align-items-end.shadow
+              .card-title-box
+                .card-title= club.name
+  - else
+    %p= "Lo sentimos, aún no tenemos clubes registrados de la #{union.name.titleize}"

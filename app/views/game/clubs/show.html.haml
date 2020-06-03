@@ -12,10 +12,10 @@
         %li.breadcrumb-item
           %a{:href => game_clubs_path, :class => 'link' }= t('breadcrumb.clubs')
         %li.breadcrumb-item.active
-          = @union.class.to_s == 'Game::Union' ? @union.country : @game_club.name
+          = @union.class.to_s == 'Game::Union' ? @union.country.capitalize : @game_club.name
 
   .club-show
-    .club-title= @game_club.name
+    .club-title= @game_club.name.titleize
     .club-show__cover
       - if @game_club.picture.present?
         = image_tag(@game_club.picture)
@@ -32,16 +32,16 @@
         .scrollmenu
           - if @game_club.club_categories.exists?
             -@game_club.club_categories.each do |cc|
-              = link_to "/game/clubs/#{@game_club.id}/categories/#{cc.name}", class: 'link-w', remote: true do
-                %span= cc.name
-                %span= cc.branch
+              = link_to "/game/clubs/#{@game_club.id}/categories/#{cc.id}", class: 'link-w', remote: true do
+                %span= cc.name.capitalize
+                %span= cc.branch[0,4]
 
         .club-category
           - if @category.present?
             .category-info
               %dl#category-name
                 %dt Categoría
-                %dd= @category.name + " " + @category.branch
+                %dd= @category.name.capitalize + " " + @category.branch.capitalize
               - schedules = @category.category_schedules
               - if schedules.present?
                 %p Horarios de entreno
@@ -55,7 +55,7 @@
                 %p
                   %b Equipos
                 %ul#pills-tab-teams.nav.nav-pills.mb-3{:role => "tablist"}
-                  - @category.club_teams.each_with_index do |ct, i|
+                  - @category_teams.each_with_index do |ct, i|
                     - if i == 0
                       %li.nav-item
                         %a.nav-link.active{ id: "#{ct.mode}-tab","aria-controls" => "pills-home", "aria-selected" => "true", "data-toggle" => "pill", :href => "#pills-#{ct.mode}", :role => "tab"}= "Rugby " + ct.mode.to_s + "'s"
@@ -63,7 +63,7 @@
                       %li.nav-item
                         %a.nav-link{ id: "#{ct.mode}-tab", "aria-controls" => "pills-profile", "aria-selected" => "false", "data-toggle" => "pill", :href => "#pills-#{ct.mode}", :role => "tab"}= "Rugby " + ct.mode.to_s + "'s"
                 #pills-tabContent-teams.tab-content
-                  - @category.club_teams.each_with_index do |ct, i|
+                  - @category_teams.each_with_index do |ct, i|
                     - if i == 0
                       .tab-pane.fade.show.active{ id: "pills-#{ct.mode}", "aria-labelledby" => "pills-home-tab", :role => "tabpanel"}
                         .category-team-about
@@ -139,12 +139,12 @@
           - if @game_club.instagram.present?
             %p.mr-2
               = link_to @game_club.instagram, target: '_blank', class: 'link' do
-                %i.fab.fa-instagram
+                %i.fab.fa-instagram.fa-2x
           - if @game_club.twitter.present?
             %p.mr-2
               = link_to @game_club.twitter, target: '_blank', class: 'link' do
-                %i.fab.fa-twitter
+                %i.fab.fa-twitter.fa-2x
           - if @game_club.youtube.present?
             %p.mr-2
               = link_to @game_club.youtube, target: '_blank', class: 'link' do
-                %i.fab.fa-youtube
+                %i.fab.fa-youtube.fa-2x

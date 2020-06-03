@@ -1,5 +1,5 @@
 // modify breadcrumb active
-$('.clubs-breadcrumb nav ol.breadcrumb .breadcrumb-item.active').text("<%= @region %>");
+$('.clubs-breadcrumb nav ol.breadcrumb .breadcrumb-item.active').text("<%= @region.capitalize %>");
 // add new html
 $('.clubs-index .clubs-index__content.col-12').html("")
 $('.clubs-index').html("<%= j (render partial: 'game/clubs/tags/clubs_by_union', locals: {union: @union}) %>")

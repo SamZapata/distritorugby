@@ -17,7 +17,8 @@ class Game::ClubsController < ApplicationController
 
   def category
     @game_club = Game::Club.find(params[:id])
-    @category = @game_club.club_categories.find_by(name: params[:category])
+    @category = @game_club.club_categories.find(params[:category])
+    @category_teams = @category.club_teams.where(club_id: @game_club.id)
   end
 
   def tags
@@ -31,6 +32,7 @@ class Game::ClubsController < ApplicationController
     @label = params[:tag]
     @union = Game::Club.find(params[:id]).union
     @category = @game_club.club_categories.first
+    @category_teams = @category.club_teams.where(club_id: @game_club.id)
   end
 
   # GET /game/clubs/new
