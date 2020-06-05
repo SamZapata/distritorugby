@@ -15,9 +15,8 @@
 
 .stories-filters
   .scrollmenu
-    - story_tags = %w(Jugadores Clubes Selecciones Entrenadores)
-    - story_tags.each do |tag|
-      = link_to tag, "/stories/tags/#{tag}", class: 'link-w', remote: true
+    - Tags::Story.all.each do |tag|
+      = link_to tag.name, "/stories/tags/#{tag.name}", class: 'link-w', remote: true
     -# - Tags::Story.all.each do |tag|
     -# TODO: Create an array with the main tags to show. TOP of Stories
 
