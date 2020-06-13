@@ -7,6 +7,9 @@ class Game::Club < ApplicationRecord
     'america':  'América',
     'asia':     'Asia'
   }
+  validates :name, presence: true, uniqueness: true
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
   has_many :club_categories, class_name: 'Game::ClubCategory', dependent: :destroy
 

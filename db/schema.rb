@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_032112) do
+ActiveRecord::Schema.define(version: 2020_06_13_025829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
 
   create_table "game_category_schedules", force: :cascade do |t|
     t.string "day"
@@ -68,6 +79,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_032112) do
     t.string "address"
     t.string "logo"
     t.string "alias"
+    t.string "slug"
   end
 
   create_table "game_coach_team_joins", force: :cascade do |t|
@@ -89,6 +101,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_032112) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
   end
 
   create_table "game_match_stats", force: :cascade do |t|
@@ -126,6 +139,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_032112) do
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
   end
 
   create_table "game_nn_teams", force: :cascade do |t|
@@ -169,6 +183,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_032112) do
     t.datetime "updated_at", null: false
     t.integer "team_id"
     t.integer "club_team_id"
+    t.string "slug"
   end
 
   create_table "game_referees", force: :cascade do |t|
@@ -182,6 +197,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_032112) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
   end
 
   create_table "game_tournament_groups", force: :cascade do |t|
@@ -203,6 +219,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_032112) do
     t.string "organizer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
   end
 
   create_table "game_unions", force: :cascade do |t|
@@ -216,6 +233,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_032112) do
     t.string "alias"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
   end
 
   create_table "news", force: :cascade do |t|
@@ -229,6 +247,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_032112) do
     t.string "image"
     t.string "image_legend"
     t.string "video_legend"
+    t.string "slug"
   end
 
   create_table "stories", force: :cascade do |t|
@@ -242,6 +261,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_032112) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "tags", default: [], array: true
+    t.string "slug"
   end
 
   create_table "tags_news", force: :cascade do |t|
@@ -308,6 +328,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_032112) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

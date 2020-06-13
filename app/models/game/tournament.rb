@@ -1,6 +1,9 @@
 class Game::Tournament < ApplicationRecord
 
-  validates :name, :about, :start_date, presence: true
+  validates :name, presence: true, uniqueness: true
+  validates :about, :start_date, presence: true
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
   has_many :groups, class_name: 'Game::Tournament::Group', dependent: :destroy
 
