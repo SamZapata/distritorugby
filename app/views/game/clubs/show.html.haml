@@ -42,6 +42,9 @@
               %dl#category-name
                 %dt Categoría
                 %dd= @category.name.capitalize + " " + @category.branch.capitalize
+              %dl#category-coach
+                %dt Entrenador(a)
+                %dd= @category.name.capitalize
               - schedules = @category.category_schedules
               - if schedules.present?
                 %p Horarios de entreno
