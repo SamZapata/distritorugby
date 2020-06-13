@@ -78,5 +78,3 @@ doc/*.svg
 
 ## Redis
 *.rdb
-
-Gemfile.lock
