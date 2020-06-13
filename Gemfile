@@ -47,8 +47,6 @@ gem 'font-awesome-rails'
 gem 'friendly_id', '~> 5.2.4'
 
 # from github alerts
-# gem 'activesupport', '~> 5.2.4'
-# gem 'rubyzip', '~> 1.3.0'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
