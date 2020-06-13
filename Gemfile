@@ -8,7 +8,7 @@ gem 'rails', '~> 5.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', ">= 3.12.6"
 # Use SCSS for stylesheets - deprecated in march 2019
 gem 'sass-rails', '~> 5.0'
 # new version
@@ -31,7 +31,7 @@ gem 'cancancan', '~> 2.0'
 # Haml
 gem "haml-rails"
 # Bootstrap
-gem 'bootstrap', '~> 4.1.3'
+gem 'bootstrap', '~> 4.3.1'
 # JQuery
 gem 'jquery-rails'
 # Popper for improve the UI
@@ -39,12 +39,14 @@ gem 'popper_js', '~> 1.9', '>= 1.9.9'
 # I18n to internationalize
 gem 'rails-i18n', '~> 5.1'
 gem 'devise-i18n', '~> 1.6', '>= 1.6.4'
-# load pdf
-gem 'pdfjs_viewer-rails'
 # forms
-gem 'simple_form'
-#Gema para iconos font-awesome
+gem 'simple_form', '>= 5.0.0'
+# Gema para iconos font-awesome
 gem 'font-awesome-rails'
+# slugs
+gem 'friendly_id', '~> 5.2.4'
+
+# from github alerts
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
