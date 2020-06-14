@@ -30,7 +30,7 @@ class Game::ClubsController < ApplicationController
   # GET /game/clubs/1.json
   def show
     @label = params[:tag]
-    @union = Game::Club.find(params[:id]).union
+    @union = Game::Club.find_by(slug: params[:id]).union
     @category = @game_club.club_categories.first
     @category_teams = @category.club_teams.where(club_id: @game_club.id)
   end

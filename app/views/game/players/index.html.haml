@@ -1,43 +1,28 @@
-%h1 Listing game_players
+.players-breadcrumb
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a{:href => "/", :class => 'link'}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a{:href => game_players_path, :class => 'link' }= t('breadcrumb.players')
+      %li.breadcrumb-item.active Recientes
 
-%table
-  %thead
-    %tr
-      %th First name
-      %th Last name
-      %th Identification
-      %th Birthdate
-      %th Eps
-      %th Weigth
-      %th Height
-      %th Position
-      %th Phone
-      %th Injuries
-      %th About
-      %th Email
-      %th
-      %th
-      %th
+.players-filters
+  .scrollmenu
+    - %w(profesional amateur juvenil).each do |c|
+      = link_to c, "/game/clubs/region/#{c}", class: 'link-w', remote: true
 
-  %tbody
-    - @game_players.each do |game_player|
-      %tr
-        %td= game_player.first_name
-        %td= game_player.last_name
-        %td= game_player.identification
-        %td= game_player.birthdate
-        %td= game_player.eps
-        %td= game_player.weigth
-        %td= game_player.height
-        %td= game_player.position
-        %td= game_player.phone
-        %td= game_player.injuries
-        %td= game_player.about
-        %td= game_player.email
-        %td= link_to 'Show', game_player
-        %td= link_to 'Edit', edit_game_player_path(game_player)
-        %td= link_to 'Destroy', game_player, method: :delete, data: { confirm: 'Are you sure?' }
+.players-index
+  .players-index__content.col-12
+    %h5 Jugadores registrados recientemente
+    %hr
 
-%br
-
-= link_to 'New Player', new_game_player_path
+    .card-columns
+      - @game_players.each do |p|
+        .card
+          .card-header.text-center
+            = link_to "/game/players/#{p.id}", class: 'link' do
+              =p.first_name.capitalize + " " + p.last_name.capitalize
+            %br
+            %i= p.position.capitalize
