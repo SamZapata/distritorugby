@@ -45,6 +45,8 @@ gem 'simple_form', '>= 5.0.0'
 gem 'font-awesome-rails'
 # slugs
 gem 'friendly_id', '~> 5.2.4'
+# uploads media files
+gem "cloudinary"
 
 # from github alerts
 
