@@ -1,18 +1,8 @@
 ---
 es:
   about:
-    section: Es una iniciativa que busca ser un instrumento que permita compartir
-      saberes, experiencias, historias, noticias, anécdotas, artículos y contenido
-      alrededor del rugby, donde estos puedan ser útiles o sirvan de motivación para
-      otras personas, grupos o comunidades que trabajan por el desarrollo y posicionamiento
-      en/de esta disciplina deportiva. Distrito Rugby nace con el fin de promover
-      el desarrollo, promoción e implementación del rugby en lugares donde aún es
-      poco conocido o en los cuales se gestan procesos deportivos con niños, niñas,
-      adolescentes y jóvenes que ven en el rugby un nuevo estilo de vida, sobreponiéndose
-      así, con dinamismo, a las falsas percepciones recurrentes alrededor del rugby,
-      aún cuando se desconocen tan siquiera sus principios, tanto de juego como en
-      valores de vida.
-    title: Sobre Distrito Rugby
+    section: Si te encanta el rugby y quieres compartir tu experiencia vívida o quieres conocer un poco sobre este deporte, cómo se juega, dónde practicar y estar actualizado sobre el desarrollo de este apasionante juego, Distrito Rugby es la plataforma ideal para que revivas cada momento y lo compartas con toda una comunidad rugbier.
+    title: Distrito Rugby
   breadcrumb:
     clubs: Clubes
     news: Noticias
@@ -23,6 +13,8 @@ es:
     close: Cerrar
     see_pdf: ver pdf
     published_on: Publicado el
+    signin: Registrarse
+    login: Acceder
   context:
     district: Distrito de Aguablanca
   home:
