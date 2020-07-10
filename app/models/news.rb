@@ -9,7 +9,7 @@ class News < ApplicationRecord
   has_many :tags_news_joins, class_name: 'Tags::NewsJoin', dependent: :destroy, inverse_of: :news
   has_many :tags_news, through: :tags_news_joins
 
-  # has_one_attached :image
+  has_one_attached :image
 
   # accepts_nested_attributes_for :tags, allow_destroy: true
 

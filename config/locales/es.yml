@@ -15,6 +15,7 @@ es:
     published_on: Publicado el
     signin: Registrarse
     login: Acceder
+    save: Guardar
   context:
     district: Distrito de Aguablanca
   home:
@@ -35,17 +36,18 @@ es:
     edit: Editar
     edit_title: Editar la Noticia
     image: Imagen
+    image_legend: Leyenda de la imagen
     new: Nueva Noticia
     news: Noticias
     notice:
       confirm_creation: Confirm creation
       confirm_destruction: Registro eliminado satisfactoriamente
       confirm_update: Confirm update
-    summary: Resumen
+    summary: Resumen corto de la noticia
     tags:
       name: Etiquetas
     talking: Cuerpo de la Noticia
-    title: Título
+    title: Título de la Noticia
     video: Video
   stories:
     edit: Editar
@@ -78,6 +80,11 @@ es:
       phone_numbers: 304 373 6578 - 311 419 6682
       schedule: Martes y Viernes - 6:30pm
       site: Cancha de Los Naranjos I - (Cra 26g3 con Cll 77a)
+  shared:
+    upload_image: Cargar una imagen
+    image_legend: Leyenda de la imagen
+    video_emb: Agregar video embebido
+    video_legend: Leyenda del video
   time:
     formats:
       own: '%b %d, %Y'

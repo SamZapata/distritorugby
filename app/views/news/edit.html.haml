@@ -15,7 +15,6 @@
         %a{:href => news_path, :class => 'link'}= @news.title
       %li.breadcrumb-item.active{:href => edit_news_path, :class => 'breadcrumb-item active' }= t('news.edit')
 
+  %h3.text-center= t('news.edit_title')
   - if user_signed_in?
-    %h3.text-center= t('news.edit_title')
-
     = render 'form', news: @news

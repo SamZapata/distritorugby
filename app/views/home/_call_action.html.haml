@@ -1,7 +1,4 @@
-.call-action
-  .container
-    .row
-      .col-6
-        .user-signup= t('common.signin')
-      .col-6
-        .user-login= t('common.login')
+.container
+  .call-action-wrapper
+    .user-signup= link_to t('common.signin'), "/users/sign_up", class: 'link-w'
+    .user-login= link_to t('common.login'), "/users/sign_in", class: 'link-w'

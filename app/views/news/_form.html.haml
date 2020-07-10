@@ -12,18 +12,19 @@
         .news-form--caption
           = f.input :title, input_html: { class: "form-control" }, label: t('news.title')
         .news-form--caption
-          = f.input :image, input_html: { class: "form-control" }, label: t('news.image')
-          -# = f.file_field :image, input_html: { class: "form-control" }, direct_upload: true
-        .news-form--caption
-          = f.input :image_legend, input_html: { class: "form-control" }, label: t('news.image')
-        .news-form--caption
           = f.input :summary, input_html: { class: "form-control" }, label: t('news.summary')
+        .news-form--caption
+          %span= t('shared.upload_image')
+          = f.file_field :image, direct_upload: true, input_html: { class: "form-control" }
+        .news-form--caption
+          = f.input :image_legend, input_html: { class: "form-control" }, label: t('news.image_legend')
+
         .news-form--caption
           = f.input :talking, input_html: { class: "form-control", minlength: '100px' }, label: t('news.talking')
         .news-form--caption
-          = f.input :emb_video, input_html: { class: "form-control" }, label: t('news.video')
+          = f.input :emb_video, input_html: { class: "form-control" }, label: t('shared.video_emb')
         .news-form--caption
-          = f.input :video_legend, input_html: { class: "form-control" }, label: t('news.video')
+          = f.input :video_legend, input_html: { class: "form-control" }, label: t('shared.video_legend')
 
         -# = f.simple_fields_for :tags_attributes do |p|
         -#   .news-form--caption
@@ -31,4 +32,4 @@
 
         %br
         -# save
-        = f.button :submit, t('news.create'), class: 'btn btn-danger btn-lg'
+        = f.button :submit, t('common.save'), class: 'btn btn-danger btn-lg'

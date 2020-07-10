@@ -1,17 +1,44 @@
-.call-action
+.call-action-wrapper
   display: flex
+  flex-direction: row
   justify-content: center
   font-size: 1.4rem
   color: white
+  font-weight: bold
   .user-signup
+    display: flex
+    align-items: center
+    justify-content: center
+    min-height: 100px
     height: auto
     width: calc(100%)
-    background-color: red
-    padding: 10px
-    text-align: center
+    background-image: image-url('main/rugby-run.png')
+    background-size: contain
+    background-repeat: no-repeat
+    background-position: center
+    background-color: #7b000b
+    &:hover
+      background-color: #cf0029
   .user-login
+    display: flex
+    align-items: center
+    justify-content: center
+    min-height: 100px
     height: auto
     width: calc(100%)
-    background-color: green
-    padding: 10px
-    text-align: center
+    background-image: image-url('main/rugby-try.png')
+    background-size: calc(90%)
+    background-repeat: no-repeat
+    background-position: center
+    background-color: #49000e
+
+    &:hover
+      background-color: #cf0029
+
+  @media all and (min-width: 420px)
+    .user-login
+      background-size: calc(50%)
+
+  @media all and (min-width: 1045px)
+    .user-login
+      background-size: calc(35%)

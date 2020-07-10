@@ -1,0 +1,54 @@
+/
+  \/ Project: Distrito Rugby
+/
+  \/ Author: Johnny Zapata
+/
+  \/ @jsamzapata
+/
+  \/ file: news show
+.distrito-rugby-news
+  %nav{"aria-label" => "breadcrumb"}
+    /
+      <div class="button-filters">
+      <i class="fas fa-exchange-alt"></i>
+      </div>
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a.link{:href => "/"}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a.link{:href => news_index_path}
+          = t('breadcrumb.news')
+      %li.breadcrumb-item.active{"aria-current" => "page"}
+        - if @label.present?
+          = @label
+        - elsif @news.tags_news.present?
+          = @news.tags_news.last.name
+        - else
+          = @news.created_at.strftime("%Y-%m-%d")
+  .news-show
+    .row
+      .col-1
+      .col-10
+        .news-show--title
+          .text-center
+            = @news.title
+        %hr/
+        .news-show--date
+          .float-right
+            = t('common.published_on: ') + @news.created_at.strftime("%Y - %m - %d")
+        .news-show--summary
+          = @news.summary
+        .news-show--image
+          = image_tag(@news.image, class: 'news-show--image', alt: "##{@news.title} #DistritoRugby" )
+          .news-show--caption
+            = @news.image_legend
+        %br/
+        .news-show--body
+          = simple_format @news.talking
+        / video
+        - if @news.emb_video.present?
+          .news-show--video
+            = @news.emb_video.html_safe
+            .news-show--caption
+              = @news.video_legend
