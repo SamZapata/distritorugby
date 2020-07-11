@@ -1,5 +1,19 @@
-%h1 New story
+// Project: Distrito Rugby
+// Author: Johnny Zapata
+// @jsamzapata
+// file: story new
 
-= render 'form'
+.distrito-rugby-story
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a{:href => "/", :class => 'link'}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a{:href => stories_path, :class => 'link' }= t('breadcrumb.stories')
+      %li.breadcrumb-item.active{"aria-current" => "page"}= t('story.new')
 
-= link_to 'Back', stories_path
+  %section.story-updating
+    .section-name= t('story.share_a_story')
+    .story-content
+      = render 'form'

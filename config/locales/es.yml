@@ -49,6 +49,15 @@ es:
     talking: Cuerpo de la Noticia
     title: Título de la Noticia
     video: Video
+  story:
+    modify: Modificar
+    name: Nombre de la Historia
+    new: Nueva Historia
+    body: Relata tu historia
+    image_caption: Leyenda de la imagen
+    modify_story: Modificar la Historia
+    summary: Frase celebre de tu historia
+    share_a_story: Comparte una Historia
   stories:
     edit: Editar
   sessions:
@@ -85,6 +94,7 @@ es:
     image_legend: Leyenda de la imagen
     video_emb: Agregar video embebido
     video_legend: Leyenda del video
+    video_caption: Leyenda del video
   time:
     formats:
       own: '%b %d, %Y'

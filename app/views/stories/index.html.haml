@@ -25,7 +25,7 @@
     .stories-selection.card-columns
       - @all_stories.each do |story|
         .card
-          = link_to(image_tag(story.image, width: '100%', alt: "##{story.name} #DistritoRugby", class: 'img-hov' ), story)
+          -# = link_to(image_tag(story.image, width: '100%', alt: "##{story.name} #DistritoRugby", class: 'img-hov' ), story)
           .card-body
             %h5.card-title= link_to story.name, story, class: 'link'
             %p.card-text= story.summary
