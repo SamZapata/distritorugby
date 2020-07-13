@@ -1,20 +1,43 @@
+// Project: Distrito Rugby
+// Author: Johnny Zapata
+// @jsamzapata
+
+.club-form
+  -# %form
+  .form-group
+    = simple_form_for @game_club do |f|
+      = f.error_notification
+      .club-form--caption
+        = f.input :name, input_html: { class: "form-control" }, label: t('club.name')
+      .club-form--caption
+        = f.input :about, input_html: { class: "form-control" }, label: t('club.about')
+      .club-form--caption
+        = f.input :email, input_html: { class: "form-control" }, label: t('club.email')
+      .club-form--caption
+        = f.input :phone, input_html: { class: "form-control" }, label: t('club.phone')
+      .club-form--caption
+        = f.input :emb_location, input_html: { class: "form-control" }, label: t('club.emb_location')
+      .club-form--caption
+        = f.input :webpage, input_html: { class: "form-control" }, label: t('club.webpage')
+      .club-form--caption
+        = f.input :facebook, input_html: { class: "form-control" }, label: t('club.facebook')
+      .club-form--caption
+        = f.input :instagram, input_html: { class: "form-control" }, label: t('club.instagram')
+      .club-form--caption
+        = f.input :twitter, input_html: { class: "form-control" }, label: t('club.twitter')
+      .club-form--caption
+        = f.input :youtube, input_html: { class: "form-control" }, label: t('club.youtube')
+      .club-form--caption
+        %p= t('shared.upload_image')
+        = f.file_field :picture, direct_upload: true, input_html: { class: "form-control" }
+
+      -# = f.simple_fields_for :tags_attributes do |p|
+      -#   .club-form--caption
+      -#     = p.input :name, input_html: { class: "form-control" }, label: t('club.tags.name')
+
+      %br
+      -# save
+      = f.button :submit, t('common.save'), class: 'btn btn-danger btn-lg float-right'
+
+
 -# frozen_string_literal: true
-= simple_form_for(@game_club) do |f|
-  = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-
-  .form-inputs
-    = f.input :name
-    = f.input :about
-    = f.input :picture
-    = f.input :emb_location
-    = f.input :phone
-    = f.input :email
-    = f.input :webpage
-    = f.input :instagram
-    = f.input :facebook
-    = f.input :twitter
-    = f.input :youtube
-
-  .form-actions
-    = f.button :submit

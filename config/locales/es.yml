@@ -102,3 +102,17 @@ es:
     building: En construcción!!!
   tournaments:
     building: En construcción!!!
+  club:
+    name: Nombre del Club
+    about: Resumen sobre el club
+    modify_club: Actualizar Datos del Club
+    email: Email del Club
+    phone: Teléfono de contacto del Club
+    emb_location: Localización embebida de la sede
+    webpage: Sitio Web del Club
+    facebook: Link del perfil de Facebook del club
+    instagram: Link del perfil de Instagram del club
+    twitter: Link del perfil de Twitter del club
+    youtube: Link del canal de Youtube del club
+    create: Registrar un Club
+    new: Nuevo

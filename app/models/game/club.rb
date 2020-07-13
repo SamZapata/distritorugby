@@ -18,4 +18,6 @@ class Game::Club < ApplicationRecord
 
   belongs_to :union, class_name: 'Game::Union', dependent: :destroy
 
+  has_one_attached :picture
+
 end

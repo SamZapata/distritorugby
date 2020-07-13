@@ -1,7 +1,6 @@
 // Project: Distrito Rugby
 // Author: Johnny Zapata
 // @jsamzapata
-// file: stories form
 
 .story-form
   -# %form
@@ -13,17 +12,16 @@
       .story-form--caption
         = f.input :summary, input_html: { class: "form-control" }, label: t('story.summary')
       .story-form--caption
-        %span= t('shared.upload_image')
-        = f.file_field :image, direct_upload: true, input_html: { class: "form-control" }
-      .story-form--caption
-        = f.input :image_caption, input_html: { class: "form-control" }, label: t('story.image_caption')
-      .story-form--caption
         = f.input :body, input_html: { class: "form-control", minlength: '100px' }, label: t('story.body')
       .story-form--caption
         = f.input :emb_video, input_html: { class: "form-control" }, label: t('shared.video_emb')
       .story-form--caption
         = f.input :video_caption, input_html: { class: "form-control" }, label: t('shared.video_caption')
-
+      .story-form--caption
+        %span= t('shared.upload_image')
+        = f.file_field :image, direct_upload: true, input_html: { class: "form-control" }
+      .story-form--caption
+        = f.input :image_caption, input_html: { class: "form-control" }, label: t('story.image_caption')
       -# = f.simple_fields_for :tags_attributes do |p|
       -#   .story-form--caption
       -#     = p.input :name, input_html: { class: "form-control" }, label: t('story.tags.name')
@@ -31,23 +29,3 @@
       %br
       -# save
       = f.button :submit, t('common.save'), class: 'btn btn-danger btn-lg float-right'
-
-
-
--# frozen_string_literal: true
-
--# = simple_form_for(@story) do |f|
-  = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-
-  .form-inputs
-    = f.input :name
-    = f.input :summary
-    = f.input :body
-    = f.input :emb_video
-    = f.input :image
-    = f.input :image_caption
-    = f.input :video_caption
-
-  .form-actions
-    = f.button :submit

@@ -1,7 +1,19 @@
-%h1 Editing game_club
+// Project: Distrito Rugby
+// Author: Johnny Zapata
+// @jsamzapata
 
-= render 'form'
+.club-breadcrumb
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a{:href => "/", :class => 'link'}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a{:href => game_clubs_path, :class => 'link' }= t('breadcrumb.clubs')
+      %li.breadcrumb-item.active
+        = @union.class.to_s == 'Game::Union' ? @union.country.capitalize : @game_club.name
 
-= link_to 'Show', @game_club
-\|
-= link_to 'Back', game_clubs_path
+%section.club-updating
+  .section-name= t('club.modify_club')
+  .club-content
+    = render 'form'
