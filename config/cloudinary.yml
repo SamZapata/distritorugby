@@ -1,19 +1,19 @@
 ---
 development:
   cloud_name: jsam
-  api_key: '323971932749269'
-  api_secret: ziAguYAssQyobSAWgA3YQk3VlaA
+  api_key: '395612515316282'
+  api_secret: bh0NjwHeeahHCIWQPIzlqePgQf4
   enhance_image_tag: true
   static_file_support: false
 production:
   cloud_name: jsam
-  api_key: '323971932749269'
-  api_secret: ziAguYAssQyobSAWgA3YQk3VlaA
+  api_key: '395612515316282'
+  api_secret: bh0NjwHeeahHCIWQPIzlqePgQf4
   enhance_image_tag: true
   static_file_support: true
 test:
   cloud_name: jsam
-  api_key: '323971932749269'
-  api_secret: ziAguYAssQyobSAWgA3YQk3VlaA
+  api_key: '395612515316282'
+  api_secret: bh0NjwHeeahHCIWQPIzlqePgQf4
   enhance_image_tag: true
   static_file_support: false
