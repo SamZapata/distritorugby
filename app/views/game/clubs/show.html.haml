@@ -44,7 +44,11 @@
                 %dd= @category.name.capitalize + " " + @category.branch.capitalize
               %dl#category-coach
                 %dt Head Coach
-                %dd= @category.name.capitalize
+                - if @category.club_teams.present?
+                  - coach = @category_teams.first.coaches.first.full_name
+                - else
+                  - coach = "Por Definir"
+                %dd= coach
               - schedules = @category.category_schedules
               - if schedules.present?
                 %p Horarios de entreno

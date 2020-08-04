@@ -33,6 +33,7 @@ class Game::ClubsController < ApplicationController
     @union = Game::Club.find_by(slug: params[:id]).union
     @category = @game_club.club_categories.first
     @category_teams = @category.club_teams.where(club_id: @game_club.id)
+    @club_data = Game::Club::FetchInfoClub.new.call @game_club
   end
 
   # GET /game/clubs/new

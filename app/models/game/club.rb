@@ -16,6 +16,10 @@ class Game::Club < ApplicationRecord
   has_many :club_matches, class_name: 'Game::ClubMatch', dependent: :destroy, inverse_of: :game_clubs
   has_many :matches, through: :club_matches
 
+  # coaches
+  has_many :club_coaches, class_name: 'Game::ClubCoachJoin', dependent: :destroy, inverse_of: :clubs
+  has_many :coaches, through: :club_coaches
+
   belongs_to :union, class_name: 'Game::Union', dependent: :destroy
 
   has_one_attached :picture

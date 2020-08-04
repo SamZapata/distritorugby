@@ -1,6 +1,8 @@
 class Game::CoachesController < ApplicationController
   before_action :set_game_coach, only: [:show, :edit, :update, :destroy]
 
+  layout 'game/layoutCoach'
+
   # GET /game/coaches
   # GET /game/coaches.json
   def index
@@ -64,7 +66,7 @@ class Game::CoachesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_game_coach
-      @game_coach = Game::Coach.find(params[:id])
+      @game_coach = Game::Coach.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
