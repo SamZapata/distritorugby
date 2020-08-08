@@ -35,9 +35,10 @@
         .story-show--summary
           = @story.summary
         .story-show--image
-          = image_tag(@story.image, class: 'story-show--image', alt: "##{@story.name} #DistritoRugby" )
-          .story-show--caption
-            = @story.image_caption
+          - if @story.image.present?
+            = image_tag(@story.image, class: 'story-show--image', alt: "##{@story.name} #DistritoRugby" )
+            .story-show--caption
+              = @story.image_caption
         %br/
         .story-show--body
           = simple_format @story.body
