@@ -79,7 +79,7 @@ group :development do
   gem 'spirit_hands'
   gem 'faker'
   # graph db
-  gem "rails-erd"
+  # gem "rails-erd"
 end
 
 group :test do
