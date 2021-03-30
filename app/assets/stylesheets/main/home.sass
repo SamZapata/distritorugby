@@ -22,7 +22,7 @@
 			height: calc(50vh)
 			width: calc(100%)
 			background-color: $main-menu-a
-			border: 0.25px solid white
+			border: 1 0.25px solid white
 			justify-content: center
 			align-items: center
 			padding: 10px
@@ -98,51 +98,49 @@
 			display: flex
 			justify-content: center
 			padding: auto
-			/* diamond */
-			// .diamond
-			// 	display: flex
-			// 	position: absolute
-			// 	margin: auto
-			// 	height: calc(28.2vh)
-			// 	width: calc(28vh)
-			// 	background-color: $dark
-			// 	background: url('https://media2.giphy.com/media/26DN2sglox9GdAZoc/200w.gif?cid=3640f6095be92ec372416f3645297a81') no-repeat
-			// 	background-size: calc(100%) calc(100%)
-			// 	border: 1px solid white
-			// 	transform: rotate(45deg)
-			// 	-webkit-transform: rotate(45deg)
-			// 	z-index: 1
-			// 	top: calc(36vh)
-			// 	animation: rotary 4s
-			// 	--webkit-animation: rotary 4s
 
+		// transiction of images on the diamond
+		@keyframes shine
+			0%
+				background: url('https://media3.giphy.com/media/26msDF2awpmKly9KU/200w.gif?cid=3640f6095be94bf1633043744def6953') no-repeat
+				background-size: calc(100%) calc(100%)
+				// background-color: blue
+				transform: scale(1) rotate(-45deg)
+				-webkit-transform: scale(1) rotate(-45deg)
+				animation-delay: 3s
+			25%
+				background-color: yellow
+			
+
+
+		// keyframe to rotate and change image on the diamond
 		@keyframes rotary
 			0%
 				background: url('https://media3.giphy.com/media/26msDF2awpmKly9KU/200w.gif?cid=3640f6095be94bf1633043744def6953') no-repeat
 				background-size: calc(100%) calc(100%)
 				// background-color: blue
-				transform: rotate(135deg) scale(0.75,0.7)
-				-webkit-transform: rotate(135deg) scale(0.75,0.7)
+				transform: scale(1) rotate(-45deg)
+				-webkit-transform: scale(1) rotate(-45deg)
 				animation-delay: 3s
 			25%
 				background: url('https://media3.giphy.com/media/26msDF2awpmKly9KU/200w.gif?cid=3640f6095be94bf1633043744def6953') no-repeat
 				background-size: calc(100%) calc(100%)
-				transform: rotate(225deg) scale(0.75,0.7)
-				-webkit-transform: rotate(225deg) scale(0.75,0.7)
+				transform: scale(1) rotate(-45deg)
+				-webkit-transform: scale(1) rotate(-45deg)
 				animation-delay: 3s
 				// background-color: yellow
 			75%
 				background: url('https://media3.giphy.com/media/SH3AYsJUInHRS/200w.gif?cid=3640f6095be94def6c59336863867827') no-repeat
 				background-size: calc(100%) calc(100%)
 				background-color: red
-				transform: rotate(315deg) scale(0.75,0.7)
-				-webkit-transform: rotate(315deg) scale(0.75,0.7)
+				transform: scale(1) rotate(-45deg)
+				-webkit-transform: scale(1) rotate(-45deg)
 				animation-delay: 3s
 			100%
 				background: url('https://media2.giphy.com/media/26DN2sglox9GdAZoc/200w.gif?cid=3640f6095be92ec372416f3645297a81') no-repeat
 				background-size: calc(100%) calc(100%)
-				transform: rotate(45deg) scale(0.9,0.9)
-				-webkit-transform: rotate(45deg) scale(0.9,0.9)
+				transform: scale(1) rotate(-45deg)
+				-webkit-transform: scale(1) rotate(-45deg)
 				animation-delay: 3s
 
 		.col-6.col-lg-6.col-md-6.col-sm-6
