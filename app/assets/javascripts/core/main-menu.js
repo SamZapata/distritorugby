@@ -33,3 +33,11 @@ diamondFunction = function() {
     setTimeout(rotateColorArea, t*i);
   }
 };
+
+diamondText = function() {
+  // var a = $('#diamond-text');
+  var a = document.getElementById('diamondtext');
+  console.log(document.getElementsByClassName('diamondtext'));
+};
+
+diamondText();

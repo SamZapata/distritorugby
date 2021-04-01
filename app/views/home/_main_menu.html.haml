@@ -9,13 +9,11 @@
 			.figure
 				.case-diamond
 					.diamond{:onclick => "diamondFunction()", :title => "Random Informativo"}
-						.show-info
-							DISTRITO RUGBY
-							-# .card
-								- news = News.first
-								= link_to(image_tag(news.image, width: '100%', alt: "##{news.title} #DistritoRugby", class: 'img-hov' ), news)
-								.card-body
-									%h5.card-title= link_to news.title, news, class: 'link'
+						.diamondtext
+							.show
+								DISTRITO RUGBY
+							.show
+								DISTRITO RUGBY
 
 			.areas
 				.row

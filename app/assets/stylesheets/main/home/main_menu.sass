@@ -48,21 +48,29 @@
 					// transform: rotate(45deg)
 					// -webkit-transform: rotate(45deg)
 
-			.show-info
-				color: $white
-				font-size: 2em
-				font-family: 'Ubuntu'
-				text-align: center
-				height: calc(40%)
-				width: calc(80%)
-				transform: rotate(-45deg)
-				font-weight: bold
-				// margin: -28% 20% -53% 42%
-				// margin-top: calc(36%)
-				// -webkit-transform: rotate(90deg)
-				// bottom: calc(20%)
-				// position: absolute
-				// align-items: center
+					.show-info
+						color: $white
+						font-size: 2em
+						font-family: 'Ubuntu'
+						text-align: center
+						height: calc(40%)
+						width: calc(80%)
+						// margin: -28% 20% -53% 42%
+						// margin-top: calc(36%)
+						// -webkit-transform: rotate(90deg)
+						// bottom: calc(20%)
+						// position: absolute
+						// align-items: center
+
+				// transiction of images on the diamond
+				@keyframes shine
+					0%
+						background-size: calc(100%) calc(100%)
+						transform: scale(1) //rotate(-45deg)
+						-webkit-transform: scale(1) //rotate(-45deg)
+						animation-delay: 3s
+					25%
+						background-color: red
 		.areas
 			.area
 			.a-bg
