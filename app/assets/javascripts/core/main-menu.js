@@ -36,8 +36,10 @@ diamondFunction = function() {
 
 diamondText = function() {
   // var a = $('#diamond-text');
-  var a = document.getElementById('diamondtext');
-  console.log(document.getElementsByClassName('diamondtext'));
+  var a = document.getElementById("diamond-text");
+  var t = document.getElementsByClassName('diamond-text');
+  console.log(t.innerHtml);
+  console.log(a);
 };
 
 diamondText();
