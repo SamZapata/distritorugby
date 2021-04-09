@@ -50,13 +50,14 @@
 			.modal-dialog.modal-dialog-centered{:role => "document"}
 				.modal-content
 					.modal-body
-						%h2 SOBRE DISTRITO RUGBY
-						%p Una plataforma para la promoción del rugby!
-						-# Linkto Sign Up and Sign In
-						= link_to('Iniciar Sesión', "/users/sign_in")
-						%br
-						= link_to('Registrarse', "/users/sign_up")
-					.modal-footer
 						%span.float-right
 							= link_to '#', class: 'label_text', "data-dismiss" => "modal" do
 								%i.fas.fa-times
+						%h5.text-center.mt-4
+							APRENDE - COMPARTE - ENTRENA
+							%BR JUEGA RUGBY
+						-# Linkto Sign Up and Sign In
+						.mt-5.text-center
+							= link_to('Iniciar Sesión', "/users/sign_in")
+							%br
+							= link_to('Registrarse', "/users/sign_up")
