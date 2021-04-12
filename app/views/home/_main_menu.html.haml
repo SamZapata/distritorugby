@@ -58,6 +58,11 @@
 							%BR JUEGA RUGBY
 						-# Linkto Sign Up and Sign In
 						.mt-5.text-center
-							= link_to('Iniciar Sesión', "/users/sign_in")
-							%br
-							= link_to('Registrarse', "/users/sign_up")
+							- if user_signed_in?
+								-# link to update the profile
+								.mt-3= link_to "Ver Mi Perfil", "/users/my_profile/show"
+								.mt-3= button_to "Cerrar Sesión", destroy_user_session_path, method: :delete
+							- else
+								= link_to('Iniciar Sesión', "/users/sign_in")
+								%br
+								= link_to('Registrarse', "/users/sign_up")

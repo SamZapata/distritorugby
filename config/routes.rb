@@ -42,6 +42,11 @@ Rails.application.routes.draw do
     get 'clubs/:id/categories/:category', to: 'clubs#category'
   end
   devise_for :users
+  # profile route
+  namespace :users do
+    get 'my_profile/show', to: 'profile#show'
+    get 'my_profile/edit', to: 'profile#edit'
+  end
 
   resources :news, controller: 'news' do
     # get 'tags/:tag', to: 'news#tags'
