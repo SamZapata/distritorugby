@@ -1,6 +1,6 @@
 class Users::ProfileController < ApplicationController
 
-    layout 'team/layoutTeam'
+    layout 'user/layoutProfile'
 
     def show
     end
