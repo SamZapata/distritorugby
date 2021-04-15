@@ -3,10 +3,23 @@
 // @jsamzapata
 // file: Show User Profile 
 -# .distrito-rugby-user-profile
-.stories-breadcrumb
-  %nav{"aria-label" => "breadcrumb"}
-    %ol.breadcrumb
-      %li.breadcrumb-item
-        %a{:href => "/", :class => 'link'}
-          .fas.fa-home
-      %li.breadcrumb-item.active{"aria-current" => "page"} Mi Perfil
+.profile-show
+  .profile-breadcrumb
+    %nav{"aria-label" => "breadcrumb"}
+      %ol.breadcrumb
+        %li.breadcrumb-item
+          %a{:href => "/", :class => 'link'}
+            .fas.fa-home
+        %li.breadcrumb-item.active{"aria-current" => "page"} Mi Perfil
+
+  .profile-header
+    .container
+      // imagen definida por el usuario. Poner una por defecto (por que no un vídeo?). Centrada y con forma ovalada
+      .profile-image.text-center
+        =image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuxR_zCF7xh9EjN9dKPdTSeEHGGAPD3IC6_A&usqp=CAU"
+      // nombre del usuario
+      %h4.text-center Joaquin Garces
+      
+      //TODO
+      //
+
