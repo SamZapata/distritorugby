@@ -17,9 +17,26 @@
       // imagen definida por el usuario. Poner una por defecto (por que no un vídeo?). Centrada y con forma ovalada
       .profile-image.text-center
         =image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuxR_zCF7xh9EjN9dKPdTSeEHGGAPD3IC6_A&usqp=CAU"
-      // nombre del usuario
+      // User full name
       %h4.text-center Joaquin Garces
-      
-      //TODO
-      //
+      // user about
+      %p.text-center
+        Lorem ipsum dolor sit amet, consectetur elit. Placeat, rerum illum animi accusamus repudiandae ex veniam ea.
+      -# Current role (Player, Coach, Referee, Viewer)
+      %p.ml-2.font-weight-bold.text-info Jugador
+      %p.ml-2
+        %span.font-weight-bold Cumpleaños:
+        %span 22 de Abril
+      %p.ml-2.font-weight-bold Redes Sociales
+      %h4.ml-5
+        .fab.fa-facebook-square
+        .fab.fa-instagram
+        .fab.fa-youtube
+      %p.mt-3.ml-2.font-weight-bold Historias y Noticias
+      .media
+        -# %img src="..." class="mr-3" alt="...">
+        = image_tag '/', alt: 'image', class: 'mr-3'
+        .media-body
+          %h5.mt-0 Noticia del Jugador Z
+          %p Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
 

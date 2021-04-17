@@ -42,7 +42,8 @@ gem 'devise-i18n', '~> 1.6', '>= 1.6.4'
 # forms
 gem 'simple_form', '>= 5.0.0'
 # Gema para iconos font-awesome
-gem 'font-awesome-rails'
+# gem 'font-awesome-rails'
+gem 'font-awesome-sass', '~> 5.15.1'
 # slugs
 gem 'friendly_id', '~> 5.2.4'
 # uploads media files
