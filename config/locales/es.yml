@@ -24,6 +24,7 @@ es:
     tournaments: TORNEOS
     news: NOTICIAS
     toolbox: TOOLBOX
+    players: JUGADORES
   menu:
     clubs: Clubes
     news: Noticias

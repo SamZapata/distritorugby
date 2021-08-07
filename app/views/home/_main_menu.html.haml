@@ -21,14 +21,14 @@
 							.a-bg
 								-# = image_tag('main/nz-news.jpg')
 							.mm-option
-								= link_to (I18n.t 'home.news'), news_index_path, :class => 'text-caption'
+								= link_to (I18n.t 'home.stories'), stories_path, :class => 'text-caption'
 					.col-6.col-lg-6.col-md-6.col-sm-6
 						.area.a-ii
 							-# area background
 							.a-bg
 								-# = image_tag('main/nz-stories.jpg')
 							.mm-option
-								= link_to (I18n.t 'home.stories'), stories_path, :class => 'text-caption'
+								= link_to (I18n.t 'home.tournaments'), game_tournaments_path, :class => 'text-caption'
 				.row
 					.col-6.col-lg-6.col-md-6.col-sm-6
 						.area.a-iv
@@ -36,7 +36,7 @@
 							.a-bg
 								-# = image_tag('main/nz-tournaments.jpg')
 							.mm-option
-								= link_to (I18n.t 'home.tournaments'), game_tournaments_path, :class => 'text-caption'
+								= link_to (I18n.t 'home.players'), game_players_path, :class => 'text-caption'
 					.col-6.col-lg-6.col-md-6.col-sm-6
 						.area.a-iii
 							-# area background

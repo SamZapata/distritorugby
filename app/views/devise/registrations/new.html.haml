@@ -1,32 +1,32 @@
-.sessions-content
-  %br
-  .card.user-devise-form
-    .card-header.bg-dark
-      .header-title.text-center= t('sessions.signup')
-    .card-body
-      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        = f.error_notification
-        .form-group
-          = f.input :email,
-            required: true,
-            label: false,
-            placeholder: 'email',
-            autofocus: true ,
-            input_html: { autocomplete: "email", class: 'form-control' }
-        .form-group
-          = f.input :password,
-            required: true,
-            label: false,
-            placeholder: 'password',
-            hint: ("mínimo #{@minimum_password_length} caracteres" if @minimum_password_length),
-            input_html: { autocomplete: "new-password", class: 'form-control' }
-        .form-group
-          = f.input :password_confirmation,
-            required: true,
-            label: false,
-            placeholder: 'password',
-            input_html: { autocomplete: "new-password", class: 'form-control' }
-        .form-actions
-          = f.button :submit, t('sessions.new_user'), class: 'btn btn-dark'
-        %br
-      = render "devise/shared/links"
+.container.sessions-content
+  .justify-content-md-center
+    .card.user-devise-form
+      .card-header.bg-dark
+        .header-title.text-center= t('sessions.signup')
+      .card-body
+        = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = f.error_notification
+          .form-group
+            = f.input :email,
+              required: true,
+              label: false,
+              placeholder: 'email',
+              autofocus: true ,
+              input_html: { autocomplete: "email", class: 'form-control' }
+          .form-group
+            = f.input :password,
+              required: true,
+              label: false,
+              placeholder: 'password',
+              hint: ("mínimo #{@minimum_password_length} caracteres" if @minimum_password_length),
+              input_html: { autocomplete: "new-password", class: 'form-control' }
+          .form-group
+            = f.input :password_confirmation,
+              required: true,
+              label: false,
+              placeholder: 'password',
+              input_html: { autocomplete: "new-password", class: 'form-control' }
+          .form-actions
+            = f.button :submit, t('sessions.new_user'), class: 'btn btn-dark'
+          %br
+        = render "devise/shared/links"
