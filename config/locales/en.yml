@@ -43,6 +43,9 @@ en:
     login: Iniciar Sesión
     logout: Cerrar Sesión
     new_user: Registrarse
+    email: Email
+    password: Password
+    password_repeat: Password Repeat
   team:
     about: En el Distrito de Aguablanca han existido grupos de práctica de rugby en
       las comunas 13, 14 y 21. Dichos grupos se han disuelto con el tiempo. Sin embargo,

@@ -70,6 +70,9 @@ es:
     forgot_password: Olvidó la contraseña?
     update_user: Actualizar
     remember_me: Recordame
+    email: Correo
+    password: Contraseña
+    password_repeat: Repetir Contraseña
   team:
     about: En el Distrito de Aguablanca han existido grupos de práctica de rugby en
       las comunas 13, 14 y 21. Dichos grupos se han disuelto con el tiempo. Sin embargo,

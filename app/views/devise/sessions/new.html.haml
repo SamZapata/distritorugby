@@ -9,14 +9,14 @@
             = f.input :email,
               required: false,
               label: false,
-              placeholder: 'email',
+              placeholder: t('sessions.email'),
               autofocus: true,
               input_html: { autocomplete: "email", class: 'form-control' }
           .form-group
             = f.input :password,
               required: false,
               label: false,
-              placeholder: 'password',
+              placeholder: t('sessions.password'),
               input_html: { autocomplete: "current-password", class: 'form-control' }
             .form-check.form-check-input
               = f.input :remember_me, label: t('sessions.remember_me'), as: :boolean if devise_mapping.rememberable?
