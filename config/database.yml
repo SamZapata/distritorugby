@@ -16,7 +16,7 @@
 #
 default: &default
   adapter: postgresql
-  encoding: unicode
+  encoding: sql_ascii
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -33,7 +33,7 @@ development:
 
   username: jsam
   # The password associated with the postgres role (username).
-  password: volarbajoelagua
+  password: 'mayo2023'
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have

@@ -9,13 +9,14 @@ CSV.foreach(Rails.root.join('seed/seeds-news.csv'), headers: true) do |row|
 
   # create news
   n = News.new
-  n.title = row['title']
+  n.title = Faker::Lorem.sentence
   n.summary = row['summary']
   n.talking = row['body']
+  debugger
   n.image = row['image_src']
   n.image_legend = row['image_legend']
-  n.emb_video = row['video_emb']
-  n.video_legend = row['video_legend']
+  # n.emb_video = row['video_emb']
+  # n.video_legend = row['video_legend']
   n.tags = row['tags']
   n.save
   puts "The news #{n.title} was created successfully!"
