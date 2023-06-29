@@ -1,0 +1,38 @@
+/ Project: Distrito Rugby
+
+.home-menu-bar
+	.menu-bar--button
+		.mb-button--label
+			.mb-button--label__text.d-flex.align-items-center{"data-target" => "#showMenu", "data-toggle" => "modal"}
+				%span.symbol-menu &#9776
+				DR
+				%span.symbol-menu &#9776
+
+	#showMenu.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "showMenuBar", :role => "dialog", :tabindex => "-1"}
+		.modal-dialog{:role => "document"}
+			.modal-content
+				.menu-bar--modal
+					.mb-modal--label__home
+						= link_to 'HOME', '/', :class => 'label_text'
+					.mb-modal--label
+						= link_to (I18n.t 'menu.news'), news_index_path, :class => 'mb-modal--label__text'
+					.mb-modal--label
+						= link_to t('menu.stories'), stories_path, :class => 'mb-modal--label__text'
+					.mb-modal--label
+						= link_to t('menu.tournaments'), game_tournaments_path, :class => 'mb-modal--label__text'
+					.mb-modal--label
+						= link_to t('menu.clubs'), game_clubs_path, :class => 'mb-modal--label__text'
+					.mb-modal--label
+						= link_to t('menu.toolbox'), toolbox_index_path, :class => 'mb-modal--label__text'
+					.mb-modal--label
+						= link_to (I18n.t 'menu.team'), team_index_path, :class => 'mb-modal--label__text'
+					.mb-modal--label__footer
+						= link_to '#', class: 'label_text' do
+							%i.fas.fa-question-circle
+						= link_to '#', class: 'label_text' do
+							%i.fab.fa-facebook
+						= link_to '#', class: 'label_text' do
+							%i.fab.fa-instagram
+						%span.float-right
+							= link_to '#', class: 'label_text', "data-dismiss" => "modal" do
+								%i.fas.fa-times

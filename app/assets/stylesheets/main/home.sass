@@ -1,165 +1,29 @@
-// Projec: Distrito Rugby
-// Author: Johnny Zapata
 // @jsamzapata
 
 @import "home/**/*"
 
 .home-index
-	.main-menu
+	.home-menu-bar
+		width: calc(100%)
+		height: calc(35vh)
+		display: flex
+		background-color: $menu-button
+		justify-content: center
+		align-items: center
 
-		/* global texts*/
-		.text
-			color: $base-text
-			.text--caption
-				font-size: 1.1rem
-				color: $white
-				&:hover
-					color: $carmine !important
-					background-color: $white !important
-
-		.mm-a
-			display: flex
-			height: calc(50vh)
-			width: calc(100%)
-			background-color: $main-menu-a
-			border: 1 0.25px solid white
-			justify-content: center
-			align-items: center
-			padding: 10px
-			z-index: 1
-			&:hover
-				// background: asset_url('main/DR-2018b.jpg') center
-				background: url('https://media.giphy.com/media/1X4yTE2mYjoFzSIN0s/giphy.gif') center
-				background-size: calc(100%) calc(100%)
-				background-repeat: no-repeat
-				background-color: $dark
-				opacity: 0.7
-				.text--caption
+		.menu-bar--button
+			font-family: 'Black Ops One'
+			margin-top: 4px
+			.mb-button--label
+				display: flex
+				// padding-top: 0.5%
+				.mb-button--label__text
+					font-size: 1.4em
 					color: $white
-					background-color: $carmine
-		.mm-b
-			display: flex
-			height: calc(50vh)
-			width: calc(100%)
-			background-color: $main-menu-b
-			border: 0.25px solid white
-			justify-content: center
-			align-items: center
-			padding: 10px
-			&:hover
-				background: url('https://media0.giphy.com/media/v3cob3J9aZv4Q/200w.gif?cid=3640f6095be94537484f6a4b4d1ab2d3') center
-				background-size: calc(100%) calc(100%)
-				background-repeat: no-repeat
-				background-color: $dark
-				opacity: 0.7
-				.text--caption
-					color: $white
-					background-color: $carmine
-		.mm-c
-			display: flex
-			height: calc(50vh)
-			width: calc(100%)
-			background-color: $main-menu-c
-			border: 0.25px solid white
-			justify-content: center
-			align-items: center
-			padding: 10px
-			&:hover
-				background: url('https://media0.giphy.com/media/26DMZZX1WEpho2PYs/200w.gif?cid=3640f6095be936726a476852514b4649') center
-				background-size: calc(100%) calc(100%)
-				background-repeat: no-repeat
-				background-color: $dark
-				opacity: 0.7
-				.text--caption
-					color: $white
-					background-color: $carmine
-
-		.mm-d
-			display: flex
-			height: calc(50vh)
-			width: calc(100%)
-			background-color: $main-menu-d
-			border: 0.25px solid white
-			justify-content: center
-			align-items: center
-			padding: 10px
-			&:hover
-				background: url('https://media2.giphy.com/media/Tfu2OUFOHlsiI/200w.gif?cid=3640f6095be93a7e5948395241c7008a') center
-				background-size: calc(100%) calc(100%)
-				background-repeat: no-repeat
-				background-color: $dark
-				opacity: 0.7
-				.text--caption
-					color: $white
-					background-color: $carmine
-
-		/* Symbol */
-		.symbol
-			display: flex
-			justify-content: center
-			padding: auto
-			
-
-
-		// keyframe to rotate and change image on the diamond
-		@keyframes rotary
-			0%
-				background: url('https://media3.giphy.com/media/26msDF2awpmKly9KU/200w.gif?cid=3640f6095be94bf1633043744def6953') no-repeat
-				background-size: calc(100%) calc(100%)
-				// background-color: blue
-				transform: scale(1) rotate(-45deg)
-				-webkit-transform: scale(1) rotate(-45deg)
-				animation-delay: 3s
-			25%
-				background: url('https://media3.giphy.com/media/26msDF2awpmKly9KU/200w.gif?cid=3640f6095be94bf1633043744def6953') no-repeat
-				background-size: calc(100%) calc(100%)
-				transform: scale(1) rotate(-45deg)
-				-webkit-transform: scale(1) rotate(-45deg)
-				animation-delay: 3s
-				// background-color: yellow
-			75%
-				background: url('https://media3.giphy.com/media/SH3AYsJUInHRS/200w.gif?cid=3640f6095be94def6c59336863867827') no-repeat
-				background-size: calc(100%) calc(100%)
-				background-color: red
-				transform: scale(1) rotate(-45deg)
-				-webkit-transform: scale(1) rotate(-45deg)
-				animation-delay: 3s
-			100%
-				background: url('https://media2.giphy.com/media/26DN2sglox9GdAZoc/200w.gif?cid=3640f6095be92ec372416f3645297a81') no-repeat
-				background-size: calc(100%) calc(100%)
-				transform: scale(1) rotate(-45deg)
-				-webkit-transform: scale(1) rotate(-45deg)
-				animation-delay: 3s
-
-		.col-6.col-lg-6.col-md-6.col-sm-6
-			padding-right: 0 !important
-			padding-left: 0 !important
-
-		/* very very small */
-		// @media only screen and (min-width: 320vw) and (min-height: 480vh)
-		// 	.diamond
-		// 		left: calc(21.2vw)
-
-		// /* samsung galaxy s9 */
-		// @media only screen and (min-width: 360vw) and (min-height: 670vh)
-		// 	.diamond
-		// 		left: calc(21.2vw)
-
-		// /* iphon 6/7/8 */
-		// @media only screen and (min-width: 375vw) and (min-height: 635vh)
-		// 	.diamond
-		// 		left: calc(25%)
-		// @media only screen and (min-width: 667vw) and (min-height: 375vh)
-		// 	.diamond
-		// 		left: calc(42.3vw)
-
-		// /* soft */
-		// @media all and (min-width: 421px) and (max-width: 580px)
-		// 	.diamond
-		// 		left: calc(38.5vw)
-		// @media only screen and (min-width: 280px)
-		// 	/* diamond */
-		// 	.diamond
-		// 		height: 28vh
-		// 		width: 28vh
-		// 		//margin: calc(36vh) calc(23%)
+					opacity: 0.5
+					&:hover
+						color: $white
+						opacity: 1
+						cursor: pointer
+				span.symbol-menu
+					font-size: 0.5em
