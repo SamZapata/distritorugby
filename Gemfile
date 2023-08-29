@@ -31,11 +31,11 @@ gem 'cancancan', '>= 2.0'
 # Haml
 gem "haml-rails"
 # Bootstrap
-gem 'bootstrap', '>= 4.3.1'
+gem 'bootstrap', '~> 5.3.1'
 # JQuery
 gem 'jquery-rails'
 # Popper for improve the UI
-gem 'popper_js', '>= 1.9', '>= 1.9.9'
+gem 'popper_js', '>= 2.11.8'
 # I18n to internationalize
 gem 'rails-i18n', '>= 5.1'
 gem 'devise-i18n', '>= 1.6', '>= 1.6.4'
