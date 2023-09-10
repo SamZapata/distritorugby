@@ -39,11 +39,9 @@
     / End Facebook Pixel Code
 
   %body
+    .distrito-rugby-header
+      = render 'layouts/menu_bar'
 
-    / Return to Top
-    %button#scrollUp{:onclick => "topFunction()", :title => "Go to top"}
-      %i
-        = fa_icon "angle-up"
     .distrito-rugby-main
       = yield
 
@@ -63,6 +61,11 @@
           - if user_signed_in?
             = link_to destroy_user_session_path, method: :delete, :class => "footer--logout" do
               .fas.fa-sign-out-alt{ "title" => t('sessions.logout')}
+
+    / Return to Top
+    %button#scrollUp{:onclick => "topFunction()", :title => "Go to top"}
+      %i
+        = fa_icon "angle-up"
 
     %script{:crossorigin => "anonymous", :integrity => "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo", :src => "https://code.jquery.com/jquery-3.3.1.slim.min.js"}
     %script{:crossorigin => "anonymous", :integrity => "sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49", :src => "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"}

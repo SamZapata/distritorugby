@@ -32,6 +32,9 @@ gem 'cancancan', '>= 2.0'
 gem "haml-rails"
 # Bootstrap
 gem 'bootstrap', '~> 5.3.1'
+# gem 'dartsass-sprockets'
+gem 'rubygems-update', '~> 3.4', '>= 3.4.18'
+
 # JQuery
 gem 'jquery-rails'
 # Popper for improve the UI
