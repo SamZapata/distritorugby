@@ -1,0 +1,107 @@
+# Environment and local configuration
+.env
+.env.*
+!.env.example
+!.env.template
+*.local
+config/env.yml
+config/app_config.yml
+config/secrets.yml
+config/settings.local.yml
+
+# Rails secrets and credentials
+config/master.key
+config/credentials.yml.enc
+*.key
+*.secret
+*.secrets
+*.token
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+*.der
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+
+# Logs, temporary files and caches
+*.log
+log/
+tmp/
+.cache/
+.sass-cache/
+.bundle/
+.byebug_history
+*.swp
+*.swo
+*~
+
+# Local databases, dumps and backups
+*.sqlite
+*.sqlite3
+*.sqlite3-journal
+*.db
+*.sql
+*.dump
+*.bak
+*.backup
+*.old
+db/*.sqlite3
+db/schema.rb.tmp
+
+# User-generated and uploaded content
+storage/
+public/system/
+public/uploads/
+public/assets/
+public/packs/
+public/packs-test/
+
+# Coverage and generated documentation
+coverage/
+doc/
+*.generated.*
+*.generated
+
+# Dependency and build artifacts
+node_modules/
+vendor/bundle/
+vendor/cache/
+dist/
+build/
+
+# Docker and local development overrides
+docker-compose.override.yml
+docker-compose.local.yml
+
+# IDE and editor metadata
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.example.json
+*.iml
+
+# Operating system metadata
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Ruby and Rails local files
+.rbenv-vars
+/.rspec
+/spec/tmp/
+/test/tmp/
+
+# JavaScript tooling local files
+.eslintcache
+.stylelintcache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
