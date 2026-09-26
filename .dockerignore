@@ -1,0 +1,13 @@
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+log/*
+tmp/*
+node_modules
+.bundle
+storage/*
+coverage/
+*.md
+assistant/

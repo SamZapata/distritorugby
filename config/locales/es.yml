@@ -1,0 +1,188 @@
+---
+es:
+  footer:
+    tagline: Inspira. Aprende. Comparte. Vive el rugby.
+    explore: Explora
+    links:
+      news: Noticias
+      stories: Historias
+      clubs: Clubes
+      tournaments: Torneos
+      players: Jugadores
+    follow_us: Síguenos
+    rights_reserved: Todos los derechos reservados.
+    privacy_policy: Política de privacidad
+    terms_of_service: Términos de servicio
+    developed_by: Desarrollado por
+    go_to_top: Volver arriba
+  about:
+    text: Si te encanta el rugby y quieres compartir tu experiencia vívida o quieres conocer un poco sobre este deporte, cómo se juega, dónde practicar y estar actualizado sobre el desarrollo de este apasionante juego, Distrito Rugby es la plataforma ideal para que revivas cada momento y lo compartas con toda una comunidad rugbier.
+    title: Distrito Rugby
+  breadcrumb:
+    clubs: Clubes
+    news: Noticias
+    stories: Historias
+    toolbox: Caja de Herramientas
+    tournaments: Torneos
+  common:
+    close: Cerrar
+    see_pdf: ver pdf
+    published_on: Publicado el
+    signin: Registrarse
+    login: Acceder
+    save: Guardar
+  context:
+    district: Distrito de Aguablanca
+  home:
+    about:
+      title: Sobre Distrito Rugby
+      description: Distrito Rugby es una plataforma creada por y para la comunidad del rugby en Colombia. Conectamos jugadores, entrenadores, clubes y aficionados de todo el país, desde Cali hasta Bogotá y desde las categorías juveniles hasta los equipos mayores.
+      values:
+        community:
+          title: La comunidad primero
+          description: Creada por jugadores de rugby y para jugadores de rugby.
+        passion:
+          title: Pasión por el juego
+          description: Cada función está diseñada para celebrar y hacer crecer el deporte que amamos.
+        open_source:
+          title: Código abierto
+          description: Transparente, colaborativa y abierta a tus aportes.
+      cta: Conoce más sobre nosotros
+      images:
+        community: Comunidad del rugby
+        tournaments: Torneos de rugby
+        clubs: Clubes de rugby
+    auth_modal:
+      title: APRENDE - COMPARTE - ENTRENA
+      subtitle: JUEGA RUGBY
+      profile: Ver mi perfil
+      logout: Cerrar sesión
+    community:
+      title: Únete a la comunidad
+      subtitle: El rugby crece cuando construimos juntos. Únete, participa y sé parte de algo más grande.
+      signup:
+        title: Regístrate
+        description: Crea tu cuenta gratis y empieza a conectarte hoy con la comunidad del rugby.
+        cta: Comenzar
+      github:
+        title: Contribuye en GitHub
+        description: Ayúdanos a mejorar la plataforma. Reporta errores, sugiere funciones o envía código.
+        cta: Ver repositorio
+      youtube:
+        title: Mira y aprende
+        description: Tutoriales, resúmenes de partidos y contenido de rugby en nuestro canal de YouTube.
+        cta: Visitar YouTube
+      support:
+        title: Apóyanos
+        description: Tus donaciones nos ayudan a mantener la plataforma activa y hacerla crecer para todos.
+        cta: Donar / Ser voluntario
+    recommended:
+      title: Destacado de la semana
+      subtitle: Descubre las historias, clubes y jugadores que están impulsando el rugby
+      video_title: Video destacado
+      badge: Historia de la semana
+      card_title: El crecimiento del rugby en Cali
+      card_text: "Descubre cómo ha crecido el rugby en Cali durante la última década: de pequeñas sesiones de entrenamiento a una comunidad activa de jugadores, entrenadores y aficionados en todo el Valle del Cauca."
+      date: 28 de agosto de 2026
+      views: 1,2 mil vistas
+      cta: Leer la historia completa
+    clubs: CLUBES
+    stories: HISTORIAS
+    tournaments: TORNEOS
+    news: NOTICIAS
+    toolbox: TOOLBOX
+    players: JUGADORES
+    leagues: LIGAS
+  menu:
+    clubs: Clubes
+    news: Noticias
+    stories: Historias
+    team: Equipo
+    toolbox: Toolbox
+    tournaments: Torneos
+    players: Jugadores
+  news:
+    create: Crear Noticia
+    edit: Editar
+    edit_title: Editar la Noticia
+    image: Imagen
+    image_legend: Leyenda de la imagen
+    new: Nueva Noticia
+    news: Noticias
+    notice:
+      confirm_creation: Confirm creation
+      confirm_destruction: Registro eliminado satisfactoriamente
+      confirm_update: Confirm update
+    summary: Resumen corto de la noticia
+    tags:
+      name: Etiquetas
+    talking: Cuerpo de la Noticia
+    title: Título de la Noticia
+    video: Video
+  story:
+    modify: Modificar
+    name: Nombre de la Historia
+    new: Nueva Historia
+    body: Relata tu historia
+    image_caption: Leyenda de la imagen
+    modify_story: Modificar la Historia
+    summary: Frase celebre de tu historia
+    share_a_story: Comparte una Historia
+  stories:
+    edit: Editar
+  sessions:
+    intro: Ingresar
+    login: Iniciar Sesión
+    logout: Cerrar Sesión
+    new_user: Registrarse
+    signup: Registro de Usuario
+    forgot_password: Olvidó la contraseña?
+    update_user: Actualizar
+  team:
+    about: En el Distrito de Aguablanca han existido grupos de práctica de rugby en
+      las comunas 13, 14 y 21. Dichos grupos se han disuelto con el tiempo. Sin embargo,
+      se buscó mantener una base que sirviera como referente para impulsar el desarrollo
+      de nuevos deportistas y formalizar un equipo que represente la unidad de las
+      personas que viven en estas comunas y que en su mayoría deben afrontar el flagelo
+      de las fronteras invisibles, entre otras situaciones sociales de gran complejidad.
+      Leones y Tikunas Rugby Club son la institución deportiva que por ahora le apuesta
+      a la conformación de semilleros de práctica en esta zona de la ciudad, promoviendo
+      así espacios de entreno abiertos a donde pueden asistir hombres y mujeres a
+      partir de los 14 años.
+    index:
+      schedule-training: Schedule-training
+    know_more: Conocer Más
+    schedule-training: Horarios de Entreno
+    training:
+      contact: Contacto
+      i_want: Quiero Entrenar!
+      phone_numbers: 304 373 6578 - 311 419 6682
+      schedule: Martes y Viernes - 6:30pm
+      site: Cancha de Los Naranjos I - (Cra 26g3 con Cll 77a)
+  shared:
+    upload_image: Cargar una imagen
+    image_legend: Leyenda de la imagen
+    video_emb: Agregar video embebido
+    video_legend: Leyenda del video
+    video_caption: Leyenda del video
+  time:
+    formats:
+      own: '%b %d, %Y'
+  toolbox:
+    building: En construcción!!!
+  tournaments:
+    building: En construcción!!!
+  club:
+    name: Nombre del Club
+    about: Resumen sobre el club
+    modify_club: Actualizar Datos del Club
+    email: Email del Club
+    phone: Teléfono de contacto del Club
+    emb_location: Localización embebida de la sede
+    webpage: Sitio Web del Club
+    facebook: Link del perfil de Facebook del club
+    instagram: Link del perfil de Instagram del club
+    twitter: Link del perfil de Twitter del club
+    youtube: Link del canal de Youtube del club
+    create: Registrar un Club
+    new: Nuevo
