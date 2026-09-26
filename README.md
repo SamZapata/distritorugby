@@ -4,15 +4,48 @@ Plataforma abierta para compartir información, contenidos y herramientas relaci
 
 ## Estado del proyecto
 
-Este repositorio está en preparación para una migración limpia desde `distritorugby-legacy`. En esta etapa todavía no contiene la aplicación ejecutable. El proceso y sus criterios se mantienen en la documentación de trabajo del proyecto.
+Repositorio en migración limpia desde `distritorugby-legacy`. **Lote 1 completado:** base reproducible (Ruby/Rails/Docker) instalable y verificable. La aplicación funcional se migrará por lotes (persistencia, autenticación, flujos y dominio deportivo).
+
+## Requisitos
+
+- Ruby 3.2.4 (ver `.ruby-version`)
+- Bundler
+- PostgreSQL 15+
+- (opcional) Docker + Docker Compose
+
+## Instalación
+
+```bash
+git clone git@github.com:SamZapata/distritorugby.git
+cd distritorugby
+bundle install
+cp .env.example .env   # y rellena los valores reales
+bin/rails db:create db:migrate
+bin/rails server
+```
+
+Health check: `http://localhost:3000/up`
+
+### Con Docker
+
+```bash
+cp .env.example .env   # POSTGRES_* requeridos por docker-compose
+docker compose up --build
+```
+
+## Pruebas
+
+```bash
+bin/rails test
+```
+
+## Variables de entorno
+
+Todas las credenciales viven en `.env` (nunca se versiona). Ver `.env.example` con la descripción de cada variable: base de datos, Cloudinary, SMTP y Redis.
 
 ## Licencia
 
 Este proyecto se distribuye bajo la licencia [GNU General Public License v3.0](LICENSE).
-
-## Contribuciones
-
-Las instrucciones de instalación, desarrollo, pruebas y contribución se publicarán cuando el núcleo de la aplicación haya sido migrado y validado en un entorno limpio.
 
 ## Comunidad
 
