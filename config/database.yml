@@ -10,6 +10,10 @@ development:
 test:
   <<: *default
   database: distritorugby_test
+  # La url del default tiene prioridad sobre `database`, así que se deriva de
+  # DATABASE_URL con el nombre de la base de pruebas. Evita purgar la base de
+  # desarrollo cuando se ejecuta `rails test`.
+  url: <%= ENV['DATABASE_URL'] && ENV['DATABASE_URL'].sub(%r{/\w+\z}, '/distritorugby_test') %>
 
 production:
   url: <%= ENV['DATABASE_URL'] %>

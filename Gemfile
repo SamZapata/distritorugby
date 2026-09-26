@@ -51,6 +51,10 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
+# Pines de compatibilidad con Rails 7.1 (versiones probadas en legacy):
+# json 3.x elimina `quirks_mode` que ActiveSupport::JSON aún pasa.
+gem 'json', '~> 2.13'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.4.1'
@@ -58,6 +62,8 @@ group :development do
 end
 
 group :test do
+  # minitest 6 rompe Rails 7.1 (fijado al rango probado en legacy)
+  gem 'minitest', '~> 5.25'
   gem 'capybara', '>= 2.15', '< 4.0'
   gem 'selenium-webdriver'
   gem 'webdrivers'
