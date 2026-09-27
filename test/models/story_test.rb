@@ -57,4 +57,28 @@ class StoryTest < ActiveSupport::TestCase
     assert historia.image.attached?
     assert_equal 'foto.png', historia.image.filename.to_s
   end
+
+  test 'destruye una historia con joins de tags sin error de inverse_of' do
+    historia = historia_con_imagen.tap(&:save!)
+    tag = Tags::Story.create!(name: 'tradicion')
+    Tags::StoryJoin.create!(story: historia, tags_story: tag)
+
+    assert_difference 'Tags::StoryJoin.count', -1 do
+      assert_difference 'Story.count', -1 do
+        historia.destroy!
+      end
+    end
+  end
+
+  test 'destruye un tag de historia con joins sin error de inverse_of' do
+    historia = historia_con_imagen.tap(&:save!)
+    tag = Tags::Story.create!(name: 'leyendas')
+    Tags::StoryJoin.create!(story: historia, tags_story: tag)
+
+    assert_difference 'Tags::StoryJoin.count', -1 do
+      assert_difference 'Tags::Story.count', -1 do
+        tag.destroy!
+      end
+    end
+  end
 end
