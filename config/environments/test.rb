@@ -31,6 +31,12 @@ Rails.application.configure do
   # Store uploaded files on the local file system in a temporary directory
   config.active_storage.service = :test
 
+  # Los jobs de ActiveStorage (AnalyzeJob/PurgeJob) se encolan sin ejecutar.
+  # Con el adapter :async corren en hilos de fondo y comparten la conexión a la
+  # BD con las pruebas transaccionales, lo que corrompe el protocolo PG
+  # (PG::UnableToSend / 0x5a / munmap_chunk).
+  config.active_job.queue_adapter = :test
+
   config.action_mailer.perform_caching = false
 
   # Tell Action Mailer not to deliver emails to the real world.
