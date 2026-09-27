@@ -17,7 +17,12 @@ services:
 
   web:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0"
+    # Corre como el usuario del host: evita que los caches (tmp/, log/,
+    # storage/) queden con dueño root en el bind mount y rompan los tests/Server
+    # nativos. Ajusta APP_UID/APP_GID en .env si tu usuario no es 1000.
+    user: "${APP_UID:-1000}:${APP_GID:-1000}"
+    # db:prepare crea y migra la base la primera vez (y es no-op después).
+    command: bash -c "bin/rails db:prepare && rm -f tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0"
     volumes:
       - .:/app
     ports:

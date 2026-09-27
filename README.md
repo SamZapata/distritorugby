@@ -4,7 +4,7 @@ Plataforma abierta para compartir información, contenidos y herramientas relaci
 
 ## Estado del proyecto
 
-Repositorio en migración limpia desde `distritorugby-legacy`. **Lote 1 completado:** base reproducible (Ruby/Rails/Docker) instalable y verificable. La aplicación funcional se migrará por lotes (persistencia, autenticación, flujos y dominio deportivo).
+Repositorio en migración limpia desde `distritorugby-legacy`. **Lotes 1 y 2 completados:** base reproducible (Ruby/Rails/Docker), persistencia (44 migraciones, modelos base) y autenticación con Devise + autorización mínima con CanCanCan. La aplicación funcional se migrará por lotes (flujos y dominio deportivo).
 
 ## Requisitos
 
@@ -20,11 +20,14 @@ git clone git@github.com:SamZapata/distritorugby.git
 cd distritorugby
 bundle install
 cp .env.example .env   # y rellena los valores reales
-bin/rails db:create db:migrate
+bin/rails db:prepare   # crea y migra la base la primera vez
 bin/rails server
 ```
 
 Health check: `http://localhost:3000/up`
+
+En development las imágenes se guardan en `storage/` (local); Cloudinary queda
+configurado solo para producción.
 
 ### Con Docker
 
@@ -32,6 +35,13 @@ Health check: `http://localhost:3000/up`
 cp .env.example .env   # POSTGRES_* requeridos por docker-compose
 docker compose up --build
 ```
+
+- La base se crea y migra automáticamente al arrancar (`db:prepare` en el
+  comando del contenedor `web`).
+- Los datos viven en el volumen `distritorugby_pgdata`; `docker compose down`
+  los conserva, `docker compose down -v` los borra (reset completo).
+- No levantes Docker y `bin/rails server` al mismo tiempo: compiten por el
+  puerto 3000.
 
 ## Pruebas
 
