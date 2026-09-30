@@ -18,12 +18,16 @@ Rails.application.routes.draw do
       resource :stat, only: %i[show new create edit update], controller: 'match_stats'
       resources :club_assignments, only: %i[create destroy], controller: 'club_matches'
     end
+    resources :coaches
+    resources :referees, controller: 'referees'
     resources :clubs do
       resources :admin_assignments, only: %i[create destroy], controller: 'admin_assignments'
+      resources :coach_assignments, only: %i[create destroy], controller: 'club_coach_joins'
       resources :categories, controller: 'club_categories' do
         resources :schedules, controller: 'category_schedules'
         resources :teams, controller: 'club_teams' do
           resources :player_assignments, only: %i[create destroy], controller: 'player_cteam_joins'
+          resources :coach_assignments, only: %i[create destroy], controller: 'coach_team_joins'
         end
         resources :player_assignments, only: %i[create destroy], controller: 'player_category_joins'
       end

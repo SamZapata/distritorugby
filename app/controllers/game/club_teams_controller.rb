@@ -11,6 +11,7 @@ class Game::ClubTeamsController < ApplicationController
   def show
     authorize! :read, @team
     @players = @team.players.order(:last_name, :first_name)
+    @coaches = @team.coaches.order(:last_name, :first_name)
     @player_assignments = @team.player_cteam_joins.includes(:player)
   end
 

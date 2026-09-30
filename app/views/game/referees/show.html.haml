@@ -1,0 +1,10 @@
+%h1= @referee.full_name
+
+- if @referee.about.present?
+  %p= @referee.about
+
+- if can?(:update, @referee)
+  %p= link_to 'Editar árbitro', edit_game_referee_path(@referee)
+
+- if can?(:destroy, @referee)
+  %p= button_to 'Eliminar árbitro', game_referee_path(@referee), method: :delete

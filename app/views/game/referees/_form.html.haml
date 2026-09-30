@@ -1,0 +1,21 @@
+= form_with model: @referee, scope: :game_referee, url: (@referee.persisted? ? game_referee_path(@referee) : game_referees_path) do |form|
+  - if @referee.errors.any?
+    %div{role: 'alert'}
+      %h2= 'No se pudo guardar el árbitro:'
+      %ul
+        - @referee.errors.full_messages.each do |message|
+          %li= message
+
+  %p
+    = form.label :first_name, 'Nombre'
+    = form.text_field :first_name, required: true
+
+  %p
+    = form.label :last_name, 'Apellido'
+    = form.text_field :last_name, required: true
+
+  %p
+    = form.label :about, 'Descripción'
+    = form.text_area :about
+
+  = form.submit 'Guardar'

@@ -1,0 +1,11 @@
+%h1 Árbitros
+
+- if can?(:create, Game::Referee)
+  %p= link_to 'Crear árbitro', new_game_referee_path
+
+- if @referees.any?
+  %ul
+    - @referees.each do |referee|
+      %li= link_to referee.full_name, game_referee_path(referee)
+- else
+  %p Aún no hay árbitros registrados.

@@ -1,0 +1,16 @@
+%h1= @coach.full_name
+
+- if @coach.about.present?
+  %p= @coach.about
+
+- if @clubs.any?
+  %h2 Clubes
+  %ul
+    - @clubs.each do |club|
+      %li= link_to club.name, game_club_path(club)
+
+- if can?(:update, @coach)
+  %p= link_to 'Editar entrenador', edit_game_coach_path(@coach)
+
+- if can?(:destroy, @coach)
+  %p= button_to 'Eliminar entrenador', game_coach_path(@coach), method: :delete

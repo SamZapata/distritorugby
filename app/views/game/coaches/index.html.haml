@@ -1,0 +1,11 @@
+%h1 Entrenadores
+
+- if can?(:create, Game::Coach)
+  %p= link_to 'Crear entrenador', new_game_coach_path
+
+- if @coaches.any?
+  %ul
+    - @coaches.each do |coach|
+      %li= link_to coach.full_name, game_coach_path(coach)
+- else
+  %p Aún no hay entrenadores registrados.

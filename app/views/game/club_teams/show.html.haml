@@ -15,6 +15,14 @@
 - else
   %p Este equipo aún no tiene jugadores.
 
+%h2 Entrenadores del equipo
+- if @coaches.any?
+  %ul
+    - @coaches.each do |coach|
+      %li= link_to coach.full_name, game_coach_path(coach)
+- else
+  %p Este equipo aún no tiene entrenadores asignados.
+
 - if can?(:update, @team)
   %p= link_to 'Editar equipo', edit_game_club_category_team_path(@club, @category, @team)
 

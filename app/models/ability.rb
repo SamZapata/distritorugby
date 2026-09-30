@@ -17,7 +17,7 @@ class Ability
     # Lote 4.3: league_admin gestiona torneos, grupos, partidos
     # y contenido editorial; sin gestión de clubes ni usuarios.
     elsif user.league_admin?
-      can :manage, [Game::Tournament, Game::Tournament::Group, Game::GroupMatch, Game::Match, Game::ClubMatch, Game::MatchStat, News, Story]
+      can :manage, [Game::Tournament, Game::Tournament::Group, Game::GroupMatch, Game::Match, Game::ClubMatch, Game::MatchStat, Game::Coach, Game::Referee, Game::ClubCoachJoin, Game::CoachTeamJoin, Game::NnTeam, News, Story]
       can :read, :all
       cannot :read, Game::ClubAdminAssignment
     elsif user.club_admin?

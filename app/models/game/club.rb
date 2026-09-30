@@ -30,5 +30,12 @@ class Game::Club < ApplicationRecord
            inverse_of: :club
   has_many :matches, through: :club_matches
 
+  has_many :club_coach_joins,
+           class_name: 'Game::ClubCoachJoin',
+           foreign_key: :club_id,
+           dependent: :destroy,
+           inverse_of: :club
+  has_many :coaches, through: :club_coach_joins
+
   validates :name, presence: true, uniqueness: true
 end

@@ -9,6 +9,13 @@ class Game::ClubTeam < ApplicationRecord
            inverse_of: :club_team
   has_many :players, through: :player_cteam_joins
 
+  has_many :coach_team_joins,
+           class_name: 'Game::CoachTeamJoin',
+           foreign_key: :club_team_id,
+           dependent: :destroy,
+           inverse_of: :club_team
+  has_many :coaches, through: :coach_team_joins
+
   # Lote 4.5: has_many :coach_team_joins + :coaches
 
   validates :name, presence: true
