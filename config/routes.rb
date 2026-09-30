@@ -11,6 +11,12 @@ Rails.application.routes.draw do
   resources :stories
   get 'stories/tags/:tag', to: 'stories#tags', as: :stories_tags
 
+  # Fase 0.6: ruta about correcta (el legacy tenía 'aboute') y sin
+  # duplicar home/index.
+  get 'home/about', to: 'home#about', as: :home_about
+  get 'team/index', to: 'team#index'
+  get 'toolbox/index', to: 'toolbox#index'
+
   namespace :game do
     resources :unions
     resources :nn_teams

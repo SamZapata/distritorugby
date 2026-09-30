@@ -1,3 +1,22 @@
-.home-placeholder
+.home-index
   %h1 Distrito Rugby
-  %p Plataforma en construcción (migración en curso).
+
+  %section
+    %h2 Explorar
+    %ul
+      - @filters_by_model.each do |filter|
+        %li= link_to filter[:name], filter[:path]
+
+  - if @latest_news.any?
+    %section
+      %h2 Últimas noticias
+      %ul
+        - @latest_news.each do |news|
+          %li= link_to news.title, news_path(news)
+
+  - if @latest_tournaments.any?
+    %section
+      %h2 Torneos recientes
+      %ul
+        - @latest_tournaments.each do |tournament|
+          %li= link_to tournament.name, game_tournament_path(tournament)
