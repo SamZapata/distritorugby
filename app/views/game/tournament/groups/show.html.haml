@@ -5,11 +5,10 @@
   = link_to @tournament.name, game_tournament_path(@tournament)
 
 %h2 Partidos del grupo
--# Lote 4.4: enlazar cada partido a su detalle.
 - if @matches.any?
   %ul
     - @matches.each do |match|
-      %li= match.play_date
+      %li= link_to match.play_date, game_match_path(match)
 - else
   %p Este grupo aún no tiene partidos.
 

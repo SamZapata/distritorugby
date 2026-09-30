@@ -1,0 +1,11 @@
+%h1 Partidos
+
+- if can?(:create, Game::Match)
+  %p= link_to 'Crear partido', new_game_match_path
+
+- if @matches.any?
+  %ul
+    - @matches.each do |match|
+      %li= link_to match.play_date, game_match_path(match)
+- else
+  %p Aún no hay partidos registrados.

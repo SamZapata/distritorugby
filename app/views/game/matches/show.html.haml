@@ -1,0 +1,28 @@
+%h1= "Partido del #{@match.play_date}"
+
+- if @match.referee
+  %p
+    %strong Árbitro:
+    = @match.referee.full_name
+
+%h2 Clubes
+- if @clubs.any?
+  %ul
+    - @clubs.each do |club|
+      %li= link_to club.name, game_club_path(club)
+- else
+  %p Sin clubes asignados.
+
+%h2 Marcador
+- if @stat
+  %p= "#{@stat.total_score_a} – #{@stat.total_score_b}"
+  - if can?(:update, @stat)
+    %p= link_to 'Editar estadística', edit_game_match_stat_path(@match)
+- elsif can?(:create, Game::MatchStat.new(match: @match))
+  %p= link_to 'Cargar estadística', new_game_match_stat_path(@match)
+
+- if can?(:update, @match)
+  %p= link_to 'Editar partido', edit_game_match_path(@match)
+
+- if can?(:destroy, @match)
+  %p= button_to 'Eliminar partido', game_match_path(@match), method: :delete

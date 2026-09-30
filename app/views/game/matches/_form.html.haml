@@ -1,0 +1,22 @@
+= form_with model: @match, scope: :game_match, url: (@match.persisted? ? game_match_path(@match) : game_matches_path) do |form|
+  - if @match.errors.any?
+    %div{role: 'alert'}
+      %h2= 'No se pudo guardar el partido:'
+      %ul
+        - @match.errors.full_messages.each do |message|
+          %li= message
+
+  %p
+    = form.label :play_date, 'Fecha'
+    = form.date_field :play_date, required: true
+
+  %p
+    = form.label :address, 'Dirección'
+    = form.text_field :address
+
+  - if @referees.any?
+    %p
+      = form.label :referee_id, 'Árbitro'
+      = form.collection_select :referee_id, @referees, :id, :full_name, prompt: 'Sin asignar'
+
+  = form.submit 'Guardar'

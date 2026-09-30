@@ -9,8 +9,7 @@ class Game::Tournament::GroupsController < ApplicationController
 
   def show
     authorize! :read, @group
-    # Lote 4.4: @group.matches cuando exista Game::Match.
-    @matches = []
+    @matches = @group.matches.order(:play_date)
   end
 
   def new

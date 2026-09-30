@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_09_30_000001) do
+ActiveRecord::Schema[7.1].define(version: 2026_09_30_000002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -196,6 +196,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_09_30_000001) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "slug"
+    t.bigint "referee_id"
+    t.index ["referee_id"], name: "index_game_matches_on_referee_id"
   end
 
   create_table "game_nn_teams", force: :cascade do |t|
@@ -406,5 +408,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_09_30_000001) do
   add_foreign_key "game_club_admin_assignments", "users"
   add_foreign_key "game_group_matches", "game_matches", column: "match_id"
   add_foreign_key "game_group_matches", "game_tournament_groups", column: "group_id"
+  add_foreign_key "game_matches", "game_referees", column: "referee_id"
   add_foreign_key "profiles", "users"
 end

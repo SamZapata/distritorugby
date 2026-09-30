@@ -1,0 +1,14 @@
+= form_with model: @stat, scope: :game_match_stat, url: (@stat.persisted? ? game_match_stat_path(@match) : game_match_stat_path(@match)) do |form|
+  - if @stat.errors.any?
+    %div{role: 'alert'}
+      %h2= 'No se pudo guardar la estadística:'
+      %ul
+        - @stat.errors.full_messages.each do |message|
+          %li= message
+
+  - %i[tries_a tries_b conversions_a conversions_b penalty_goal_a penalty_goal_b drop_goal_a drop_goal_b].each do |attr|
+    %p
+      = form.label attr
+      = form.number_field attr, min: 0
+
+  = form.submit 'Guardar'

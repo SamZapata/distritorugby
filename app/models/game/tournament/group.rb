@@ -6,7 +6,7 @@ class Game::Tournament::Group < ApplicationRecord
            foreign_key: :group_id,
            dependent: :destroy,
            inverse_of: :group
-  # Lote 4.4: has_many :matches through :group_matches cuando exista Game::Match.
+  has_many :matches, through: :group_matches
 
   validates :name, presence: true
 end

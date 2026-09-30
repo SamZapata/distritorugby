@@ -10,7 +10,13 @@ Rails.application.routes.draw do
     resources :nn_teams
     resources :players
     resources :tournaments do
-      resources :groups, controller: 'tournament/groups'
+      resources :groups, controller: 'tournament/groups' do
+        resources :group_assignments, only: %i[create destroy], controller: 'group_matches'
+      end
+    end
+    resources :matches do
+      resource :stat, only: %i[show new create edit update], controller: 'match_stats'
+      resources :club_assignments, only: %i[create destroy], controller: 'club_matches'
     end
     resources :clubs do
       resources :admin_assignments, only: %i[create destroy], controller: 'admin_assignments'
