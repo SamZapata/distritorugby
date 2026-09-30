@@ -4,7 +4,12 @@ Plataforma abierta para compartir información, contenidos y herramientas relaci
 
 ## Estado del proyecto
 
-Repositorio en migración limpia desde `distritorugby-legacy`. **Lotes 1 y 2 completados:** base reproducible (Ruby/Rails/Docker), persistencia (44 migraciones, modelos base) y autenticación con Devise + autorización mínima con CanCanCan. La aplicación funcional se migrará por lotes (flujos y dominio deportivo).
+Repositorio en migración limpia desde `distritorugby-legacy` (congelado, solo lectura).
+**Lotes 0-6 completados:** base reproducible, persistencia y auth (Devise + CanCanCan),
+flujo vertical de clubes con roles (`user`/`club_admin`/`league_admin`/`super_admin`),
+dominio deportivo (clubes, categorías, equipos, jugadores, torneos, grupos, partidos,
+stats, entrenadores, árbitros), contenido (noticias, historias, tags, servicios),
+home dinámico y semillas sintéticas. Ver `../assistant/migracion-limpia.md` (fuera de este repo).
 
 ## Requisitos
 
@@ -48,6 +53,16 @@ docker compose up --build
 ```bash
 bin/rails test
 ```
+
+Suite actual: 111 runs / 309 assertions (Lote 4.7), 0 fallas.
+
+## Datos de desarrollo
+
+```bash
+bin/rails db:seed   # crea registros demo ficticios (idempotente)
+```
+
+Los CSV con datos reales del legacy nunca se migran (contienen PII).
 
 ## Variables de entorno
 
