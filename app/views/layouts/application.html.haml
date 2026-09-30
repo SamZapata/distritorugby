@@ -9,9 +9,30 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload'
   %body
+    .distrito-rugby-header
+      = render 'layouts/menu_bar'
+
     %main.distrito-rugby-main
       - if notice
         %p.notice= notice
       - if alert
         %p.alert= alert
       = yield
+    
+    #showMenu.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "showMenuBar", :role => "dialog", :tabindex => "-1"}
+      .modal-dialog{:role => "document"}
+        .modal-content
+          .menu-bar--modal
+            .mb-modal--label
+              = link_to t('menu.stories'), '#', :class => 'mb-modal--label__text'
+            .mb-modal--label
+              = link_to t('menu.clubs'), game_clubs_path, :class => 'mb-modal--label__text'
+            .mb-modal--label
+              = link_to t('menu.tournaments'), '#', :class => 'mb-modal--label__text'
+            .mb-modal--label
+              = link_to (I18n.t 'menu.players'), '#', :class => 'mb-modal--label__text'
+            .mb-modal--label
+              = link_to t('menu.toolbox'), '#', :class => 'mb-modal--label__text'
+
+
+    = render 'layouts/footer'

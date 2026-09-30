@@ -1,0 +1,41 @@
+%h1= @club.name
+
+- if @club.union
+  %p
+    %strong Unión:
+    = @club.union.name
+
+- if @club.about.present?
+  %p= @club.about
+
+- %i[email phone address webpage instagram facebook twitter youtube].each do |attribute|
+  - if @club.public_send(attribute).present?
+    %p
+      %strong= "#{attribute.humanize}:"
+      = @club.public_send(attribute)
+
+- if can?(:update, @club)
+  %p= link_to 'Editar club', edit_game_club_path(@club)
+
+- if can?(:destroy, @club)
+  %p= button_to 'Eliminar club', game_club_path(@club), method: :delete
+
+- if current_user&.super_admin?
+  %section
+    %h2 Administradores del club
+    - if @admin_assignments.any?
+      %ul
+        - @admin_assignments.each do |assignment|
+          %li
+            = assignment.user.email
+            = button_to 'Quitar asignación', game_club_admin_assignment_path(@club, assignment), method: :delete
+    - else
+      %p No hay administradores asignados.
+
+    - if @club_admins.any?
+      = form_with url: game_club_admin_assignments_path(@club), method: :post do |form|
+        = form.label :user_id, 'Asignar administrador'
+        = form.collection_select :user_id, @club_admins, :id, :email, prompt: 'Selecciona un administrador'
+        = form.submit 'Asignar'
+    - else
+      %p No hay usuarios con rol de administrador de club.

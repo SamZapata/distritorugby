@@ -1,0 +1,14 @@
+%h1 Clubes
+
+- if can?(:create, Game::Club)
+  %p= link_to 'Crear club', new_game_club_path
+
+- if @clubs.any?
+  %ul
+    - @clubs.each do |club|
+      %li
+        = link_to club.name, game_club_path(club)
+        - if club.union
+          %span= " — #{club.union.name}"
+- else
+  %p Aún no hay clubes registrados.

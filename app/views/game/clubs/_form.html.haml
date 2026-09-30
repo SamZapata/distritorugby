@@ -1,0 +1,27 @@
+= form_with model: @club, scope: :game_club, url: (@club.persisted? ? game_club_path(@club) : game_clubs_path) do |form|
+  - if @club.errors.any?
+    %div{role: 'alert'}
+      %h2= 'No se pudo guardar el club:'
+      %ul
+        - @club.errors.full_messages.each do |message|
+          %li= message
+
+  %p
+    = form.label :name, 'Nombre'
+    = form.text_field :name, required: true
+
+  %p
+    = form.label :about, 'Descripción'
+    = form.text_area :about
+
+  - if current_user&.super_admin?
+    %p
+      = form.label :union_id, 'Unión'
+      = form.collection_select :union_id, @unions, :id, :name, prompt: 'Selecciona una unión', required: true
+
+  - %i[email phone address webpage instagram facebook twitter youtube].each do |attribute|
+    %p
+      = form.label attribute
+      = form.text_field attribute
+
+  = form.submit 'Guardar'

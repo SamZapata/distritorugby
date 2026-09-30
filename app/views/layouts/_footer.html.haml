@@ -1,0 +1,49 @@
+/ Project: Distrito Rugby
+/ Footer
+
+.distrito-rugby-footer
+  %footer.footer
+    .footer-container
+      .footer-brand
+        .footer-logo
+          %span.footer-logo-text DR
+        %p.footer-tagline= t('footer.tagline')
+
+      .footer-main
+        .footer-nav
+          %h4.footer-nav-title= t('footer.explore')
+          %ul.footer-nav-list
+            %li= link_to t('footer.links.news'), '#'
+            %li= link_to t('footer.links.stories'), '#'
+            %li= link_to t('footer.links.clubs'), '#'
+            %li= link_to t('footer.links.tournaments'), '#'
+            %li= link_to t('footer.links.players'), '#'
+
+        .footer-social
+          %h4.footer-nav-title= t('footer.follow_us')
+          .footer-social-icons
+            = link_to "https://facebook.com/distritorugby", target: "_blank", class: 'footer-social-link', aria: { label: "Facebook" } do
+              %i.fab.fa-facebook-f
+            = link_to "https://instagram.com/distritorugby", target: "_blank", class: 'footer-social-link', aria: { label: "Instagram" } do
+              %i.fab.fa-instagram
+            = link_to "https://youtube.com/@distritorugby", target: "_blank", class: 'footer-social-link', aria: { label: "YouTube" } do
+              %i.fab.fa-youtube
+            = link_to "https://twitter.com/distritorugby", target: "_blank", class: 'footer-social-link', aria: { label: "Twitter" } do
+              %i.fab.fa-x-twitter
+
+      .footer-bottom
+        .footer-bottom-content
+          .footer-copyright
+            %p &copy; 2026 Distrito Rugby. #{t('footer.rights_reserved')}
+
+          .footer-legal
+            = link_to t('footer.privacy_policy'), "#"
+            = link_to t('footer.terms_of_service'), "#"
+
+          .footer-developer
+            = t('footer.developed_by')
+            = link_to "@jsamzapata", "https://github.com/SamZapata", target: "_blank"
+
+    / Return to Top
+    %button#scrollUp{:onclick => "topFunction()", :title => t('footer.go_to_top')}
+      %i.fas.fa-chevron-up
