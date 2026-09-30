@@ -11,5 +11,11 @@ class Game::Club < ApplicationRecord
            inverse_of: :club
   has_many :administrators, through: :admin_assignments, source: :user
 
+  has_many :club_categories,
+           class_name: 'Game::ClubCategory',
+           foreign_key: :club_id,
+           dependent: :destroy,
+           inverse_of: :club
+
   validates :name, presence: true, uniqueness: true
 end

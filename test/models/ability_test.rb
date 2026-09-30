@@ -67,4 +67,23 @@ class AbilityTest < ActiveSupport::TestCase
     assert_not ability.can?(:create, Game::Club)
     assert_not ability.can?(:manage, Game::ClubAdminAssignment)
   end
+
+  test 'club admin gestiona categorias y horarios solo de sus clubes' do
+    union = Game::Union.create!(name: 'Unión alcance')
+    own_club = Game::Club.create!(name: 'Club propio', union: union)
+    other_club = Game::Club.create!(name: 'Club ajeno', union: union)
+    own_category = Game::ClubCategory.create!(name: 'Propia', club: own_club)
+    other_category = Game::ClubCategory.create!(name: 'Ajena', club: other_club)
+    own_schedule = Game::CategorySchedule.create!(day: 'Lunes', club_category: own_category)
+    other_schedule = Game::CategorySchedule.create!(day: 'Martes', club_category: other_category)
+    user = User.create!(email: 'alcance@ejemplo.com', password: 'secret123', role: :club_admin)
+    Game::ClubAdminAssignment.create!(user: user, club: own_club)
+    ability = Ability.new(user)
+
+    assert ability.can?(:manage, own_category)
+    assert ability.can?(:manage, own_schedule)
+    assert_not ability.can?(:manage, other_category)
+    assert_not ability.can?(:manage, other_schedule)
+    assert_not ability.can?(:create, Game::Union)
+  end
 end

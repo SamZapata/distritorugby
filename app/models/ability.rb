@@ -19,6 +19,9 @@ class Ability
       # game_club_admin_assignments. Sin create/destroy, sin cambio de
       # union (filtrado en ClubsController#club_params), sin auto-asignar.
       can :update, Game::Club, id: user.managed_club_ids
+      # Lote 4.1: gestión de categorías y horarios solo en clubes asignados.
+      can :manage, Game::ClubCategory, club_id: user.managed_club_ids
+      can :manage, Game::CategorySchedule, club_category: { club_id: user.managed_club_ids }
     end
     # Step 0.2: league_admin sin privilegios extra hasta Lote 4.3
     # (solo lectura pública + perfil propio).
