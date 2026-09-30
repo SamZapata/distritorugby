@@ -13,11 +13,11 @@
         .footer-nav
           %h4.footer-nav-title= t('footer.explore')
           %ul.footer-nav-list
-            %li= link_to t('footer.links.news'), '#'
-            %li= link_to t('footer.links.stories'), '#'
-            %li= link_to t('footer.links.clubs'), '#'
-            %li= link_to t('footer.links.tournaments'), '#'
-            %li= link_to t('footer.links.players'), '#'
+            %li= link_to t('footer.links.news'), news_index_path
+            %li= link_to t('footer.links.stories'), stories_path
+            %li= link_to t('footer.links.clubs'), game_clubs_path
+            %li= link_to t('footer.links.tournaments'), game_tournaments_path
+            %li= link_to t('footer.links.players'), game_players_path
 
         .footer-social
           %h4.footer-nav-title= t('footer.follow_us')

@@ -17,4 +17,7 @@
 //= require rails-ujs
 //= require activestorage
 
-// Los scripts de negocio (main, core/*) se agregan desde el Lote 3/4.
+// From core of the application (Phase 1: home shell)
+//= require main
+//= require core/main-menu.js
+//= require core/utilities.js

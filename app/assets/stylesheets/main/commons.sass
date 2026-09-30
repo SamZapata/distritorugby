@@ -1,0 +1,55 @@
+.link
+  color: $link !important
+.link-w
+  color: $white !important
+  &:hover
+    color: $link !important
+.scrollmenu
+  background-color: #333
+  overflow: auto
+  white-space: nowrap
+  margin-top: -16px
+  margin-bottom: 16px
+
+  a
+    display: inline-block
+    color: white
+    text-align: center
+    padding: 14px
+    text-decoration: none
+
+    &:hover
+      background-color: #777
+
+.img-hov
+  transform: scale(1)
+  -webkit-transform: scale(1)
+  transition: .3s ease-in-out
+  -webkit-transition: .3s ease-in-out
+
+  &:hover
+    transform: scale(1.02)
+    -webkit-transform: scale(1.05)
+
+.button-filters
+  position: absolute
+  right: 5%
+  margin: 15px 0
+  color: $link
+
+dl
+  width: 100%
+  overflow: hidden
+  padding: 0
+  margin: 0
+  dt
+    float: left
+    width: 40%
+    padding: 0
+    margin: 0
+
+  dd
+    float: left
+    width: 60%
+    padding: 0
+    margin: 0

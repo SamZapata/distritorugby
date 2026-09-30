@@ -1,0 +1,138 @@
+// Project: Distrito Rugby
+// Recommended Section
+
+.recommended-section
+  padding: 80px 0
+  background-color: $white
+
+.recommended-wrapper
+  max-width: 1200px
+  margin: 0 auto
+  padding: 0 20px
+
+.recommended-header
+  text-align: center
+  margin-bottom: 50px
+
+.recommended-title
+  font-size: 2.2rem
+  font-weight: bold
+  color: $title
+  text-transform: uppercase
+  letter-spacing: 2px
+  margin-bottom: 10px
+
+.recommended-subtitle
+  font-size: 1.1rem
+  color: $gray
+
+.recommended-content
+  display: flex
+  gap: 40px
+  align-items: stretch
+
+.recommended-video
+  flex: 1
+  min-width: 0
+
+.video-wrapper
+  position: relative
+  padding-bottom: 56.25%
+  height: 0
+  overflow: hidden
+  background-color: $dark
+  border-radius: 8px
+
+  iframe
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    border-radius: 8px
+
+.recommended-info
+  flex: 1
+  min-width: 0
+
+.recommended-card
+  background-color: #f8f9fa
+  border-radius: 8px
+  padding: 30px
+  height: 100%
+  display: flex
+  flex-direction: column
+
+.recommended-card-badge
+  display: inline-flex
+  align-items: center
+  gap: 8px
+  background-color: $carmine
+  color: $white
+  padding: 6px 14px
+  border-radius: 20px
+  font-size: 0.8rem
+  font-weight: bold
+  text-transform: uppercase
+  letter-spacing: 1px
+  width: fit-content
+  margin-bottom: 20px
+
+.recommended-card-title
+  font-size: 1.6rem
+  font-weight: bold
+  color: $title
+  margin-bottom: 15px
+
+.recommended-card-text
+  font-size: 1rem
+  color: $gray
+  line-height: 1.7
+  margin-bottom: 20px
+  flex-grow: 1
+
+.recommended-card-meta
+  display: flex
+  gap: 20px
+  margin-bottom: 20px
+
+.recommended-meta-item
+  display: flex
+  align-items: center
+  gap: 6px
+  font-size: 0.85rem
+  color: $light-gray
+
+.recommended-card-link
+  display: inline-flex
+  align-items: center
+  gap: 8px
+  color: $carmine
+  font-weight: bold
+  text-decoration: none
+  text-transform: uppercase
+  letter-spacing: 1px
+  font-size: 0.9rem
+  transition: gap 0.3s ease
+
+  &:hover
+    gap: 12px
+    color: $maroon
+
+// Responsive
+@media (max-width: 991px)
+  .recommended-content
+    flex-direction: column
+
+  .recommended-title
+    font-size: 1.8rem
+
+@media (max-width: 767px)
+  .recommended-section
+    padding: 60px 0
+
+  .recommended-title
+    font-size: 1.5rem
+
+  .recommended-card
+    padding: 20px

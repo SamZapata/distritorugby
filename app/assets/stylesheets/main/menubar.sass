@@ -1,0 +1,112 @@
+// Project: Distrito Rugby
+// Author: Johnny Zapata
+// @jsamzapata
+
+#barDR.menu-bar
+	width: 100%
+	height: 5vh
+	display: flex
+	background-color: $menu-button
+	justify-content: center
+	align-items: center
+	position: fixed
+	top: 0
+	left: 0
+	z-index: -1
+	opacity: 0
+	transform: translateY(-100%)
+	pointer-events: none
+	transition: opacity 0.3s ease, transform 0.3s ease
+
+	&.is-visible
+		opacity: 1
+		transform: translateY(0)
+		z-index: 1060
+		pointer-events: auto
+
+	&.is-hidden
+		opacity: 0
+		transform: translateY(-100%)
+		pointer-events: none
+		z-index: -1
+
+	.menu-bar--button
+		font-family: 'Black Ops One'
+		margin-top: 4px
+		pointer-events: auto
+		.mb-button--label
+			display: flex
+			// padding-top: 0.5%
+			.mb-button--label__text
+				font-size: 1.4em
+				color: $white
+				opacity: 0.5
+				&:hover
+					color: $white
+					opacity: 1
+					cursor: pointer
+		span.symbol-menu
+			font-size: 0.5em
+
+#showMenu
+	.modal-dialog
+		max-width: 100%
+		height: 80vh
+		margin-top: 3.12rem
+	.modal-content
+		background-color: $menu-modal
+		border: none
+		border-radius: 0
+		overflow-y: auto
+
+.menu-bar--modal
+	.mb-modal--label
+		display: flex
+		height: 10vh
+		background-color: $menu-item
+		justify-content: center
+		align-items: center
+		&:hover
+			background-color: $menu-item-hover
+		.mb-modal--label__text
+			font-size: 1.3em
+			font-family: verdana
+			font-weight: bold
+			color: $white
+			justify-content: center
+			align-items: center
+			&:hover
+				color: $white
+	.mb-modal--label__home
+		display: flex
+		width: calc(100%)
+		height: calc(8vh)
+		justify-content: center
+		align-items: center
+		&:hover
+			background-color: $menu-item-hover
+			.label_text
+				color: $white
+		.label_text
+			display: flex
+			justify-content: center
+			align-items: center
+			color: $dark
+			font-family: verdana
+			font-weight: bold
+
+	.mb-modal--label__footer
+		width: calc(100%)
+		height: calc(8vh)
+		text-align: start
+		padding: calc(1.8vh) 4%
+		&:hover
+			background-color: $menu-item-hover
+			.label_text
+				color: $white
+		.label_text
+			color: $dark
+			align-items: center
+			font-family: verdana
+			font-weight: bold
+			margin: 0 4px

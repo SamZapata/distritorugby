@@ -6,11 +6,29 @@
     %title Distrito Rugby
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload'
+    %link{:crossorigin => "anonymous", :href => "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css", :integrity => "sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM", :rel => "stylesheet"}/
+    %link{:crossorigin => "anonymous", :href => "https://use.fontawesome.com/releases/v5.6.3/css/all.css", :integrity => "sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/", :rel => "stylesheet"}/
+
   %body
     .distrito-rugby-header
       = render 'layouts/menu_bar'
+
+    #showMenu.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "showMenuBar", :role => "dialog", :tabindex => "-1"}
+      .modal-dialog{:role => "document"}
+        .modal-content
+          .menu-bar--modal
+            .mb-modal--label
+              = link_to t('menu.stories'), stories_path, :class => 'mb-modal--label__text'
+            .mb-modal--label
+              = link_to t('menu.clubs'), game_clubs_path, :class => 'mb-modal--label__text'
+            .mb-modal--label
+              = link_to t('menu.tournaments'), game_tournaments_path, :class => 'mb-modal--label__text'
+            .mb-modal--label
+              = link_to (I18n.t 'menu.players'), game_players_path, :class => 'mb-modal--label__text'
+            .mb-modal--label
+              = link_to t('menu.toolbox'), toolbox_index_path, :class => 'mb-modal--label__text'
 
     %main.distrito-rugby-main
       - if notice
@@ -18,21 +36,7 @@
       - if alert
         %p.alert= alert
       = yield
-    
-    #showMenu.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "showMenuBar", :role => "dialog", :tabindex => "-1"}
-      .modal-dialog{:role => "document"}
-        .modal-content
-          .menu-bar--modal
-            .mb-modal--label
-              = link_to t('menu.stories'), '#', :class => 'mb-modal--label__text'
-            .mb-modal--label
-              = link_to t('menu.clubs'), game_clubs_path, :class => 'mb-modal--label__text'
-            .mb-modal--label
-              = link_to t('menu.tournaments'), '#', :class => 'mb-modal--label__text'
-            .mb-modal--label
-              = link_to (I18n.t 'menu.players'), '#', :class => 'mb-modal--label__text'
-            .mb-modal--label
-              = link_to t('menu.toolbox'), '#', :class => 'mb-modal--label__text'
-
 
     = render 'layouts/footer'
+
+    %script{:crossorigin => "anonymous", :src => "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"}

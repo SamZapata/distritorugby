@@ -1,0 +1,339 @@
+// Project: Distrito Rugby
+// File#Section: DIAMOND SECTION
+// Author: Johnny Zapata
+// User: @jsamzapata
+// Updated: Septiembre 2026
+
+// === CONTENEDOR PRINCIPAL ===
+.diamond-container
+  position: relative
+  width: 100vw
+  height: 100vh
+  overflow: hidden
+
+// === CUADRANTES ===
+.quadrants-wrapper
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+
+.quadrants
+  width: 100%
+  height: 100%
+  margin: 0
+  padding: 0
+
+.quadrant
+  position: relative
+  display: flex
+  height: 50vh
+  width: 50vw
+  float: left
+  justify-content: center
+  align-items: center
+  overflow: hidden
+  transition: filter 0.8s ease, opacity 0.8s ease
+  cursor: pointer
+
+  &.q-i
+    background-color: $main-menu-a
+  &.q-ii
+    background-color: $main-menu-b
+  &.q-iv
+    background-color: $main-menu-c
+  &.q-iii
+    background-color: $main-menu-d
+
+  .quadrant-bg
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    opacity: 0.3
+
+  .quadrant-img
+    width: 100%
+    height: 100%
+    object-fit: cover
+
+  .quadrant-label
+    position: relative
+    z-index: 10
+    color: $white
+    font-weight: bold
+    font-size: 1.1rem
+    text-transform: uppercase
+    letter-spacing: 2px
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)
+    cursor: pointer
+    text-decoration: none
+    transition: transform 0.3s ease
+
+    &:hover
+      transform: scale(1.1)
+
+  .quadrant-content
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    padding: 20px
+    opacity: 0
+    transition: opacity 0.5s ease
+    z-index: 3
+    background-color: rgba(0, 0, 0, 0.7)
+
+  // Estado: brillando (ruleta pasando por aquí)
+  &.glowing
+    filter: brightness(1.6)
+    z-index: 5
+
+  // Estado: seleccionado (con brillo temporal)
+  &.selected
+    filter: brightness(1.4)
+    z-index: 10
+
+    .quadrant-content
+      opacity: 1
+
+    .quadrant-label
+      display: none
+
+  // Estado: seleccionado (brillo normal, contenido visible)
+  &.selected-normal
+    filter: brightness(1)
+    z-index: 10
+
+    .quadrant-content
+      opacity: 1
+
+    .quadrant-label
+      display: none
+
+  // Estado: oscurecido
+  &.dimmed
+    filter: brightness(0.4)
+    opacity: 0.6
+
+// === ROMBO CENTRAL ===
+.diamond-wrapper
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  z-index: 99
+
+.diamond
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 37vh
+  height: 37vh
+  background-color: $dark
+  border: 3px solid $white
+  transform: rotate(45deg)
+  transition: transform 0.3s ease, box-shadow 0.3s ease
+
+  &:hover
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3)
+
+.diamond-text
+  transform: rotate(-45deg)
+  color: $white
+  font-size: 1.7em
+  font-family: 'Ubuntu', sans-serif
+  font-weight: bold
+  text-align: center
+  text-transform: uppercase
+  letter-spacing: 3px
+  cursor: pointer
+  user-select: none
+  transition: color 0.3s ease
+
+  &:hover
+    color: $carmine
+
+// === ANIMACIONES ===
+@keyframes diamond-spin
+  0%
+    transform: rotate(45deg)
+  100%
+    transform: rotate(405deg)
+
+@keyframes glow-pulse
+  0%, 100%
+    filter: brightness(1)
+  50%
+    filter: brightness(1.8)
+
+@keyframes fade-in-content
+  0%
+    opacity: 0
+    transform: translateY(20px)
+  100%
+    opacity: 1
+    transform: translateY(0)
+
+.diamond-container.roulette-active
+  .diamond
+    animation: diamond-spin 0.4s linear infinite
+
+// === HIGHLIGHT CARD ===
+.highlight-card
+  text-align: center
+  color: $white
+  padding: 20px
+
+.highlight-icon
+  font-size: 2.5rem
+  margin-bottom: 15px
+
+.highlight-title
+  font-size: 1.5rem
+  font-weight: bold
+  margin-bottom: 10px
+  text-transform: uppercase
+
+.highlight-description
+  font-size: 1rem
+  margin-bottom: 20px
+  opacity: 0.9
+
+.highlight-link
+  display: inline-block
+  padding: 10px 25px
+  background-color: $white
+  color: $dark
+  text-decoration: none
+  font-weight: bold
+  text-transform: uppercase
+  letter-spacing: 1px
+  transition: all 0.3s ease
+
+  &:hover
+    background-color: $carmine
+    color: $white
+
+// === MODAL INFORMACIÓN CUADRANTE ===
+#quadrantModal
+  .modal-content
+    background-color: rgba(26, 1, 1, 0.96)
+    border: none
+    border-radius: 0
+    color: $white
+    min-height: 40vh
+
+  .btn-close
+    position: absolute
+    top: 15px
+    right: 15px
+    filter: invert(1)
+
+  .quadrant-modal-icon
+    font-size: 3rem
+    margin-bottom: 15px
+
+  .quadrant-modal-title
+    font-size: 1.8rem
+    font-weight: bold
+    text-transform: uppercase
+    margin-bottom: 15px
+
+  .quadrant-modal-text
+    font-size: 1rem
+    opacity: 0.9
+    margin-bottom: 25px
+    line-height: 1.6
+
+  .quadrant-modal-link
+    display: inline-block
+    padding: 12px 30px
+    background-color: $white
+    color: $dark
+    text-decoration: none
+    font-weight: bold
+    text-transform: uppercase
+    letter-spacing: 1px
+    transition: all 0.3s ease
+
+    &:hover
+      background-color: $carmine
+      color: $white
+
+// === MODAL AUTENTICACIÓN ===
+#authModal
+  .modal-content
+    background-color: rgba(26, 1, 1, 0.96)
+    border: none
+    border-radius: 0
+    color: $white
+    min-height: 50vh
+
+  .btn-close
+    position: absolute
+    top: 15px
+    right: 15px
+    filter: invert(1)
+
+  a
+    color: $white
+    text-decoration: none
+
+    &:hover
+      color: $carmine
+
+// === RESPONSIVE ===
+@media (min-width: 992px)
+  .diamond
+    width: 37vh
+    height: 37vh
+
+  .diamond-text
+    font-size: 1.7em
+
+  .quadrant-label
+    font-size: 1.1rem
+
+@media (max-width: 991px) and (min-width: 768px)
+  .diamond
+    width: 30vh
+    height: 30vh
+
+  .diamond-text
+    font-size: 1.4em
+
+  .quadrant-label
+    font-size: 0.9rem
+
+@media (max-width: 767px)
+  .diamond
+    width: 25vh
+    height: 25vh
+
+  .diamond-text
+    font-size: 1.1em
+    letter-spacing: 1px
+
+  .quadrant-label
+    font-size: 0.8rem
+    letter-spacing: 1px
+
+  .quadrant
+    height: 50vh
+    width: 50vw
+
+@media (max-width: 479px)
+  .diamond
+    width: 22vh
+    height: 22vh
+
+  .diamond-text
+    font-size: 0.9em

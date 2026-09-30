@@ -1,0 +1,30 @@
+// @jsamzapata
+
+@import "home/**/*"
+
+.home-index
+	margin-top: -5vh
+	.home-menu-bar
+		width: calc(100%)
+		height: calc(7vh)
+		display: flex
+		background-color: $menu-button
+		justify-content: center
+		align-items: center
+
+		.menu-bar--button
+			font-family: 'Black Ops One'
+			margin-top: 4px
+			.mb-button--label
+				display: flex
+				// padding-top: 0.5%
+				.mb-button--label__text
+					font-size: 1.4em
+					color: $white
+					opacity: 0.5
+					&:hover
+						color: $white
+						opacity: 1
+						cursor: pointer
+				span.symbol-menu
+					font-size: 0.5em

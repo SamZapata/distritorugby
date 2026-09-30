@@ -1,0 +1,67 @@
+/ Project: Distrito Rugby
+/ Author: Johnny Zapata - @jsamzapata
+/ Phase 1: placeholders (licensed images pending)
+
+.diamond-container{data: {roulette: "true"}}
+  / Cuadrantes
+  .quadrants-wrapper
+    .quadrants
+      .quadrant.q-i{data: {category: "stories"}}
+        .quadrant-bg
+          = image_tag 'common/600x400.svg', alt: 'Historias', class: 'quadrant-img'
+        = link_to I18n.t('home.stories'), stories_path, class: 'quadrant-label'
+        .quadrant-content{data: {highlight: "stories"}}
+
+      .quadrant.q-ii{data: {category: "clubs"}}
+        .quadrant-bg
+          = image_tag 'common/400x400.png', alt: 'Clubes', class: 'quadrant-img'
+        = link_to I18n.t('home.clubs'), game_clubs_path, class: 'quadrant-label'
+        .quadrant-content{data: {highlight: "clubs"}}
+
+      .quadrant.q-iv{data: {category: "tournaments"}}
+        .quadrant-bg
+          = image_tag 'common/600x400.svg', alt: 'Torneos', class: 'quadrant-img'
+        = link_to I18n.t('home.tournaments'), game_tournaments_path, class: 'quadrant-label'
+        .quadrant-content{data: {highlight: "tournaments"}}
+
+      .quadrant.q-iii{data: {category: "players"}}
+        .quadrant-bg
+          = image_tag 'common/400x400.png', alt: 'Jugadores', class: 'quadrant-img'
+        = link_to I18n.t('home.players'), game_players_path, class: 'quadrant-label'
+        .quadrant-content{data: {highlight: "players"}}
+
+  / Rombo central
+  .diamond-wrapper
+    .diamond
+      .diamond-text{"data-bs-toggle" => "modal", "data-bs-target" => "#authModal"}
+        Distrito Rugby
+
+  / Modal de autenticación
+  #authModal.modal.fade{tabindex: "-1", aria: {hidden: "true", labelledby: "authModalLabel"}}
+    .modal-dialog.modal-dialog-centered{role: "document"}
+      .modal-content
+        .modal-body
+          %button.btn-close{"data-bs-dismiss" => "modal", aria: {label: "Cerrar"}}
+          %h5.text-center.mt-4#authModalLabel
+            = t('home.auth_modal.title')
+            %br= t('home.auth_modal.subtitle')
+          .mt-5.text-center
+            - if user_signed_in?
+              .mt-3= link_to t('home.auth_modal.profile'), edit_user_registration_path
+              .mt-3= button_to t('home.auth_modal.logout'), destroy_user_session_path, method: :delete
+            - else
+              = link_to I18n.t('sessions.login'), new_user_session_path
+              %br
+              = link_to I18n.t('sessions.new_user'), new_user_registration_path
+
+  / Modal informativa de cuadrante
+  #quadrantModal.modal.fade{tabindex: "-1", aria: {hidden: "true", labelledby: "quadrantModalLabel"}}
+    .modal-dialog.modal-dialog-centered{role: "document"}
+      .modal-content
+        .modal-body.text-center
+          %button.btn-close{"data-bs-dismiss" => "modal", aria: {label: "Cerrar"}}
+          .mt-4
+            %i.quadrant-modal-icon
+          %h4.quadrant-modal-title#quadrantModalLabel
+          %p.quadrant-modal-text
+          %a.quadrant-modal-link{href: "#"}

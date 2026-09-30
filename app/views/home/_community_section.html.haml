@@ -1,0 +1,45 @@
+/ Project: Distrito Rugby
+/ Join the Community
+
+.community-section
+  .community-wrapper
+    .community-header
+      %h2.community-title= t('home.community.title')
+      %p.community-subtitle= t('home.community.subtitle')
+
+    .community-cards
+      .community-card
+        .community-card-icon
+          %i.fas.fa-user-plus
+        %h3= t('home.community.signup.title')
+        %p= t('home.community.signup.description')
+        = link_to new_user_registration_path, class: 'community-card-link' do
+          = t('home.community.signup.cta')
+          %i.fas.fa-arrow-right
+
+      .community-card
+        .community-card-icon
+          %i.fab.fa-github
+        %h3= t('home.community.github.title')
+        %p= t('home.community.github.description')
+        = link_to "https://github.com/SamZapata/DistritoRugby", target: "_blank", class: 'community-card-link' do
+          = t('home.community.github.cta')
+          %i.fas.fa-external-link-alt
+
+      .community-card
+        .community-card-icon
+          %i.fab.fa-youtube
+        %h3= t('home.community.youtube.title')
+        %p= t('home.community.youtube.description')
+        = link_to "https://youtube.com/@distritorugby", target: "_blank", class: 'community-card-link' do
+          = t('home.community.youtube.cta')
+          %i.fas.fa-external-link-alt
+
+      .community-card
+        .community-card-icon
+          %i.fas.fa-hand-holding-heart
+        %h3= t('home.community.support.title')
+        %p= t('home.community.support.description')
+        = link_to "#", class: 'community-card-link' do
+          = t('home.community.support.cta')
+          %i.fas.fa-external-link-alt

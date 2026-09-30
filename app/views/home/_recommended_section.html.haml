@@ -1,0 +1,34 @@
+/ Project: Distrito Rugby
+/ Recommended of the Week
+
+.recommended-section
+  .recommended-wrapper
+    .recommended-header
+      %h2.recommended-title= t('home.recommended.title')
+      %p.recommended-subtitle= t('home.recommended.subtitle')
+
+    .recommended-content
+      .recommended-video
+        .video-wrapper
+          %iframe{src: "https://www.youtube.com/embed/hq4bGbRpUhQ?si=jsOtytdT8dTn7sA9", title: t('home.recommended.video_title'), frameborder: "0", allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", allowfullscreen: true}
+
+      .recommended-info
+        .recommended-card
+          .recommended-card-badge
+            %i.fas.fa-star
+            = t('home.recommended.badge')
+
+          %h3.recommended-card-title= t('home.recommended.card_title')
+          %p.recommended-card-text= t('home.recommended.card_text')
+
+          .recommended-card-meta
+            .recommended-meta-item
+              %i.fas.fa-calendar-alt
+              = t('home.recommended.date')
+            .recommended-meta-item
+              %i.fas.fa-eye
+              = t('home.recommended.views')
+
+          = link_to stories_path, class: 'recommended-card-link' do
+            = t('home.recommended.cta')
+            %i.fas.fa-arrow-right

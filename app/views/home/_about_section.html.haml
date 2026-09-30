@@ -1,0 +1,46 @@
+/ Project: Distrito Rugby
+/ About Distrito Rugby
+
+.about-home-section
+  .about-home-wrapper
+    .about-home-content
+      .about-home-text
+        %h2.about-home-title= t('home.about.title')
+        %p.about-home-description
+          = t('home.about.description')
+
+        .about-home-values
+          .about-value
+            .about-value-icon
+              %i.fas.fa-users
+            .about-value-text
+              %h4= t('home.about.values.community.title')
+              %p= t('home.about.values.community.description')
+
+          .about-value
+            .about-value-icon
+              %i.fas.fa-heart
+            .about-value-text
+              %h4= t('home.about.values.passion.title')
+              %p= t('home.about.values.passion.description')
+
+          .about-value
+            .about-value-icon
+              %i.fas.fa-globe
+            .about-value-text
+              %h4= t('home.about.values.open_source.title')
+              %p= t('home.about.values.open_source.description')
+
+        .about-home-cta
+          = link_to home_about_path, class: 'about-btn about-btn-primary' do
+            = t('home.about.cta')
+            %i.fas.fa-arrow-right
+
+      .about-home-images
+        .about-image-grid
+          .about-image-item.about-image-1
+            = image_tag 'common/600x400.svg', alt: t('home.about.images.community')
+          .about-image-item.about-image-2
+            = image_tag 'common/400x400.png', alt: t('home.about.images.tournaments')
+          .about-image-item.about-image-3
+            = image_tag 'common/undraw_under_construction.svg', alt: t('home.about.images.clubs')
