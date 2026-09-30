@@ -1,8 +1,6 @@
-// Distrito Rugby - scroll utilities (Phase 1, adapted from legacy)
-// Uses addEventListener so it coexists with main-menu.js scroll handler.
-var scrollFunction, topFunction;
-
-scrollFunction = function() {
+// Distrito Rugby - scroll utilities
+// Sin onclick inline (CSP-ready): el footer usa data-scroll-top.
+function scrollFunction() {
   var btn = document.getElementById('scrollUp');
   if (!btn) return;
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -10,12 +8,27 @@ scrollFunction = function() {
   } else {
     btn.style.display = 'none';
   }
-};
+}
 
-topFunction = function() {
+function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
-};
+}
+
+function bindScrollTop() {
+  var btn = document.getElementById('scrollUp');
+  if (btn && !btn._drBound) {
+    btn._drBound = true;
+    btn.addEventListener('click', topFunction);
+  }
+}
 
 document.addEventListener('scroll', scrollFunction, { passive: true });
-document.addEventListener('turbo:load', scrollFunction);
+document.addEventListener('DOMContentLoaded', function() {
+  scrollFunction();
+  bindScrollTop();
+});
+document.addEventListener('turbo:load', function() {
+  scrollFunction();
+  bindScrollTop();
+});

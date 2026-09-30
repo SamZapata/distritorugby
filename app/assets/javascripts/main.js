@@ -1,6 +1,6 @@
 window.DistritoRugby = {};
 window.DistritoRugby.init = function() {
-  console.log('Made by @jsamzapata');
+  // Punto de extensión para módulos futuros; sin console.log en producción.
 };
 
 document.addEventListener('turbo:load', function() {

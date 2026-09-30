@@ -44,6 +44,6 @@
             = t('footer.developed_by')
             = link_to "@jsamzapata", "https://github.com/SamZapata", target: "_blank"
 
-    / Return to Top
-    %button#scrollUp{:onclick => "topFunction()", :title => t('footer.go_to_top')}
+    / Return to Top (CSP-ready: ver core/utilities.js data-scroll-top)
+    %button#scrollUp{"data-scroll-top" => "true", :title => t('footer.go_to_top'), :type => "button", :aria => {:label => t('footer.go_to_top')}}
       %i.fas.fa-chevron-up

@@ -42,6 +42,14 @@
     }
   };
 
+  // Rutas internas permitidas para highlights/modales (allowlist anti open-redirect/XSS)
+  var ALLOWED_LINKS = ['/stories', '/game/tournaments', '/game/clubs', '/game/players'];
+
+  function safeLink(path, fallback) {
+    if (ALLOWED_LINKS.indexOf(path) !== -1) return path;
+    return fallback || '/';
+  }
+
   var isRouletteActive = false;
   var selectedCategory = null;
   var rouletteInterval = null;
@@ -68,9 +76,39 @@
     initMenuBar();
   }
 
-  // Compatibilidad: DOMContentLoaded (carga inicial) + turbo:load (navegación Turbo)
+  function teardown() {
+    if (rouletteInterval) {
+      clearInterval(rouletteInterval);
+      rouletteInterval = null;
+    }
+    if (autoResetTimeout) {
+      clearTimeout(autoResetTimeout);
+      autoResetTimeout = null;
+    }
+    if (transitionTimeout) {
+      clearTimeout(transitionTimeout);
+      transitionTimeout = null;
+    }
+    isRouletteActive = false;
+    if (window._drScrollHandler) {
+      window.removeEventListener('scroll', window._drScrollHandler);
+      window._drScrollHandler = null;
+    }
+    if (window._drResizeHandler) {
+      window.removeEventListener('resize', window._drResizeHandler);
+      window._drResizeHandler = null;
+    }
+  }
+
+  // Turbo puede no estar cargado (no hay turbo_include_tags); por eso se
+  // escucha DOMContentLoaded para la carga inicial y turbo:load para
+  // navegación. init() es idempotente. teardown evita timers/listeners
+  // colgados al navegar fuera del home.
   document.addEventListener('DOMContentLoaded', init);
   document.addEventListener('turbo:load', init);
+  document.addEventListener('turbo:before-cache', teardown);
+  document.addEventListener('turbo:before-visit', teardown);
+  window.addEventListener('pagehide', teardown);
 
   // === ROMBO ===
   function initDiamond() {
@@ -83,7 +121,8 @@
       diamond._hasHandler = true;
       diamond.addEventListener('click', function(e) {
         // Si el clic fue sobre el texto, dejar que Bootstrap abra el modal
-        if (e.target.closest('.diamond-text')) {
+        var t = e.target && e.target.closest ? e.target.closest('.diamond-text') : null;
+        if (t) {
           return;
         }
         e.preventDefault();
@@ -103,7 +142,7 @@
       // Clic en el cuadrante
       q.addEventListener('click', function(e) {
         // Si el clic fue sobre un link (<a> o .quadrant-label), dejar que navegue
-        var linkEl = e.target.closest('a');
+        var linkEl = (e.target && e.target.closest) ? e.target.closest('a') : null;
         if (linkEl) {
           return;
         }
@@ -123,14 +162,20 @@
     var modal = document.getElementById('quadrantModal');
     if (!modal) return;
 
-    // Actualizar contenido
-    modal.querySelector('.quadrant-modal-icon').className = 'fas ' + data.icon + ' quadrant-modal-icon';
-    modal.querySelector('.quadrant-modal-title').textContent = data.title;
-    modal.querySelector('.quadrant-modal-text').textContent = data.text;
-    modal.querySelector('.quadrant-modal-link').href = data.link;
-    modal.querySelector('.quadrant-modal-link').textContent = data.linkText;
+    // Actualizar contenido (solo texto + href con allowlist)
+    var iconEl = modal.querySelector('.quadrant-modal-icon');
+    var titleEl = modal.querySelector('.quadrant-modal-title');
+    var textEl = modal.querySelector('.quadrant-modal-text');
+    var linkEl = modal.querySelector('.quadrant-modal-link');
+    if (!iconEl || !titleEl || !textEl || !linkEl) return;
+    iconEl.className = 'fas ' + data.icon + ' quadrant-modal-icon';
+    titleEl.textContent = data.title;
+    textEl.textContent = data.text;
+    linkEl.setAttribute('href', safeLink(data.link, '/'));
+    linkEl.textContent = data.linkText;
 
-    // Abrir modal con Bootstrap 5
+    // Abrir modal con Bootstrap 5 (con guarda si el CDN falla)
+    if (typeof bootstrap === 'undefined' || !bootstrap.Modal) return;
     var bsModal = new bootstrap.Modal(modal);
     bsModal.show();
   }
@@ -140,13 +185,18 @@
     rouletteStep._step = rouletteStep._step || 0;
     rouletteStep._catIdx = rouletteStep._catIdx || 0;
 
+    if (!cachedQuadrants || !cachedQuadrants.length) {
+      clearInterval(rouletteInterval);
+      return;
+    }
     // Quitar brillo de todos
     cachedQuadrants.forEach(function(q) {
       q.classList.remove('glowing');
     });
 
-    // Poner brillo en el cuadrante actual
-    cachedQuadrants[rouletteStep._catIdx].classList.add('glowing');
+    // Poner brillo en el cuadrante actual (índice acotado)
+    var idx = rouletteStep._catIdx % cachedQuadrants.length;
+    if (cachedQuadrants[idx]) cachedQuadrants[idx].classList.add('glowing');
 
     // Avanzar al siguiente
     rouletteStep._catIdx = (rouletteStep._catIdx + 1) % CONFIG.categories.length;
@@ -159,6 +209,8 @@
   }
 
   function startRoulette() {
+    if (!cachedContainer || !cachedQuadrants || !cachedQuadrants.length) return;
+    if (isRouletteActive) return;
     // Cancelar timeouts pendientes
     if (autoResetTimeout) {
       clearTimeout(autoResetTimeout);
@@ -169,12 +221,14 @@
       transitionTimeout = null;
     }
 
-    // Cerrar modales abiertos
-    var openModals = document.querySelectorAll('.modal.show');
-    openModals.forEach(function(m) {
-      var bsModal = bootstrap.Modal.getInstance(m);
-      if (bsModal) bsModal.hide();
-    });
+    // Cerrar modales abiertos (con guarda si el CDN falla)
+    if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+      var openModals = document.querySelectorAll('.modal.show');
+      openModals.forEach(function(m) {
+        var bsModal = bootstrap.Modal.getInstance(m);
+        if (bsModal) bsModal.hide();
+      });
+    }
 
     // Resetear estado de cuadrantes
     resetRoulette();
@@ -192,11 +246,12 @@
   }
 
   function finishRoulette() {
-    cachedContainer.classList.remove('roulette-active');
+    if (cachedContainer) cachedContainer.classList.remove('roulette-active');
 
     var selectedEl = null;
     var dimmedEls = [];
 
+    if (!cachedQuadrants || !cachedQuadrants.forEach) return;
     cachedQuadrants.forEach(function(q) {
       q.classList.remove('glowing');
 
@@ -241,20 +296,45 @@
     if (!content) return;
 
     var data = CONFIG.modalData[category];
-    content.innerHTML = getHighlightHTML(data);
+    if (!data) return;
+    while (content.firstChild) content.removeChild(content.firstChild);
+    content.appendChild(buildHighlightCard(data));
     content.style.animation = 'fade-in-content 0.5s ease forwards';
   }
 
-  function getHighlightHTML(data) {
-    return '<div class="highlight-card">' +
-      '<i class="fas ' + data.icon + ' highlight-icon"></i>' +
-      '<h3 class="highlight-title">' + data.title + '</h3>' +
-      '<p class="highlight-description">' + data.text + '</p>' +
-      '<a href="' + data.link + '" class="highlight-link">' + data.linkText + '</a>' +
-      '</div>';
+  // Construye el highlight con DOM API (sin innerHTML) + href con allowlist
+  function buildHighlightCard(data) {
+    var card = document.createElement('div');
+    card.className = 'highlight-card';
+
+    var icon = document.createElement('i');
+    icon.className = 'fas ' + data.icon + ' highlight-icon';
+    card.appendChild(icon);
+
+    var title = document.createElement('h3');
+    title.className = 'highlight-title';
+    title.textContent = data.title;
+    card.appendChild(title);
+
+    var desc = document.createElement('p');
+    desc.className = 'highlight-description';
+    desc.textContent = data.text;
+    card.appendChild(desc);
+
+    var link = document.createElement('a');
+    link.setAttribute('href', safeLink(data.link, '/'));
+    link.className = 'highlight-link';
+    link.textContent = data.linkText;
+    card.appendChild(link);
+
+    return card;
   }
 
   function resetRoulette() {
+    if (!cachedQuadrants || !cachedQuadrants.forEach) {
+      selectedCategory = null;
+      return;
+    }
     cachedQuadrants.forEach(function(q) {
       q.classList.remove('selected', 'selected-normal', 'dimmed', 'glowing');
 
@@ -265,7 +345,7 @@
 
       var content = q.querySelector('.quadrant-content');
       if (content) {
-        content.innerHTML = '';
+        while (content.firstChild) content.removeChild(content.firstChild);
         content.style.opacity = '';
         content.style.removeProperty('animation');
       }
@@ -306,11 +386,17 @@
 
     onScroll();
 
-    window.addEventListener('resize', function() {
+    function onResize() {
       heroHeight = cachedContainer ? cachedContainer.offsetHeight : window.innerHeight;
       barHeight = cachedMenuDRBar.offsetHeight || 40;
       threshold = heroHeight - barHeight;
-    }, { passive: true });
+    }
+
+    if (window._drResizeHandler) {
+      window.removeEventListener('resize', window._drResizeHandler);
+    }
+    window._drResizeHandler = onResize;
+    window.addEventListener('resize', onResize, { passive: true });
   }
 
 })();
