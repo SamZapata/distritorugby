@@ -1,11 +1,24 @@
-%h1 Torneos
+.tournaments-breadcrumb
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a{:href => "/", :class => 'link'}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a{:href => game_tournaments_path, :class => 'link' }= t('breadcrumb.tournaments')
+      %li.breadcrumb-item.active{"aria-current" => "page"} Top
 
 - if can?(:create, Game::Tournament)
-  %p= link_to 'Crear torneo', new_game_tournament_path
+  %p= link_to 'Crear torneo', new_game_tournament_path, class: 'link'
 
-- if @tournaments.any?
-  %ul
-    - @tournaments.each do |tournament|
-      %li= link_to tournament.name, game_tournament_path(tournament)
-- else
-  %p Aún no hay torneos registrados.
+.tournaments-index
+  .tournaments-index__content.col-12
+    - if @tournaments.any?
+      .tournaments-selection.card-columns
+        - @tournaments.each do |tournament|
+          .card
+            .card-body
+              %h5.card-title= link_to tournament.name, tournament, class: 'link'
+              %p.card-text= tournament.about
+    - else
+      %p Aún no hay torneos registrados.

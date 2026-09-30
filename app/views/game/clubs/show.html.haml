@@ -1,52 +1,108 @@
-%h1= @club.name
+.distrito-rugby-club
+  .club-breadcrumb
+    %nav{"aria-label" => "breadcrumb"}
+      %ol.breadcrumb
+        %li.breadcrumb-item
+          %a{:href => "/", :class => 'link'}
+            .fas.fa-home
+        %li.breadcrumb-item
+          %a{:href => game_clubs_path, :class => 'link' }= t('breadcrumb.clubs')
+        %li.breadcrumb-item.active
+          = @club.name
 
-- if @club.union
-  %p
-    %strong Unión:
-    = @club.union.name
+  .club-show
+    .club-title= @club.name.titleize
+    .container
+      .club-about
+        %b Presentación
+        %hr
+        - if @club.about.present?
+          = @club.about
+        - if @club.union
+          %p
+            %strong Unión:
+            = @club.union.name
+        %br
+        %button.float-right.mt-1{class: 'btn btn-dark', 'data-bs-toggle' => 'modal', 'data-bs-target' => '#infoClubModal'} saber más
+      - %i[email phone address webpage instagram facebook twitter youtube].each do |attribute|
+        - if @club.public_send(attribute).present?
+          %p
+            %strong= "#{attribute.humanize}:"
+            = @club.public_send(attribute)
 
-- if @club.about.present?
-  %p= @club.about
+      - if can?(:update, @club)
+        %p= link_to 'Editar club', edit_game_club_path(@club), class: 'link'
+      - if can?(:destroy, @club)
+        %p= button_to 'Eliminar club', game_club_path(@club), method: :delete
 
-- %i[email phone address webpage instagram facebook twitter youtube].each do |attribute|
-  - if @club.public_send(attribute).present?
-    %p
-      %strong= "#{attribute.humanize}:"
-      = @club.public_send(attribute)
+      %section
+        %h2 Categorías del club
+        - if @club.club_categories.any?
+          %ul
+            - @club.club_categories.order(:name).each do |category|
+              %li= link_to category.name, game_club_category_path(@club, category)
+        - else
+          %p Este club aún no tiene categorías.
+        - if can?(:create, Game::ClubCategory.new(club: @club))
+          %p= link_to 'Gestionar categorías', game_club_categories_path(@club), class: 'link'
 
-- if can?(:update, @club)
-  %p= link_to 'Editar club', edit_game_club_path(@club)
+      - if current_user&.super_admin?
+        %section
+          %h2 Administradores del club
+          - if @admin_assignments.any?
+            %ul
+              - @admin_assignments.each do |assignment|
+                %li
+                  = assignment.user.email
+                  = button_to 'Quitar asignación', game_club_admin_assignment_path(@club, assignment), method: :delete
+          - else
+            %p No hay administradores asignados.
+          - if @club_admins.any?
+            = form_with url: game_club_admin_assignments_path(@club), method: :post do |form|
+              = form.label :user_id, 'Asignar administrador'
+              = form.collection_select :user_id, @club_admins, :id, :email, prompt: 'Selecciona un administrador'
+              = form.submit 'Asignar'
+          - else
+            %p No hay usuarios con rol de administrador de club.
 
-- if can?(:destroy, @club)
-  %p= button_to 'Eliminar club', game_club_path(@club), method: :delete
-
-%section
-  %h2 Categorías del club
-  - if @club.club_categories.any?
-    %ul
-      - @club.club_categories.order(:name).each do |category|
-        %li= link_to category.name, game_club_category_path(@club, category)
-  - else
-    %p Este club aún no tiene categorías.
-  - if can?(:create, Game::ClubCategory.new(club: @club))
-    %p= link_to 'Gestionar categorías', game_club_categories_path(@club)
-
-- if current_user&.super_admin?
-  %section
-    %h2 Administradores del club
-    - if @admin_assignments.any?
-      %ul
-        - @admin_assignments.each do |assignment|
-          %li
-            = assignment.user.email
-            = button_to 'Quitar asignación', game_club_admin_assignment_path(@club, assignment), method: :delete
-    - else
-      %p No hay administradores asignados.
-
-    - if @club_admins.any?
-      = form_with url: game_club_admin_assignments_path(@club), method: :post do |form|
-        = form.label :user_id, 'Asignar administrador'
-        = form.collection_select :user_id, @club_admins, :id, :email, prompt: 'Selecciona un administrador'
-        = form.submit 'Asignar'
-    - else
-      %p No hay usuarios con rol de administrador de club.
+#infoClubModal.modal.fade{'tabindex' => '-1', role: 'dialog', 'aria-labelledby' => 'infoClubModal', 'aria-hidden' => 'true'}
+  .modal-dialog.modal-dialog-centered.modal-dialog-scrollable
+    .modal-content
+      .modal-header
+        %h5.modal-title= @club.name
+        %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
+      .modal-body
+        %b Contacto
+        - if @club.address.present?
+          %p
+            %i.fas.fa-home
+            = @club.address
+        - if @club.phone.present?
+          %p
+            %i.fas.fa-phone
+            = @club.phone
+        - if @club.email.present?
+          %p
+            %i.fas.fa-at
+            = @club.email
+        - if @club.webpage.present?
+          %p
+            %i.fas.fa-link
+            = link_to @club.webpage, @club.webpage, target: '_blank'
+        .d-flex
+          - if @club.facebook.present?
+            %p.mr-2
+              = link_to @club.facebook, target: '_blank', class: 'link' do
+                %i.fab.fa-facebook.fa-2x
+          - if @club.instagram.present?
+            %p.mr-2
+              = link_to @club.instagram, target: '_blank', class: 'link' do
+                %i.fab.fa-instagram.fa-2x
+          - if @club.twitter.present?
+            %p.mr-2
+              = link_to @club.twitter, target: '_blank', class: 'link' do
+                %i.fab.fa-twitter.fa-2x
+          - if @club.youtube.present?
+            %p.mr-2
+              = link_to @club.youtube, target: '_blank', class: 'link' do
+                %i.fab.fa-youtube.fa-2x

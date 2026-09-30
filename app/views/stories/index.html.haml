@@ -1,11 +1,26 @@
-%h1 Historias
+.stories-breadcrumb
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a{:href => "/", :class => 'link'}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a{:href => stories_path, :class => 'link' }= t('breadcrumb.stories')
+      %li.breadcrumb-item.active{"aria-current" => "page"} Top
 
 - if can?(:create, Story)
-  %p= link_to 'Crear historia', new_story_path
+  %p= link_to 'Crear historia', new_story_path, class: 'link'
 
-- if @all_stories.any?
-  %ul
-    - @all_stories.each do |story|
-      %li= link_to story.name, story_path(story)
-- else
-  %p Aún no hay historias publicadas.
+.stories-index
+  .stories-index__content.col-12
+    - if @all_stories.any?
+      .stories-selection.card-columns
+        - @all_stories.each do |story|
+          .card
+            - if story.image.attached?
+              = link_to(image_tag(story.image, width: '100%', alt: "##{story.name} #DistritoRugby", class: 'img-hov'), story)
+            .card-body
+              %h5.card-title= link_to story.name, story, class: 'link'
+              %p.card-text= story.summary
+    - else
+      %p Aún no hay historias publicadas.

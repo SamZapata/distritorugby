@@ -1,0 +1,76 @@
+// Project: Distrito Rugby
+// Author: Johnny Zapata
+// @jsamzapata
+
+@import "news/**/*"
+
+.distrito-rugby-news
+  .news-content
+    width: calc(100vw)
+    min-height: calc(100vh)
+    height: auto
+    .news-content--out
+      display: block
+      vertical-align: middle
+      justify-content: center
+      height: calc(80%)
+      width: inherit
+      padding: 20px 5px 0 5px
+      .news-content--out__text
+        font-size: 24px
+        font-weight: bold
+        color: $dark
+        text-align: center
+
+  .news-index
+    width: calc(100%)
+    min-height: calc(100vh)
+    height: auto
+    .news-index--space
+      margin: auto
+      display: inline-flex
+    .news-index--set
+      display: block
+      margin: 10px auto
+      padding: 10px
+      width: calc(30vw)
+      min-height: calc(40vh)
+      height: calc(64vh)
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+      -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+
+      .ni--set__title
+        font-size: 90%
+        font-weight: bold
+        text-align: center
+        margin: 5px 5px 10px 10px
+        color: $title
+      .ni--set__date
+        text-align: center
+        font-size: 12px
+        color: $date
+        margin: 0 0 10px 0
+      .ni--set__summary
+        color: $gray
+        font-size: 14px
+        font-style: oblique
+      .ni--set__image
+        z-index: 1
+        height: calc(80%)
+        width: calc(80%)
+        display: block
+        margin: auto
+      .ni--set__tags
+
+    @media only screen and (max-width: 600px)
+      .news-index--set
+        width: calc(80vw)
+        // min-height: calc(50vh)
+        // height: 100%
+        .ni--set__title
+          font-size: 80%
+
+    @media only screen and (min-width: 1125px)
+      .news-index--set
+        .ni--set__title
+          font-size: 90%

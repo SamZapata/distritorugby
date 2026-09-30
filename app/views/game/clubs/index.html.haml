@@ -1,14 +1,28 @@
-%h1 Clubes
+.clubs-breadcrumb
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a{:href => "/", :class => 'link'}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a{:href => game_clubs_path, :class => 'link' }= t('breadcrumb.clubs')
+      %li.breadcrumb-item.active Recientes
 
 - if can?(:create, Game::Club)
-  %p= link_to 'Crear club', new_game_club_path
+  %p= link_to 'Crear club', new_game_club_path, class: 'link'
 
-- if @clubs.any?
-  %ul
-    - @clubs.each do |club|
-      %li
-        = link_to club.name, game_club_path(club)
-        - if club.union
-          %span= " — #{club.union.name}"
-- else
-  %p Aún no hay clubes registrados.
+.clubs-index
+  .clubs-index__content.col-12
+    - if @clubs.any?
+      %h5 Clubes registrados recientemente
+      %hr
+      .clubs-selection.card-columns
+        - @clubs.each do |club|
+          .card
+            = image_tag("common/600x400.svg", width: '100%', alt: "##{club.name} #DistritoRugby", class: 'img-hov')
+            = link_to club, class: 'link-w' do
+              .card-img-overlay.d-flex.align-items-end.shadow
+                .card-title-box
+                  .card-title= club.name
+    - else
+      %p Aún no hay clubes registrados.

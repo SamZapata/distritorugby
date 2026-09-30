@@ -1,11 +1,28 @@
-%h1 Noticias
+.news-breadcrumb
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a{:href => "/", :class => 'link'}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a{:href => news_index_path, :class => 'link' }= t('breadcrumb.news')
+      %li.breadcrumb-item.active{"aria-current" => "page"} Lo último
 
 - if can?(:create, News)
-  %p= link_to 'Crear noticia', new_news_path
+  %p= link_to 'Crear noticia', new_news_path, class: 'link'
 
-- if @all_news.any?
-  %ul
-    - @all_news.each do |news|
-      %li= link_to news.title, news_path(news)
-- else
-  %p Aún no hay noticias publicadas.
+.news-index
+  .news-index__content.col-12
+    - if @all_news.any?
+      .news-selection.card-columns
+        - @all_news.each do |news|
+          .card
+            - if news.image.attached?
+              = link_to(image_tag(news.image, width: '100%', alt: "##{news.title} #DistritoRugby", class: 'img-hov'), news)
+            - else
+              = link_to(image_tag("common/600x400.svg", width: '100%', alt: "##{news.title} #DistritoRugby", class: 'img-hov'), news)
+            .card-body
+              %h5.card-title= link_to news.title, news, class: 'link'
+              %p.card-text= news.summary
+    - else
+      %p Aún no hay noticias publicadas.

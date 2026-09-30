@@ -1,10 +1,25 @@
-%h1= @news.title
+.news-breadcrumb
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a{:href => "/", :class => 'link'}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a{:href => news_index_path, :class => 'link' }= t('breadcrumb.news')
+      %li.breadcrumb-item.active{"aria-current" => "page"}= @news.title.truncate(30)
 
-%p= @news.summary
-%p= @news.talking
+.news-show
+  .news-show--title= @news.title
+  .news-show--date= l(@news.created_at.to_date, format: :long) rescue @news.created_at.to_date
+  .news-show--summary= @news.summary
+  .news-show--image
+    - if @news.image.attached?
+      = image_tag(@news.image, width: '100%', alt: "##{@news.title} #DistritoRugby")
+    - else
+      = image_tag("common/600x400.svg", width: '100%', alt: "##{@news.title} #DistritoRugby")
+  .news-show--body= @news.talking
 
-- if can?(:update, @news)
-  %p= link_to 'Editar noticia', edit_news_path(@news)
-
-- if can?(:destroy, @news)
-  %p= button_to 'Eliminar noticia', news_path(@news), method: :delete
+  - if can?(:update, @news)
+    %p= link_to 'Editar noticia', edit_news_path(@news), class: 'link'
+  - if can?(:destroy, @news)
+    %p= button_to 'Eliminar noticia', news_path(@news), method: :delete

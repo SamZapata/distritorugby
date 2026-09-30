@@ -17,7 +17,7 @@ class Game::ClubsTest < ActionDispatch::IntegrationTest
     get game_club_path(@club)
 
     assert_response :success
-    assert_select 'h1', text: @club.name
+    assert_select '.club-title', text: @club.name.titleize
   end
 
   test 'super admin puede abrir el formulario de creacion' do

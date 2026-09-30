@@ -1,3 +1,38 @@
-%h1 Equipo Distrito Rugby
+.distrito-rugby-team
+  .team--content
+    .image-thumbnail
+      = image_tag 'common/600x400.svg', :alt => "training-distrito-rugby", :class => 'team--content__image'
 
-%p Página del equipo y la comunidad (contenido en construcción).
+    .team--content__about
+      = t('team.about') + " "
+    .col-12
+      .team--token
+        .row
+          .col-6
+            .team--token__style{"data-bs-target" => "#infoTrainingModal", "data-bs-toggle" => "modal", :title => "Ver Entrenos"}
+              .team--token__style--text
+                = t('team.training.i_want')
+          .col-6
+            = link_to t('team.know_more'), 'https://drive.google.com/file/d/1ohoQRWy5sdW4pi7rjz4uzZ9021NcohGm/view', :class => 'team--token__style', target: :_blank
+
+    %br
+
+  #infoTrainingModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "ModalInfoTraining", :role => "dialog", :tabindex => "-1"}
+    .modal-dialog{:role => "document"}
+      .modal-content
+        .modal-header
+          .modal-title
+            .team-modal--title
+              = t('team.schedule-training')
+            .pull-right
+          %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
+        .modal-body
+          .team-modal--text
+            .fas.fa-clock
+            = t('team.training.schedule')
+          .team-modal--text
+            .fas.fa-phone
+            = t('team.training.phone_numbers')
+          .team-modal--text
+            .fas.fa-map-marker-alt
+            = t('team.training.site')

@@ -1,11 +1,24 @@
-%h1 Uniones
+.clubs-breadcrumb
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a{:href => "/", :class => 'link'}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a{:href => game_unions_path, :class => 'link' } Uniones
+      %li.breadcrumb-item.active Recientes
 
 - if can?(:create, Game::Union)
-  %p= link_to 'Crear unión', new_game_union_path
+  %p= link_to 'Crear unión', new_game_union_path, class: 'link'
 
-- if @unions.any?
-  %ul
-    - @unions.each do |union|
-      %li= link_to union.name, game_union_path(union)
-- else
-  %p Aún no hay uniones registradas.
+.clubs-index
+  .clubs-index__content.col-12
+    - if @unions.any?
+      .clubs-selection.card-columns
+        - @unions.each do |union|
+          .card
+            .card-body
+              %h5.card-title= link_to union.name, union, class: 'link'
+              %p.card-text= union.about
+    - else
+      %p Aún no hay uniones registradas.

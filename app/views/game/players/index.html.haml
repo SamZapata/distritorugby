@@ -1,11 +1,29 @@
-%h1 Jugadores
+.players-breadcrumb
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a{:href => "/", :class => 'link'}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a{:href => game_players_path, :class => 'link' }= t('breadcrumb.players')
+      %li.breadcrumb-item.active Recientes
 
 - if can?(:create, Game::Player)
-  %p= link_to 'Crear jugador', new_game_player_path
+  %p= link_to 'Crear jugador', new_game_player_path, class: 'link'
 
-- if @players.any?
-  %ul
-    - @players.each do |player|
-      %li= link_to player.full_name, game_player_path(player)
-- else
-  %p Aún no hay jugadores registrados.
+.players-index
+  .players-index__content.col-12
+    - if @players.any?
+      %h5 Jugadores registrados recientemente
+      %hr
+      .card-columns
+        - @players.each do |p|
+          .card
+            .card-header.text-center
+              = link_to game_player_path(p), class: 'link' do
+                = p.full_name
+              - if p.position.present?
+                %br
+                %i= p.position
+    - else
+      %p Aún no hay jugadores registrados.

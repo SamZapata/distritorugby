@@ -1,10 +1,24 @@
-%h1= @story.name
+.stories-breadcrumb
+  %nav{"aria-label" => "breadcrumb"}
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        %a{:href => "/", :class => 'link'}
+          .fas.fa-home
+      %li.breadcrumb-item
+        %a{:href => stories_path, :class => 'link' }= t('breadcrumb.stories')
+      %li.breadcrumb-item.active{"aria-current" => "page"}= @story.name.truncate(30)
 
-%p= @story.summary
-%p= @story.body
+.news-show
+  .news-show--title= @story.name
+  .news-show--date= l(@story.created_at.to_date, format: :long) rescue @story.created_at.to_date
+  .news-show--summary= @story.summary
+  .news-show--image
+    - if @story.image.attached?
+      = image_tag(@story.image, width: '100%', alt: "##{@story.name} #DistritoRugby")
+    .news-show--caption= @story.image_caption
+  .news-show--body= @story.body
 
-- if can?(:update, @story)
-  %p= link_to 'Editar historia', edit_story_path(@story)
-
-- if can?(:destroy, @story)
-  %p= button_to 'Eliminar historia', story_path(@story), method: :delete
+  - if can?(:update, @story)
+    %p= link_to 'Editar historia', edit_story_path(@story), class: 'link'
+  - if can?(:destroy, @story)
+    %p= button_to 'Eliminar historia', story_path(@story), method: :delete
