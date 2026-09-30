@@ -1,0 +1,11 @@
+%h1= "Categorías de #{@club.name}"
+
+- if can?(:create, Game::ClubCategory.new(club: @club))
+  %p= link_to 'Crear categoría', new_game_club_category_path(@club)
+
+- if @categories.any?
+  %ul
+    - @categories.each do |category|
+      %li= link_to category.name, game_club_category_path(@club, category)
+- else
+  %p Este club aún no tiene categorías.

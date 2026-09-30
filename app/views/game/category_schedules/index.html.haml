@@ -1,0 +1,11 @@
+%h1= "Horarios de #{@category.name}"
+
+- if can?(:create, Game::CategorySchedule.new(club_category: @category))
+  %p= link_to 'Crear horario', new_game_club_category_schedule_path(@club, @category)
+
+- if @schedules.any?
+  %ul
+    - @schedules.each do |schedule|
+      %li= link_to schedule.day, game_club_category_schedule_path(@club, @category, schedule)
+- else
+  %p Esta categoría aún no tiene horarios.

@@ -1,0 +1,25 @@
+= form_with model: @union, scope: :game_union, url: (@union.persisted? ? game_union_path(@union) : game_unions_path) do |form|
+  - if @union.errors.any?
+    %div{role: 'alert'}
+      %h2= 'No se pudo guardar la unión:'
+      %ul
+        - @union.errors.full_messages.each do |message|
+          %li= message
+
+  %p
+    = form.label :name, 'Nombre'
+    = form.text_field :name, required: true
+
+  %p
+    = form.label :about, 'Descripción'
+    = form.text_area :about
+
+  %p
+    = form.label :country, 'País'
+    = form.text_field :country
+
+  %p
+    = form.label :abbr, 'Abreviatura'
+    = form.text_field :abbr
+
+  = form.submit 'Guardar'

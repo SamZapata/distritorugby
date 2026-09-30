@@ -1,0 +1,21 @@
+= form_with model: @schedule, scope: :game_category_schedule, url: (@schedule.persisted? ? game_club_category_schedule_path(@club, @category, @schedule) : game_club_category_schedules_path(@club, @category)) do |form|
+  - if @schedule.errors.any?
+    %div{role: 'alert'}
+      %h2= 'No se pudo guardar el horario:'
+      %ul
+        - @schedule.errors.full_messages.each do |message|
+          %li= message
+
+  %p
+    = form.label :day, 'Día'
+    = form.text_field :day, required: true
+
+  %p
+    = form.label :start_time, 'Hora de inicio'
+    = form.time_field :start_time
+
+  %p
+    = form.label :end_time, 'Hora de fin'
+    = form.time_field :end_time
+
+  = form.submit 'Guardar'

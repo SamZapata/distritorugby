@@ -6,8 +6,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :game do
+    resources :unions
     resources :clubs do
       resources :admin_assignments, only: %i[create destroy], controller: 'admin_assignments'
+      resources :categories, controller: 'club_categories' do
+        resources :schedules, controller: 'category_schedules'
+      end
     end
   end
 

@@ -1,0 +1,21 @@
+%h1= @schedule.day
+
+%p
+  %strong Categoría:
+  = link_to @category.name, game_club_category_path(@club, @category)
+
+- if @schedule.start_time.present?
+  %p
+    %strong Inicio:
+    = @schedule.start_time.strftime('%H:%M')
+
+- if @schedule.end_time.present?
+  %p
+    %strong Fin:
+    = @schedule.end_time.strftime('%H:%M')
+
+- if can?(:update, @schedule)
+  %p= link_to 'Editar horario', edit_game_club_category_schedule_path(@club, @category, @schedule)
+
+- if can?(:destroy, @schedule)
+  %p= button_to 'Eliminar horario', game_club_category_schedule_path(@club, @category, @schedule), method: :delete

@@ -20,6 +20,17 @@
 - if can?(:destroy, @club)
   %p= button_to 'Eliminar club', game_club_path(@club), method: :delete
 
+%section
+  %h2 Categorías del club
+  - if @club.club_categories.any?
+    %ul
+      - @club.club_categories.order(:name).each do |category|
+        %li= link_to category.name, game_club_category_path(@club, category)
+  - else
+    %p Este club aún no tiene categorías.
+  - if can?(:create, Game::ClubCategory.new(club: @club))
+    %p= link_to 'Gestionar categorías', game_club_categories_path(@club)
+
 - if current_user&.super_admin?
   %section
     %h2 Administradores del club

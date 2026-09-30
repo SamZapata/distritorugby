@@ -1,0 +1,17 @@
+= form_with model: @category, scope: :game_club_category, url: (@category.persisted? ? game_club_category_path(@club, @category) : game_club_categories_path(@club)) do |form|
+  - if @category.errors.any?
+    %div{role: 'alert'}
+      %h2= 'No se pudo guardar la categoría:'
+      %ul
+        - @category.errors.full_messages.each do |message|
+          %li= message
+
+  %p
+    = form.label :name, 'Nombre'
+    = form.text_field :name, required: true
+
+  %p
+    = form.label :branch, 'Rama'
+    = form.text_field :branch
+
+  = form.submit 'Guardar'

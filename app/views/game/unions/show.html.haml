@@ -1,0 +1,18 @@
+%h1= @union.name
+
+- if @union.about.present?
+  %p= @union.about
+
+- if @clubs.any?
+  %h2 Clubes de la unión
+  %ul
+    - @clubs.each do |club|
+      %li= link_to club.name, game_club_path(club)
+- else
+  %p Esta unión aún no tiene clubes.
+
+- if can?(:update, @union)
+  %p= link_to 'Editar unión', edit_game_union_path(@union)
+
+- if can?(:destroy, @union)
+  %p= button_to 'Eliminar unión', game_union_path(@union), method: :delete

@@ -1,0 +1,26 @@
+%h1= @category.name
+
+%p
+  %strong Club:
+  = link_to @club.name, game_club_path(@club)
+
+- if @category.branch.present?
+  %p
+    %strong Rama:
+    = @category.branch
+
+%h2 Horarios de entrenamiento
+- if @schedules.any?
+  %ul
+    - @schedules.each do |schedule|
+      %li= link_to schedule.day, game_club_category_schedule_path(@club, @category, schedule)
+- else
+  %p Esta categoría aún no tiene horarios.
+
+-# Lote 4.2: listar aquí equipos y jugadores de la categoría.
+
+- if can?(:update, @category)
+  %p= link_to 'Editar categoría', edit_game_club_category_path(@club, @category)
+
+- if can?(:destroy, @category)
+  %p= button_to 'Eliminar categoría', game_club_category_path(@club, @category), method: :delete

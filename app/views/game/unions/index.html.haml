@@ -1,0 +1,11 @@
+%h1 Uniones
+
+- if can?(:create, Game::Union)
+  %p= link_to 'Crear unión', new_game_union_path
+
+- if @unions.any?
+  %ul
+    - @unions.each do |union|
+      %li= link_to union.name, game_union_path(union)
+- else
+  %p Aún no hay uniones registradas.
