@@ -1,0 +1,13 @@
+= form_with model: @group, scope: :game_tournament_group, url: (@group.persisted? ? game_tournament_group_path(@tournament, @group) : game_tournament_groups_path(@tournament)) do |form|
+  - if @group.errors.any?
+    %div{role: 'alert'}
+      %h2= 'No se pudo guardar el grupo:'
+      %ul
+        - @group.errors.full_messages.each do |message|
+          %li= message
+
+  %p
+    = form.label :name, 'Nombre'
+    = form.text_field :name, required: true
+
+  = form.submit 'Guardar'

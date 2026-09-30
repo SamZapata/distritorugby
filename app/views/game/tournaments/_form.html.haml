@@ -1,0 +1,25 @@
+= form_with model: @tournament, scope: :game_tournament, url: (@tournament.persisted? ? game_tournament_path(@tournament) : game_tournaments_path) do |form|
+  - if @tournament.errors.any?
+    %div{role: 'alert'}
+      %h2= 'No se pudo guardar el torneo:'
+      %ul
+        - @tournament.errors.full_messages.each do |message|
+          %li= message
+
+  %p
+    = form.label :name, 'Nombre'
+    = form.text_field :name, required: true
+
+  %p
+    = form.label :about, 'Descripción'
+    = form.text_area :about, required: true
+
+  %p
+    = form.label :start_date, 'Fecha de inicio'
+    = form.date_field :start_date, required: true
+
+  %p
+    = form.label :end_date, 'Fecha de fin'
+    = form.date_field :end_date
+
+  = form.submit 'Guardar'

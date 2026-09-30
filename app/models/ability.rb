@@ -14,6 +14,12 @@ class Ability
 
     if user.super_admin?
       can :manage, :all
+    # Lote 4.3: league_admin gestiona torneos, grupos, partidos
+    # y contenido editorial; sin gestión de clubes ni usuarios.
+    elsif user.league_admin?
+      can :manage, [Game::Tournament, Game::Tournament::Group, Game::GroupMatch, News, Story]
+      can :read, :all
+      cannot :read, Game::ClubAdminAssignment
     elsif user.club_admin?
       # Step 0.1: club_admin solo update de clubes asignados vía
       # game_club_admin_assignments. Sin create/destroy, sin cambio de
@@ -30,9 +36,7 @@ class Ability
       can :manage, Game::PlayerCteamJoin, club_team: { club_id: user.managed_club_ids }
       can :manage, Game::PlayerCategoryJoin, club_category: { club_id: user.managed_club_ids }
     end
-    # Step 0.2: league_admin sin privilegios extra hasta Lote 4.3
-    # (solo lectura pública + perfil propio).
-    # Step 0.4: sin UI de gestión de roles en Lote 3; roles solo por
+    # Step 0.4: sin UI de gestión de roles; roles solo por
     # consola/semilla. El registro público no permite escalamiento
     # (sin role en strong params de Devise).
   end

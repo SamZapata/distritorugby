@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_09_28_120000) do
+ActiveRecord::Schema[7.1].define(version: 2026_09_30_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -148,6 +148,16 @@ ActiveRecord::Schema[7.1].define(version: 2026_09_28_120000) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "slug"
+  end
+
+  create_table "game_group_matches", force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "match_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id", "match_id"], name: "index_game_group_matches_on_group_id_and_match_id", unique: true
+    t.index ["group_id"], name: "index_game_group_matches_on_group_id"
+    t.index ["match_id"], name: "index_game_group_matches_on_match_id"
   end
 
   create_table "game_match_stats", force: :cascade do |t|
@@ -394,5 +404,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_09_28_120000) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "game_club_admin_assignments", "game_clubs", column: "club_id"
   add_foreign_key "game_club_admin_assignments", "users"
+  add_foreign_key "game_group_matches", "game_matches", column: "match_id"
+  add_foreign_key "game_group_matches", "game_tournament_groups", column: "group_id"
   add_foreign_key "profiles", "users"
 end

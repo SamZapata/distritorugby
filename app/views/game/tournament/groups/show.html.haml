@@ -1,0 +1,20 @@
+%h1= @group.name
+
+%p
+  %strong Torneo:
+  = link_to @tournament.name, game_tournament_path(@tournament)
+
+%h2 Partidos del grupo
+-# Lote 4.4: enlazar cada partido a su detalle.
+- if @matches.any?
+  %ul
+    - @matches.each do |match|
+      %li= match.play_date
+- else
+  %p Este grupo aún no tiene partidos.
+
+- if can?(:update, @group)
+  %p= link_to 'Editar grupo', edit_game_tournament_group_path(@tournament, @group)
+
+- if can?(:destroy, @group)
+  %p= button_to 'Eliminar grupo', game_tournament_group_path(@tournament, @group), method: :delete

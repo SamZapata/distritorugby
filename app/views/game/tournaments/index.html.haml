@@ -1,0 +1,11 @@
+%h1 Torneos
+
+- if can?(:create, Game::Tournament)
+  %p= link_to 'Crear torneo', new_game_tournament_path
+
+- if @tournaments.any?
+  %ul
+    - @tournaments.each do |tournament|
+      %li= link_to tournament.name, game_tournament_path(tournament)
+- else
+  %p Aún no hay torneos registrados.

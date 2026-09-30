@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     resources :unions
     resources :nn_teams
     resources :players
+    resources :tournaments do
+      resources :groups, controller: 'tournament/groups'
+    end
     resources :clubs do
       resources :admin_assignments, only: %i[create destroy], controller: 'admin_assignments'
       resources :categories, controller: 'club_categories' do

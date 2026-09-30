@@ -1,0 +1,21 @@
+%h1= @tournament.name
+
+- if @tournament.about.present?
+  %p= @tournament.about
+
+%h2 Grupos del torneo
+- if @groups.any?
+  %ul
+    - @groups.each do |group|
+      %li= link_to group.name, game_tournament_group_path(@tournament, group)
+- else
+  %p Este torneo aún no tiene grupos.
+
+- if can?(:create, Game::Tournament::Group.new(tournament: @tournament))
+  %p= link_to 'Crear grupo', new_game_tournament_group_path(@tournament)
+
+- if can?(:update, @tournament)
+  %p= link_to 'Editar torneo', edit_game_tournament_path(@tournament)
+
+- if can?(:destroy, @tournament)
+  %p= button_to 'Eliminar torneo', game_tournament_path(@tournament), method: :delete

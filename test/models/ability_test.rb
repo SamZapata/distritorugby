@@ -56,13 +56,16 @@ class AbilityTest < ActiveSupport::TestCase
     assert_not ability.can?(:destroy, assigned_club)
   end
 
-  test 'league admin no tiene privilegios extra hasta Lote 4.3' do
+  test 'league admin gestiona torneos pero no clubes' do
     union = Game::Union.create!(name: 'Union liga')
     club = Game::Club.create!(name: 'Club liga', union: union)
+    tournament = Game::Tournament.create!(name: 'Torneo liga', about: 'Desc', start_date: Date.today)
     user = User.create!(email: 'liga@ejemplo.com', password: 'secret123', role: :league_admin)
     ability = Ability.new(user)
 
     assert ability.can?(:read, Game::Club)
+    assert ability.can?(:manage, tournament)
+    assert ability.can?(:manage, Game::Tournament)
     assert_not ability.can?(:update, club)
     assert_not ability.can?(:create, Game::Club)
     assert_not ability.can?(:manage, Game::ClubAdminAssignment)

@@ -1,0 +1,11 @@
+%h1= "Grupos de #{@tournament.name}"
+
+- if can?(:create, Game::Tournament::Group.new(tournament: @tournament))
+  %p= link_to 'Crear grupo', new_game_tournament_group_path(@tournament)
+
+- if @groups.any?
+  %ul
+    - @groups.each do |group|
+      %li= link_to group.name, game_tournament_group_path(@tournament, group)
+- else
+  %p Este torneo aún no tiene grupos.
