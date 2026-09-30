@@ -1,0 +1,11 @@
+%h1= "Equipos de #{@category.name}"
+
+- if can?(:create, Game::ClubTeam.new(club: @club, club_category: @category))
+  %p= link_to 'Crear equipo', new_game_club_category_team_path(@club, @category)
+
+- if @teams.any?
+  %ul
+    - @teams.each do |team|
+      %li= link_to team.name, game_club_category_team_path(@club, @category, team)
+- else
+  %p Esta categoría aún no tiene equipos.

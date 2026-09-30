@@ -22,6 +22,13 @@ class Ability
       # Lote 4.1: gestión de categorías y horarios solo en clubes asignados.
       can :manage, Game::ClubCategory, club_id: user.managed_club_ids
       can :manage, Game::CategorySchedule, club_category: { club_id: user.managed_club_ids }
+      # Lote 4.2: equipos y plantillas solo en clubes asignados; jugadores
+      # lectura pública, creación/edición para staff, borrado super_admin.
+      can :manage, Game::ClubTeam, club_id: user.managed_club_ids
+      can :create, Game::Player
+      can :update, Game::Player
+      can :manage, Game::PlayerCteamJoin, club_team: { club_id: user.managed_club_ids }
+      can :manage, Game::PlayerCategoryJoin, club_category: { club_id: user.managed_club_ids }
     end
     # Step 0.2: league_admin sin privilegios extra hasta Lote 4.3
     # (solo lectura pública + perfil propio).

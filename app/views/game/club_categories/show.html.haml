@@ -17,7 +17,21 @@
 - else
   %p Esta categoría aún no tiene horarios.
 
--# Lote 4.2: listar aquí equipos y jugadores de la categoría.
+%h2 Equipos de la categoría
+- if @category.club_teams.any?
+  %ul
+    - @category.club_teams.order(:name).each do |team|
+      %li= link_to team.name, game_club_category_team_path(@club, @category, team)
+- else
+  %p Esta categoría aún no tiene equipos.
+
+%h2 Jugadores asignados
+- if @category.players.any?
+  %ul
+    - @category.players.order(:last_name, :first_name).each do |player|
+      %li= link_to player.full_name, game_player_path(player)
+- else
+  %p Esta categoría aún no tiene jugadores asignados.
 
 - if can?(:update, @category)
   %p= link_to 'Editar categoría', edit_game_club_category_path(@club, @category)

@@ -17,5 +17,11 @@ class Game::Club < ApplicationRecord
            dependent: :destroy,
            inverse_of: :club
 
+  has_many :club_teams,
+           class_name: 'Game::ClubTeam',
+           foreign_key: :club_id,
+           dependent: :destroy,
+           inverse_of: :club
+
   validates :name, presence: true, uniqueness: true
 end

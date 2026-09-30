@@ -1,0 +1,25 @@
+= form_with model: @player, scope: :game_player, url: (@player.persisted? ? game_player_path(@player) : game_players_path) do |form|
+  - if @player.errors.any?
+    %div{role: 'alert'}
+      %h2= 'No se pudo guardar el jugador:'
+      %ul
+        - @player.errors.full_messages.each do |message|
+          %li= message
+
+  %p
+    = form.label :first_name, 'Nombre'
+    = form.text_field :first_name, required: true
+
+  %p
+    = form.label :last_name, 'Apellido'
+    = form.text_field :last_name, required: true
+
+  %p
+    = form.label :position, 'Posición'
+    = form.text_field :position
+
+  %p
+    = form.label :about, 'Descripción'
+    = form.text_area :about
+
+  = form.submit 'Guardar'

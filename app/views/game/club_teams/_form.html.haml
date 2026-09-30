@@ -1,0 +1,17 @@
+= form_with model: @team, scope: :game_club_team, url: (@team.persisted? ? game_club_category_team_path(@club, @category, @team) : game_club_category_teams_path(@club, @category)) do |form|
+  - if @team.errors.any?
+    %div{role: 'alert'}
+      %h2= 'No se pudo guardar el equipo:'
+      %ul
+        - @team.errors.full_messages.each do |message|
+          %li= message
+
+  %p
+    = form.label :name, 'Nombre'
+    = form.text_field :name, required: true
+
+  %p
+    = form.label :about, 'Descripción'
+    = form.text_area :about
+
+  = form.submit 'Guardar'

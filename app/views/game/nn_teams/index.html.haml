@@ -1,0 +1,11 @@
+%h1 Equipos libres
+
+- if can?(:create, Game::NnTeam)
+  %p= link_to 'Crear equipo', new_game_nn_team_path
+
+- if @teams.any?
+  %ul
+    - @teams.each do |team|
+      %li= link_to team.name, game_nn_team_path(team)
+- else
+  %p Aún no hay equipos registrados.

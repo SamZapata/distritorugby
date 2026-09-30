@@ -1,0 +1,10 @@
+%h1= @team.name
+
+- if @team.about.present?
+  %p= @team.about
+
+- if can?(:update, @team)
+  %p= link_to 'Editar equipo', edit_game_nn_team_path(@team)
+
+- if can?(:destroy, @team)
+  %p= button_to 'Eliminar equipo', game_nn_team_path(@team), method: :delete

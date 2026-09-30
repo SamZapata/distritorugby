@@ -7,10 +7,16 @@ Rails.application.routes.draw do
 
   namespace :game do
     resources :unions
+    resources :nn_teams
+    resources :players
     resources :clubs do
       resources :admin_assignments, only: %i[create destroy], controller: 'admin_assignments'
       resources :categories, controller: 'club_categories' do
         resources :schedules, controller: 'category_schedules'
+        resources :teams, controller: 'club_teams' do
+          resources :player_assignments, only: %i[create destroy], controller: 'player_cteam_joins'
+        end
+        resources :player_assignments, only: %i[create destroy], controller: 'player_category_joins'
       end
     end
   end

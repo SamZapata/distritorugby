@@ -1,0 +1,11 @@
+%h1 Jugadores
+
+- if can?(:create, Game::Player)
+  %p= link_to 'Crear jugador', new_game_player_path
+
+- if @players.any?
+  %ul
+    - @players.each do |player|
+      %li= link_to player.full_name, game_player_path(player)
+- else
+  %p Aún no hay jugadores registrados.

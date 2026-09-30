@@ -1,0 +1,21 @@
+%h1= @player.full_name
+
+- if @player.position.present?
+  %p
+    %strong Posición:
+    = @player.position
+
+- if @player.about.present?
+  %p= @player.about
+
+- if @teams.any?
+  %h2 Equipos
+  %ul
+    - @teams.each do |team|
+      %li= team.name
+
+- if can?(:update, @player)
+  %p= link_to 'Editar jugador', edit_game_player_path(@player)
+
+- if can?(:destroy, @player)
+  %p= button_to 'Eliminar jugador', game_player_path(@player), method: :delete

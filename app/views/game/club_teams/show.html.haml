@@ -1,0 +1,22 @@
+%h1= @team.name
+
+%p
+  %strong Categoría:
+  = link_to @category.name, game_club_category_path(@club, @category)
+
+- if @team.about.present?
+  %p= @team.about
+
+%h2 Jugadores del equipo
+- if @players.any?
+  %ul
+    - @players.each do |player|
+      %li= link_to player.full_name, game_player_path(player)
+- else
+  %p Este equipo aún no tiene jugadores.
+
+- if can?(:update, @team)
+  %p= link_to 'Editar equipo', edit_game_club_category_team_path(@club, @category, @team)
+
+- if can?(:destroy, @team)
+  %p= button_to 'Eliminar equipo', game_club_category_team_path(@club, @category, @team), method: :delete
