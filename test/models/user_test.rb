@@ -25,10 +25,15 @@ class UserTest < ActiveSupport::TestCase
     assert_includes user.errors[:password], 'es demasiado corto (6 caracteres mínimo)'
   end
 
-  test 'has_one profile' do
+  test 'crea un perfil al crear el usuario' do
     user = User.create!(email: 'perfil@ejemplo.com', password: 'secret123')
-    assert_respond_to user, :profile
-    assert_nil user.profile
+    assert_instance_of Profile, user.profile
+    assert_equal user.id, user.profile.user_id
+  end
+
+  test 'el rol predeterminado es user' do
+    user = User.create!(email: 'rol@ejemplo.com', password: 'secret123')
+    assert user.user?
   end
 
   test 'guarda la password hasheada y no en texto plano' do

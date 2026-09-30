@@ -28,6 +28,20 @@ class AuthenticationTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'el registro publico no permite asignar un rol privilegiado' do
+    post user_registration_path, params: {
+      user: {
+        email: 'no-admin@ejemplo.com',
+        password: 'secret123',
+        password_confirmation: 'secret123',
+        role: 'super_admin'
+      }
+    }
+
+    assert_response :redirect
+    assert User.find_by!(email: 'no-admin@ejemplo.com').user?
+  end
+
   test 'el inicio de sesion con credenciales validas autentica' do
     user = User.create!(email: 'login@ejemplo.com', password: 'secret123')
 
