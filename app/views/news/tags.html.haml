@@ -1,0 +1,8 @@
+%h1= "Noticias de #{@label}"
+
+- if @news_by_tag.any?
+  %ul
+    - @news_by_tag.each do |news|
+      %li= link_to news.title, news_path(news)
+- else
+  %p No hay noticias con esta etiqueta.

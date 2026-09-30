@@ -1,0 +1,11 @@
+%h1 Historias
+
+- if can?(:create, Story)
+  %p= link_to 'Crear historia', new_story_path
+
+- if @all_stories.any?
+  %ul
+    - @all_stories.each do |story|
+      %li= link_to story.name, story_path(story)
+- else
+  %p Aún no hay historias publicadas.

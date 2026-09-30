@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   # Autenticación (Lote 2)
   devise_for :users
 
+  resources :news, controller: 'news'
+  get 'news/tags/:tag', to: 'news#tags', as: :news_tags
+
+  resources :stories
+  get 'stories/tags/:tag', to: 'stories#tags', as: :stories_tags
+
   namespace :game do
     resources :unions
     resources :nn_teams

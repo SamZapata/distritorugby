@@ -1,0 +1,10 @@
+%h1= @news.title
+
+%p= @news.summary
+%p= @news.talking
+
+- if can?(:update, @news)
+  %p= link_to 'Editar noticia', edit_news_path(@news)
+
+- if can?(:destroy, @news)
+  %p= button_to 'Eliminar noticia', news_path(@news), method: :delete

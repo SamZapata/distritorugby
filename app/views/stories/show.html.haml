@@ -1,0 +1,10 @@
+%h1= @story.name
+
+%p= @story.summary
+%p= @story.body
+
+- if can?(:update, @story)
+  %p= link_to 'Editar historia', edit_story_path(@story)
+
+- if can?(:destroy, @story)
+  %p= button_to 'Eliminar historia', story_path(@story), method: :delete

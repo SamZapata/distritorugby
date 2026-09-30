@@ -1,0 +1,11 @@
+%h1 Noticias
+
+- if can?(:create, News)
+  %p= link_to 'Crear noticia', new_news_path
+
+- if @all_news.any?
+  %ul
+    - @all_news.each do |news|
+      %li= link_to news.title, news_path(news)
+- else
+  %p Aún no hay noticias publicadas.

@@ -1,0 +1,21 @@
+= form_with model: @news, scope: :news, url: (@news.persisted? ? news_path(@news) : news_index_path) do |form|
+  - if @news.errors.any?
+    %div{role: 'alert'}
+      %h2= 'No se pudo guardar la noticia:'
+      %ul
+        - @news.errors.full_messages.each do |message|
+          %li= message
+
+  %p
+    = form.label :title, 'Título'
+    = form.text_field :title, required: true
+
+  %p
+    = form.label :summary, 'Resumen'
+    = form.text_area :summary, required: true
+
+  %p
+    = form.label :talking, 'Contenido'
+    = form.text_area :talking, required: true
+
+  = form.submit 'Guardar'
