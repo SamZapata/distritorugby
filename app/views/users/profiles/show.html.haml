@@ -1,0 +1,35 @@
+.distrito-rugby-profile
+  .profile-breadcrumb
+    %nav{"aria-label" => "breadcrumb"}
+      %ol.breadcrumb
+        %li.breadcrumb-item
+          %a{:href => "/", :class => 'link'}
+            .fas.fa-home
+        %li.breadcrumb-item.active Mi Perfil
+
+  .profile-show
+    .profile-title= [@profile.first_name, @profile.last_name].compact_blank.join(' ').presence || current_user.email
+    .container
+      - if @profile.about.present?
+        %p
+          %strong Sobre mí:
+          = @profile.about
+      - if @profile.phone_number.present?
+        %p
+          %strong Teléfono:
+          = @profile.phone_number
+      - if @profile.bithday.present?
+        %p
+          %strong Fecha de nacimiento:
+          = l(@profile.bithday.to_date, format: :own) rescue @profile.bithday.to_date.to_s
+      %p
+        %strong Email:
+        = current_user.email
+      %p
+        %strong Rol:
+        = current_user.role
+
+      - if can?(:update, @profile)
+        %p= link_to 'Editar perfil', edit_users_profile_path, class: 'link'
+      - if current_user.super_admin?
+        %p= link_to 'Administrar usuarios', admin_users_path, class: 'link'

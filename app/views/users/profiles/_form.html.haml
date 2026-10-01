@@ -1,0 +1,29 @@
+= form_with model: @profile, scope: :profile, url: users_profile_path, method: :patch do |form|
+  - if @profile.errors.any?
+    %div{role: 'alert'}
+      %h2= 'No se pudo guardar el perfil:'
+      %ul
+        - @profile.errors.full_messages.each do |message|
+          %li= message
+
+  %p
+    = form.label :first_name, 'Nombre'
+    = form.text_field :first_name, maxlength: 100
+
+  %p
+    = form.label :last_name, 'Apellido'
+    = form.text_field :last_name, maxlength: 100
+
+  %p
+    = form.label :about, 'Sobre mí'
+    = form.text_area :about
+
+  %p
+    = form.label :phone_number, 'Teléfono'
+    = form.telephone_field :phone_number
+
+  %p
+    = form.label :bithday, 'Fecha de nacimiento'
+    = form.date_field :bithday, value: @profile.bithday&.to_date
+
+  = form.submit 'Guardar'

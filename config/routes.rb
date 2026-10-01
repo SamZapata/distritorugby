@@ -5,6 +5,16 @@ Rails.application.routes.draw do
   # Autenticación (Lote 2)
   devise_for :users
 
+  # Perfil propio (1C.3): show/edit/update del usuario autenticado.
+  namespace :users do
+    resource :profile, only: %i[show edit update], controller: 'profiles'
+  end
+
+  # Administración de roles (solo super_admin, ver Admin::UsersController).
+  namespace :admin do
+    resources :users, only: %i[index edit update]
+  end
+
   resources :news, controller: 'news'
   get 'news/tags/:tag', to: 'news#tags', as: :news_tags
 
