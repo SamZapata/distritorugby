@@ -89,4 +89,25 @@ class AbilityTest < ActiveSupport::TestCase
     assert_not ability.can?(:manage, other_schedule)
     assert_not ability.can?(:create, Game::Union)
   end
+
+  test 'solo super admin gestiona usuarios y roles' do
+    regular = User.create!(email: 'noroles@ejemplo.com', password: 'secret123')
+    assert_not Ability.new(regular).can?(:manage, User.new)
+    assert_not Ability.new(regular).can?(:update, regular)
+
+    club_admin = User.create!(email: 'noroles-club@ejemplo.com', password: 'secret123', role: :club_admin)
+    assert_not Ability.new(club_admin).can?(:manage, User.new)
+
+    league_admin = User.create!(email: 'noroles-liga@ejemplo.com', password: 'secret123', role: :league_admin)
+    assert_not Ability.new(league_admin).can?(:manage, User.new)
+
+    super_admin = User.create!(email: 'si-roles@ejemplo.com', password: 'secret123', role: :super_admin)
+    assert Ability.new(super_admin).can?(:manage, User.new)
+  end
+
+  test 'super admin gestiona cualquier perfil' do
+    owner = User.create!(email: 'dueno-perfil@ejemplo.com', password: 'secret123')
+    super_admin = User.create!(email: 'super-perfil@ejemplo.com', password: 'secret123', role: :super_admin)
+    assert Ability.new(super_admin).can?(:manage, owner.profile)
+  end
 end

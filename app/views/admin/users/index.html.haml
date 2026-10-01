@@ -1,0 +1,29 @@
+.distrito-rugby-admin-users
+  .admin-users-breadcrumb
+    %nav{"aria-label" => "breadcrumb"}
+      %ol.breadcrumb
+        %li.breadcrumb-item
+          %a{:href => "/", :class => 'link'}
+            .fas.fa-home
+        %li.breadcrumb-item.active Usuarios
+
+  .admin-users-index
+    %h1.admin-users-title Usuarios
+    .container
+      - if @users.any?
+        %table
+          %thead
+            %tr
+              %th Email
+              %th Rol
+              %th Perfil
+              %th Acciones
+          %tbody
+            - @users.each do |user|
+              %tr
+                %td= user.email
+                %td= user.role
+                %td= [user.profile&.first_name, user.profile&.last_name].compact_blank.join(' ').presence || '—'
+                %td= link_to 'Editar', edit_admin_user_path(user), class: 'link'
+      - else
+        %p Aún no hay usuarios registrados.

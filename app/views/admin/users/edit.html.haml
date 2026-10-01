@@ -1,0 +1,20 @@
+%h1 Editar usuario
+%p
+  %strong Email:
+  = @user.email
+
+= form_with model: @user, url: admin_user_path(@user), method: :patch do |form|
+  - if @user.errors.any?
+    %div{role: 'alert'}
+      %h2= 'No se pudo guardar el usuario:'
+      %ul
+        - @user.errors.full_messages.each do |message|
+          %li= message
+
+  %p
+    = form.label :role, 'Rol'
+    = form.select :role, User.roles.keys.map { |r| [r.humanize, r] }, {}, required: true
+
+  = form.submit 'Guardar'
+
+%p= link_to 'Volver', admin_users_path, class: 'link'

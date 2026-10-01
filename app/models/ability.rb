@@ -11,6 +11,8 @@ class Ability
     return unless user.persisted?
 
     can :manage, Profile, user_id: user.id
+    # Roles y usuarios solo los gestiona super_admin (Admin::UsersController).
+    cannot :manage, User unless user.super_admin?
 
     if user.super_admin?
       can :manage, :all
