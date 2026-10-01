@@ -5,7 +5,7 @@
 (function() {
   'use strict';
 
-  var CONFIG = {
+  const CONFIG = {
     rouletteDuration: 900,
     rouletteSteps: 2,
     stepInterval: 200,
@@ -43,24 +43,26 @@
   };
 
   // Rutas internas permitidas para highlights/modales (allowlist anti open-redirect/XSS)
-  var ALLOWED_LINKS = ['/stories', '/game/tournaments', '/game/clubs', '/game/players'];
+  const ALLOWED_LINKS = ['/stories', '/game/tournaments', '/game/clubs', '/game/players'];
 
   function safeLink(path, fallback) {
     if (ALLOWED_LINKS.indexOf(path) !== -1) return path;
     return fallback || '/';
   }
 
-  var isRouletteActive = false;
-  var selectedCategory = null;
-  var rouletteInterval = null;
-  var autoResetTimeout = null;
-  var transitionTimeout = null;
+  let isRouletteActive = false;
+  let selectedCategory = null;
+  let rouletteInterval = null;
+  let autoResetTimeout = null;
+  let transitionTimeout = null;
+  let rouletteStepCount = 0;
+  let rouletteCatIdx = 0;
 
   // Cache de elementos DOM (se recalcan en init por si Turbo recarga el DOM)
-  var cachedContainer = null;
-  var cachedQuadrants = null;
-  var cachedMenuDRBar = null;
-  var isHomePage = false;
+  let cachedContainer = null;
+  let cachedQuadrants = null;
+  let cachedMenuDRBar = null;
+  let isHomePage = false;
 
   function cacheDOMElements() {
     cachedContainer = document.querySelector('.diamond-container');
@@ -112,7 +114,7 @@
 
   // === ROMBO ===
   function initDiamond() {
-    var diamond = document.querySelector('.diamond');
+    const diamond = document.querySelector('.diamond');
 
     if (!diamond) return;
 
@@ -121,7 +123,7 @@
       diamond._hasHandler = true;
       diamond.addEventListener('click', function(e) {
         // Si el clic fue sobre el texto, dejar que Bootstrap abra el modal
-        var t = e.target && e.target.closest ? e.target.closest('.diamond-text') : null;
+        const t = e.target && e.target.closest ? e.target.closest('.diamond-text') : null;
         if (t) {
           return;
         }
@@ -142,13 +144,13 @@
       // Clic en el cuadrante
       q.addEventListener('click', function(e) {
         // Si el clic fue sobre un link (<a> o .quadrant-label), dejar que navegue
-        var linkEl = (e.target && e.target.closest) ? e.target.closest('a') : null;
+        const linkEl = (e.target && e.target.closest) ? e.target.closest('a') : null;
         if (linkEl) {
           return;
         }
         // Si no fue un link, mostrar modal informativa
         e.preventDefault();
-        var category = q.dataset.category;
+        const category = q.dataset.category;
         showQuadrantModal(category);
       });
     });
@@ -156,17 +158,17 @@
 
   // === MODAL INFORMATIVA DEL CUADRANTE ===
   function showQuadrantModal(category) {
-    var data = CONFIG.modalData[category];
+    const data = CONFIG.modalData[category];
     if (!data) return;
 
-    var modal = document.getElementById('quadrantModal');
+    const modal = document.getElementById('quadrantModal');
     if (!modal) return;
 
     // Actualizar contenido (solo texto + href con allowlist)
-    var iconEl = modal.querySelector('.quadrant-modal-icon');
-    var titleEl = modal.querySelector('.quadrant-modal-title');
-    var textEl = modal.querySelector('.quadrant-modal-text');
-    var linkEl = modal.querySelector('.quadrant-modal-link');
+    const iconEl = modal.querySelector('.quadrant-modal-icon');
+    const titleEl = modal.querySelector('.quadrant-modal-title');
+    const textEl = modal.querySelector('.quadrant-modal-text');
+    const linkEl = modal.querySelector('.quadrant-modal-link');
     if (!iconEl || !titleEl || !textEl || !linkEl) return;
     iconEl.className = 'fas ' + data.icon + ' quadrant-modal-icon';
     titleEl.textContent = data.title;
@@ -176,15 +178,12 @@
 
     // Abrir modal con Bootstrap 5 (con guarda si el CDN falla)
     if (typeof bootstrap === 'undefined' || !bootstrap.Modal) return;
-    var bsModal = new bootstrap.Modal(modal);
+    const bsModal = new bootstrap.Modal(modal);
     bsModal.show();
   }
 
   // === RULETA ===
   function rouletteStep() {
-    rouletteStep._step = rouletteStep._step || 0;
-    rouletteStep._catIdx = rouletteStep._catIdx || 0;
-
     if (!cachedQuadrants || !cachedQuadrants.length) {
       clearInterval(rouletteInterval);
       return;
@@ -195,14 +194,14 @@
     });
 
     // Poner brillo en el cuadrante actual (índice acotado)
-    var idx = rouletteStep._catIdx % cachedQuadrants.length;
+    const idx = rouletteCatIdx % cachedQuadrants.length;
     if (cachedQuadrants[idx]) cachedQuadrants[idx].classList.add('glowing');
 
     // Avanzar al siguiente
-    rouletteStep._catIdx = (rouletteStep._catIdx + 1) % CONFIG.categories.length;
-    rouletteStep._step++;
+    rouletteCatIdx = (rouletteCatIdx + 1) % CONFIG.categories.length;
+    rouletteStepCount++;
 
-    if (rouletteStep._step >= CONFIG.rouletteSteps) {
+    if (rouletteStepCount >= CONFIG.rouletteSteps) {
       clearInterval(rouletteInterval);
       finishRoulette();
     }
@@ -223,9 +222,9 @@
 
     // Cerrar modales abiertos (con guarda si el CDN falla)
     if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
-      var openModals = document.querySelectorAll('.modal.show');
+      const openModals = document.querySelectorAll('.modal.show');
       openModals.forEach(function(m) {
-        var bsModal = bootstrap.Modal.getInstance(m);
+        const bsModal = bootstrap.Modal.getInstance(m);
         if (bsModal) bsModal.hide();
       });
     }
@@ -236,11 +235,11 @@
     isRouletteActive = true;
     cachedContainer.classList.add('roulette-active');
 
-    var randomIndex = Math.floor(Math.random() * CONFIG.categories.length);
+    const randomIndex = Math.floor(Math.random() * CONFIG.categories.length);
     selectedCategory = CONFIG.categories[randomIndex];
 
-    rouletteStep._step = 0;
-    rouletteStep._catIdx = 0;
+    rouletteStepCount = 0;
+    rouletteCatIdx = 0;
 
     rouletteInterval = setInterval(rouletteStep, CONFIG.stepInterval);
   }
@@ -248,8 +247,8 @@
   function finishRoulette() {
     if (cachedContainer) cachedContainer.classList.remove('roulette-active');
 
-    var selectedEl = null;
-    var dimmedEls = [];
+    let selectedEl = null;
+    const dimmedEls = [];
 
     if (!cachedQuadrants || !cachedQuadrants.forEach) return;
     cachedQuadrants.forEach(function(q) {
@@ -292,36 +291,36 @@
   }
 
   function showHighlight(quadrant, category) {
-    var content = quadrant.querySelector('.quadrant-content');
+    const content = quadrant.querySelector('.quadrant-content');
     if (!content) return;
 
-    var data = CONFIG.modalData[category];
+    const data = CONFIG.modalData[category];
     if (!data) return;
     while (content.firstChild) content.removeChild(content.firstChild);
     content.appendChild(buildHighlightCard(data));
     content.style.animation = 'fade-in-content 0.5s ease forwards';
   }
 
-  // Construye el highlight con DOM API (sin innerHTML) + href con allowlist
+  // Construye el highlight con DOM API (sin HTML inyectado) + href con allowlist
   function buildHighlightCard(data) {
-    var card = document.createElement('div');
+    const card = document.createElement('div');
     card.className = 'highlight-card';
 
-    var icon = document.createElement('i');
+    const icon = document.createElement('i');
     icon.className = 'fas ' + data.icon + ' highlight-icon';
     card.appendChild(icon);
 
-    var title = document.createElement('h3');
+    const title = document.createElement('h3');
     title.className = 'highlight-title';
     title.textContent = data.title;
     card.appendChild(title);
 
-    var desc = document.createElement('p');
+    const desc = document.createElement('p');
     desc.className = 'highlight-description';
     desc.textContent = data.text;
     card.appendChild(desc);
 
-    var link = document.createElement('a');
+    const link = document.createElement('a');
     link.setAttribute('href', safeLink(data.link, '/'));
     link.className = 'highlight-link';
     link.textContent = data.linkText;
@@ -343,7 +342,7 @@
       q.style.removeProperty('opacity');
       q.style.removeProperty('z-index');
 
-      var content = q.querySelector('.quadrant-content');
+      const content = q.querySelector('.quadrant-content');
       if (content) {
         while (content.firstChild) content.removeChild(content.firstChild);
         content.style.opacity = '';
@@ -358,12 +357,12 @@
   function initMenuBar() {
     if (!cachedMenuDRBar) return;
 
-    var heroHeight = cachedContainer ? cachedContainer.offsetHeight : window.innerHeight;
-    var barHeight = cachedMenuDRBar.offsetHeight || 40;
-    var threshold = heroHeight - barHeight;
+    let heroHeight = cachedContainer ? cachedContainer.offsetHeight : window.innerHeight;
+    let barHeight = cachedMenuDRBar.offsetHeight || 40;
+    let threshold = heroHeight - barHeight;
 
     function onScroll() {
-      var y = window.pageYOffset || document.documentElement.scrollTop;
+      const y = window.pageYOffset || document.documentElement.scrollTop;
       if (isHomePage) {
         if (y > threshold) {
           cachedMenuDRBar.classList.remove('is-hidden');
