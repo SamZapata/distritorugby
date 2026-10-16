@@ -9,7 +9,8 @@ Repositorio en migración limpia desde `distritorugby-legacy` (congelado, solo l
 flujo vertical de clubes con roles (`user`/`club_admin`/`league_admin`/`super_admin`),
 dominio deportivo (clubes, categorías, equipos, jugadores, torneos, grupos, partidos,
 stats, entrenadores, árbitros), contenido (noticias, historias, tags, servicios),
-home dinámico y semillas sintéticas. Ver `../assistant/migracion-limpia.md` (fuera de este repo).
+home dinámico y semillas sintéticas. Ver `../assistant/from_migration/migracion-limpia.md`
+(histórico) y `../assistant/current-status.md` (estado actual).
 
 ## Requisitos
 
@@ -54,7 +55,8 @@ docker compose up --build
 bin/rails test
 ```
 
-Suite actual: 111 runs / 309 assertions (Lote 4.7), 0 fallas.
+Suite actual (verificada 2026-10-15): 129 runs / 368 assertions, 0 fallas,
+0 errores, 0 skips. Ver `../assistant/current-status.md`.
 
 ## Datos de desarrollo
 
