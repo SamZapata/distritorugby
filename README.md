@@ -1,53 +1,91 @@
 # Distrito Rugby
 
-Plataforma abierta para compartir información, contenidos y herramientas relacionadas con el rugby y sus comunidades.
+Plataforma abierta para la comunidad del rugby: clubes, equipos, jugadores, torneos y contenido.
+
+[![Ruby](https://img.shields.io/badge/Ruby-3.2.4-CC342D?logo=ruby&logoColor=white)](https://www.ruby-lang.org/)
+[![Rails](https://img.shields.io/badge/Rails-7.1-D30001?logo=rubyonrails&logoColor=white)](https://rubyonrails.org/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15%2B-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![License](https://img.shields.io/badge/License-GPL--3.0-blue)](LICENSE)
+
+## ¿Qué es Distrito Rugby?
+
+Distrito Rugby es una plataforma web para centralizar y compartir la información del ecosistema del rugby. Reúne clubes, categorías, equipos, jugadores, torneos, partidos y estadísticas, junto con noticias e historias de la comunidad.
+
+El proyecto nace con un enfoque local en Cali, Colombia, y una vocación abierta y colaborativa: facilitar que clubes, ligas y aficionados gestionen y difundan su actividad deportiva.
+
+## Características
+
+- **Dominio deportivo:** clubes, categorías, horarios, equipos y plantillas, jugadores, entrenadores y árbitros.
+- **Competición:** torneos, grupos, partidos y estadísticas.
+- **Contenido:** noticias, historias y etiquetas.
+- **Experiencia:** home dinámico y perfiles de usuario.
+- **Acceso:** autenticación con Devise y roles de alcance limitado (`user`, `club_admin`, `league_admin`, `super_admin`).
+
+## Stack tecnológico
+
+| Área            | Tecnología                                              |
+| --------------- | ------------------------------------------------------- |
+| Lenguaje        | Ruby 3.2.4                                              |
+| Framework       | Ruby on Rails 7.1                                       |
+| Base de datos   | PostgreSQL 15+                                          |
+| Autenticación   | Devise                                                  |
+| Autorización    | CanCanCan                                               |
+| Vistas          | Haml, Bootstrap 5, jQuery y Turbo                       |
+| Activos         | Sprockets                                               |
+| Servidor        | Puma                                                    |
+| Archivos        | Active Storage (local en desarrollo, Cloudinary en prod)|
+| Tiempo real     | Action Cable (Redis en producción)                      |
+| URLs amigables  | FriendlyId                                              |
 
 ## Estado del proyecto
 
-Repositorio en migración limpia desde `distritorugby-legacy` (congelado, solo lectura).
-**Lotes 0-6 completados:** base reproducible, persistencia y auth (Devise + CanCanCan),
-flujo vertical de clubes con roles (`user`/`club_admin`/`league_admin`/`super_admin`),
-dominio deportivo (clubes, categorías, equipos, jugadores, torneos, grupos, partidos,
-stats, entrenadores, árbitros), contenido (noticias, historias, tags, servicios),
-home dinámico y semillas sintéticas. Ver `../assistant/from_migration/migracion-limpia.md`
-(histórico) y `../assistant/current-status.md` (estado actual).
+Distrito Rugby se encuentra **en desarrollo activo**. El núcleo del dominio deportivo, la autenticación y la gestión de contenido están implementados y cubiertos por una suite de pruebas automatizadas con Minitest.
+
+Las siguientes etapas incluyen la consolidación del flujo de competición, mejoras de experiencia de usuario, búsqueda, API pública y automatización del despliegue.
+
+> El proyecto aún no está listo para producción.
 
 ## Requisitos
 
 - Ruby 3.2.4 (ver `.ruby-version`)
 - Bundler
 - PostgreSQL 15+
-- (opcional) Docker + Docker Compose
+- Docker y Docker Compose (opcional)
 
-## Instalación
+## Instalación y ejecución local
 
 ```bash
-git clone git@github.com:SamZapata/distritorugby.git
+git clone https://github.com/SamZapata/distritorugby.git
 cd distritorugby
 bundle install
-cp .env.example .env   # y rellena los valores reales
-bin/rails db:prepare   # crea y migra la base la primera vez
+cp .env.example .env   # completa las variables requeridas
+bin/rails db:prepare   # crea y migra la base de datos
 bin/rails server
 ```
 
-Health check: `http://localhost:3000/up`
+La aplicación queda disponible en [http://localhost:3000](http://localhost:3000). El health check está en [http://localhost:3000/up](http://localhost:3000/up).
 
-En development las imágenes se guardan en `storage/` (local); Cloudinary queda
-configurado solo para producción.
+Todas las credenciales se gestionan mediante variables de entorno. `.env` no se versiona; usa `.env.example` como plantilla para la base de datos, Cloudinary, SMTP y Redis.
 
-### Con Docker
+## Docker
 
 ```bash
-cp .env.example .env   # POSTGRES_* requeridos por docker-compose
+cp .env.example .env
 docker compose up --build
 ```
 
-- La base se crea y migra automáticamente al arrancar (`db:prepare` en el
-  comando del contenedor `web`).
-- Los datos viven en el volumen `distritorugby_pgdata`; `docker compose down`
-  los conserva, `docker compose down -v` los borra (reset completo).
-- No levantes Docker y `bin/rails server` al mismo tiempo: compiten por el
-  puerto 3000.
+- La base de datos se crea y migra automáticamente al arrancar.
+- La aplicación se publica en `http://localhost:3000` y PostgreSQL en `localhost:5433`.
+- Los datos persisten en el volumen `pgdata`; `docker compose down` los conserva y `docker compose down -v` los elimina.
+- No ejecutes Docker y `bin/rails server` al mismo tiempo: ambos usan el puerto 3000.
+
+## Datos de ejemplo
+
+```bash
+bin/rails db:seed
+```
+
+El comando carga registros ficticios e idempotentes para desarrollo y demostración. No uses datos personales reales en semillas, fixtures ni pruebas.
 
 ## Pruebas
 
@@ -55,24 +93,36 @@ docker compose up --build
 bin/rails test
 ```
 
-Suite actual (verificada 2026-10-15): 129 runs / 368 assertions, 0 fallas,
-0 errores, 0 skips. Ver `../assistant/current-status.md`.
-
-## Datos de desarrollo
+La suite utiliza Minitest, fixtures y pruebas de integración. Para ejecutar un archivo concreto:
 
 ```bash
-bin/rails db:seed   # crea registros demo ficticios (idempotente)
+bin/rails test test/models/user_test.rb
 ```
 
-Los CSV con datos reales del legacy nunca se migran (contienen PII).
+## Estructura del proyecto
 
-## Variables de entorno
+```text
+app/
+  controllers/   Solicitudes HTTP y respuestas
+  models/        Modelos, asociaciones y reglas de dominio
+  services/      Objetos de servicio
+  views/         Plantillas Haml
+config/          Configuración, rutas y entornos
+db/              Esquema, migraciones y semillas
+test/            Pruebas automatizadas
+```
 
-Todas las credenciales viven en `.env` (nunca se versiona). Ver `.env.example` con la descripción de cada variable: base de datos, Cloudinary, SMTP y Redis.
+## Contribuir
+
+Las contribuciones son bienvenidas. Antes de abrir un issue o un pull request, revisa [CONTRIBUTING.md](CONTRIBUTING.md).
+
+- No incluyas secretos, credenciales ni datos personales reales.
+- Para reportar vulnerabilidades, sigue las indicaciones de [SECURITY.md](SECURITY.md).
+- El uso de la marca está regulado por [TRADEMARKS.md](TRADEMARKS.md).
 
 ## Licencia
 
-Este proyecto se distribuye bajo la licencia [GNU General Public License v3.0](LICENSE).
+Este proyecto se distribuye bajo la [GNU General Public License v3.0](LICENSE).
 
 ## Comunidad
 
